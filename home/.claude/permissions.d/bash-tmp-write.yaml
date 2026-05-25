@@ -1,0 +1,6 @@
+# Write utilities scoped to /tmp (e.g. capturing dev/build logs via tee).
+bash:
+  tee:
+    cmd: /tmp/**
+    decide: allow
+    reason: tee output to /tmp (safe scratch area; common for capturing logs)

@@ -1,0 +1,20 @@
+# Bun package manager and runner, scoped to the current project's directory tree.
+bash:
+  bun:
+    install:
+      cwd-in:
+        # "./" → resolved project directory only. Matches e.g. cwd `/home/you/acme` when the project is `acme`. Does not match e.g. `/home/you/acme/apps/api`.
+        - "./"
+        # "./**" → cwd strictly inside that directory (any depth). Matches e.g. `/home/you/acme/apps/api`. Does not match cwd exactly `/home/you/acme` alone (the `/**` pattern excludes the bare base path in claude-permissions).
+        - "./**"
+      decide: allow
+      reason: bun install with cwd at project root or under it (./ and ./** per load-config baseDir)
+    run:
+      cmd: "${{PROJECT_DIR}}/**"
+      cwd-in:
+        # "./" → resolved project directory only. Matches e.g. cwd `/home/you/acme` when the project is `acme`. Does not match e.g. `/home/you/acme/apps/api`.
+        - "./"
+        # "./**" → cwd strictly inside that directory (any depth). Matches e.g. `/home/you/acme/apps/api`. Does not match cwd exactly `/home/you/acme` alone (the `/**` pattern excludes the bare base path in claude-permissions).
+        - "./**"
+      decide: allow
+      reason: bun run project scripts/paths; cwd at project root or under it

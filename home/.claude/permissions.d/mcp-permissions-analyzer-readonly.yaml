@@ -1,0 +1,4 @@
+# Readonly permissions-analyzer MCP. Pure analysis, no state changes.
+mcp__permissions-analyzer__analyze_permission:
+  decide: allow
+  reason: Analyze permission decisions without side effects

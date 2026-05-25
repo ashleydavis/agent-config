@@ -1,0 +1,10 @@
+# Mutating file tools: Claude's Write and Edit tools, scoped to the current project tree.
+write:
+  path: "${{PROJECT_DIR}}/**"
+  decide: allow
+  reason: OK to write any files in the current project
+
+edit:
+  path: "${{PROJECT_DIR}}/**"
+  decide: allow
+  reason: OK to edit any files in the current project

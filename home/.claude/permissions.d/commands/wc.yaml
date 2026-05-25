@@ -1,0 +1,24 @@
+wc:
+  description: Count lines, words, and bytes
+  source: wc --help
+  positionals:
+    - kind: path
+      description: Input files
+      variadic: true
+  flags:
+    l|lines:
+      arity: 0
+      kind: string
+      description: Count lines
+    w|words:
+      arity: 0
+      kind: string
+      description: Count words
+    c|bytes:
+      arity: 0
+      kind: string
+      description: Count bytes
+    m|chars:
+      arity: 0
+      kind: string
+      description: Count characters

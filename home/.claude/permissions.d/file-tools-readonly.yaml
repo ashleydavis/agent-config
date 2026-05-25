@@ -1,0 +1,5 @@
+# Readonly file tool: Claude's Read tool, scoped to the current project tree.
+read:
+  path: "${{PROJECT_DIR}}/**"
+  decide: allow
+  reason: OK to read any files in the current project

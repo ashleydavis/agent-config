@@ -1,0 +1,12 @@
+tee:
+  description: Read from stdin and write to stdout and files
+  source: https://www.gnu.org/software/coreutils/manual/html_node/tee-invocation.html
+  positionals:
+    - kind: path
+      description: Output files
+      variadic: true
+  flags:
+    a|append:
+      arity: 0
+      kind: string
+      description: Append to files rather than overwriting

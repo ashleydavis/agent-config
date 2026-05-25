@@ -1,0 +1,24 @@
+# Claude Code tools with side effects. Not destructive but not pure reads either.
+TodoWrite:
+  decide: allow
+  reason: Managing todo lists and task tracking
+
+Agent:
+  decide: allow
+  reason: Spawning subagents for research and parallel work
+
+TaskCreate:
+  decide: allow
+  reason: Creating tasks has no significant side effects
+
+TaskUpdate:
+  decide: allow
+  reason: Updating a task list entry has no significant side effects
+
+TaskStop:
+  decide: allow
+  reason: Terminates a background task started in this session; local cleanup only
+
+AskUserQuestion:
+  decide: allow
+  reason: Prompts the user for input; no external side effects

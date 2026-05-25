@@ -1,0 +1,16 @@
+cat:
+  description: Concatenate and print files
+  source: cat --help
+  positionals:
+    - kind: path
+      description: Input files
+      variadic: true
+  flags:
+    n|number:
+      arity: 0
+      kind: string
+      description: Number all output lines
+    A|show-all:
+      arity: 0
+      kind: string
+      description: Show all non-printing characters

@@ -1,0 +1,67 @@
+gh:
+  description: GitHub CLI
+  source:
+    - https://cli.github.com/manual/gh
+    - gh pr list --help
+    - gh pr create --help
+    - gh pr checkout --help
+    - gh run view --help
+    - gh repo list --help
+    - gh issue list --help
+  flags:
+    R|repo:
+      arity: 1
+      kind: string
+      description: Repository name (owner/repo)
+    org:
+      arity: 1
+      kind: string
+      description: GitHub organization name
+    b|branch:
+      arity: 1
+      kind: string
+      description: Branch name
+    B|base:
+      arity: 1
+      kind: string
+      description: Base branch for pull requests
+    H|head:
+      arity: 1
+      kind: string
+      description: Head branch for pull requests
+    L|limit:
+      arity: 1
+      kind: string
+      description: Maximum number of results to fetch
+    l|label:
+      arity: 1
+      kind: string
+      description: Label filter
+    a|assignee:
+      arity: 1
+      kind: string
+      description: Assignee filter
+    s|state:
+      arity: 1
+      kind: string
+      description: State filter (open, closed, merged, all)
+    q|jq:
+      arity: 1
+      kind: string
+      description: jq expression to filter JSON output
+    t|template:
+      arity: 1
+      kind: string
+      description: Go template to format output
+    json:
+      arity: 1
+      kind: string
+      description: Output JSON with specified fields
+    j|job:
+      arity: 1
+      kind: string
+      description: Job ID for run view
+    log:
+      arity: 0
+      kind: string
+      description: Show full log output

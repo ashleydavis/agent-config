@@ -1,0 +1,16 @@
+# Readonly Atlassian MCP tools. Excludes any mutation.
+mcp__claude_ai_Atlassian__searchJiraIssuesUsingJql:
+  decide: allow
+  reason: Readonly Jira access
+
+mcp__claude_ai_Atlassian__getJiraIssue:
+  decide: allow
+  reason: Readonly Jira access
+
+mcp__claude_ai_Atlassian__getTransitionsForJiraIssue:
+  decide: allow
+  reason: Readonly Jira access
+
+mcp__claude_ai_Atlassian__getConfluencePage:
+  decide: allow
+  reason: Readonly Confluence access

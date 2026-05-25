@@ -1,0 +1,74 @@
+# Readonly bash utilities that observe state but never modify it.
+bash:
+  cat:
+    cmd: "${{PROJECT_DIR}}/**"
+    decide: allow
+    reason: Readonly file access within current project
+
+  ls:
+    decide: allow
+    reason: Readonly file system access
+
+  pwd:
+    decide: allow
+    reason: Print working directory (read-only)
+
+  cd:
+    cmd: "${{PROJECT_DIR}}/**"
+    decide: allow
+    reason: cd targets under the project (same ./** semantics as cat/find)
+
+  find:
+    cmd: "${{PROJECT_DIR}}/**"
+    decide: allow
+    reason: Readonly search within current directory (relative paths only)
+
+  wc:
+    decide: allow
+    reason: Counting lines/words/chars
+
+  uniq:
+    decide: allow
+    reason: Deduplicating output
+
+  head:
+    decide: allow
+    reason: Readonly file access
+
+  tail:
+    decide: allow
+    reason: Readonly file access
+
+  jq:
+    decide: allow
+    reason: JSON processing
+
+  sort:
+    decide: allow
+    reason: Sorting output
+
+  grep:
+    decide: allow
+    reason: Searching file contents
+
+  sed:
+    - cmd: "${{PROJECT_DIR}}/**"
+      decide: allow
+      reason: Allow sed within the current project (read or in-place edit)
+    - decide: allow
+      not:
+        cmd-in:
+          - "**"
+      reason: sed with no positional args (stdin only); not applies when any path arg exists
+
+  echo:
+    decide: allow
+    reason: Just printing stuff
+
+  sleep:
+    decide: allow
+    reason: Pauses execution; no side effects
+
+  ps:
+    decide: allow
+    reason: Process listing; reads from /proc with no side effects

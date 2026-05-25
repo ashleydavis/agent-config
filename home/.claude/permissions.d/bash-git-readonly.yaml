@@ -1,0 +1,47 @@
+# Readonly git inspection commands. These never modify the working tree, index, or refs.
+bash:
+  git:
+    log:
+      decide: allow
+      reason: Readonly git access
+
+    diff:
+      decide: allow
+      reason: Readonly git access
+
+    status:
+      decide: allow
+      reason: Readonly git access
+
+    show:
+      decide: allow
+      reason: Readonly git access
+
+    remote:
+      options:
+        - v
+      decide: allow
+      reason: Readonly git access
+
+    ls-tree:
+      decide: allow
+      reason: Readonly git access
+
+    ls-files:
+      decide: allow
+      reason: Readonly git access
+
+    ls-remote:
+      decide: allow
+      reason: Readonly git access (queries remote refs, no local or remote state changes)
+
+    tag:
+      options:
+        - l|list
+      decide: allow
+      reason: Readonly git access (listing tags only)
+
+    worktree:
+      list:
+        decide: allow
+        reason: Readonly git access (listing worktrees only)

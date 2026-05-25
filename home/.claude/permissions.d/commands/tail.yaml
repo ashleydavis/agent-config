@@ -1,0 +1,20 @@
+tail:
+  description: Output the last lines of files
+  source: https://www.gnu.org/software/coreutils/manual/html_node/tail-invocation.html
+  positionals:
+    - kind: path
+      description: Input files
+      variadic: true
+  flags:
+    n|lines:
+      arity: 1
+      kind: string
+      description: Number of lines to output
+    c|bytes:
+      arity: 1
+      kind: string
+      description: Number of bytes to output
+    f|follow:
+      arity: 0
+      kind: string
+      description: Follow file growth

@@ -1,0 +1,111 @@
+# Readonly Helm operations. Excludes subcommands that mutate cluster state,
+# release history, or local chart/repository configuration.
+bash:
+  helm:
+    completion:
+      decide: allow
+      reason: Readonly helm access (generates completion scripts)
+    diff:
+      decide: allow
+      reason: Readonly helm access (preview diffs only; does not apply changes)
+    env:
+      decide: allow
+      reason: Readonly helm access
+    get:
+      all:
+        decide: allow
+        reason: Readonly helm access
+      hooks:
+        decide: allow
+        reason: Readonly helm access
+      manifest:
+        decide: allow
+        reason: Readonly helm access
+      metadata:
+        decide: allow
+        reason: Readonly helm access
+      notes:
+        decide: allow
+        reason: Readonly helm access
+      values:
+        decide: allow
+        reason: Readonly helm access
+    history:
+      decide: allow
+      reason: Readonly helm access
+    lint:
+      decide: allow
+      reason: Readonly helm access (chart validation)
+    list:
+      decide: allow
+      reason: Readonly helm access
+    search:
+      decide: allow
+      reason: Readonly helm access (chart search)
+    show:
+      all:
+        decide: allow
+        reason: Readonly helm access
+      chart:
+        decide: allow
+        reason: Readonly helm access
+      crds:
+        decide: allow
+        reason: Readonly helm access
+      readme:
+        decide: allow
+        reason: Readonly helm access
+      values:
+        decide: allow
+        reason: Readonly helm access
+    inspect:
+      all:
+        decide: allow
+        reason: Readonly helm access (alias for show)
+      chart:
+        decide: allow
+        reason: Readonly helm access (alias for show)
+      crds:
+        decide: allow
+        reason: Readonly helm access (alias for show)
+      readme:
+        decide: allow
+        reason: Readonly helm access (alias for show)
+      values:
+        decide: allow
+        reason: Readonly helm access (alias for show)
+    status:
+      decide: allow
+      reason: Readonly helm access
+    template:
+      decide: allow
+      reason: Readonly helm access (local render)
+    verify:
+      decide: allow
+      reason: Readonly helm access (signature verification)
+    version:
+      decide: allow
+      reason: Readonly helm access
+    dependency:
+      list:
+        decide: allow
+        reason: Readonly helm access (list dependencies only)
+    dep:
+      list:
+        decide: allow
+        reason: Readonly helm access (list dependencies only)
+    dependencies:
+      list:
+        decide: allow
+        reason: Readonly helm access (list dependencies only)
+    repo:
+      list:
+        decide: allow
+        reason: Readonly helm access (list repositories only)
+    plugin:
+      list:
+        decide: allow
+        reason: Readonly helm access (list plugins only)
+      verify:
+        decide: allow
+        reason: Readonly helm access (plugin signature verification)

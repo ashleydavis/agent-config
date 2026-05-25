@@ -1,0 +1,152 @@
+# Readonly GitHub CLI operations. Excludes any subcommand that mutates remote state.
+bash:
+  gh:
+    status:
+      decide: allow
+      reason: Readonly gh access
+    version:
+      decide: allow
+      reason: Readonly gh access
+    search:
+      decide: allow
+      reason: Readonly gh search (all subcommands are readonly)
+    browse:
+      decide: allow
+      reason: Opens a browser, no remote side effects
+    auth:
+      status:
+        decide: allow
+        reason: Readonly gh access
+    repo:
+      view:
+        decide: allow
+        reason: Readonly gh access
+      list:
+        decide: allow
+        reason: Readonly gh access
+    issue:
+      view:
+        decide: allow
+        reason: Readonly gh access
+      list:
+        decide: allow
+        reason: Readonly gh access
+      status:
+        decide: allow
+        reason: Readonly gh access
+    pr:
+      view:
+        decide: allow
+        reason: Readonly gh access
+      list:
+        decide: allow
+        reason: Readonly gh access
+      status:
+        decide: allow
+        reason: Readonly gh access
+      checks:
+        decide: allow
+        reason: Readonly gh access
+      diff:
+        decide: allow
+        reason: Readonly gh access
+    release:
+      view:
+        decide: allow
+        reason: Readonly gh access
+      list:
+        decide: allow
+        reason: Readonly gh access
+    run:
+      view:
+        decide: allow
+        reason: Readonly gh access
+      list:
+        decide: allow
+        reason: Readonly gh access
+      watch:
+        decide: allow
+        reason: Readonly gh access (observes run, no modification)
+    workflow:
+      view:
+        decide: allow
+        reason: Readonly gh access
+      list:
+        decide: allow
+        reason: Readonly gh access
+    label:
+      list:
+        decide: allow
+        reason: Readonly gh access
+    gist:
+      view:
+        decide: allow
+        reason: Readonly gh access
+      list:
+        decide: allow
+        reason: Readonly gh access
+    org:
+      list:
+        decide: allow
+        reason: Readonly gh access
+    ssh-key:
+      list:
+        decide: allow
+        reason: Readonly gh access
+    gpg-key:
+      list:
+        decide: allow
+        reason: Readonly gh access
+    codespace:
+      list:
+        decide: allow
+        reason: Readonly gh access
+      view:
+        decide: allow
+        reason: Readonly gh access
+    cache:
+      list:
+        decide: allow
+        reason: Readonly gh access
+    ruleset:
+      view:
+        decide: allow
+        reason: Readonly gh access
+      list:
+        decide: allow
+        reason: Readonly gh access
+      check:
+        decide: allow
+        reason: Readonly gh access (evaluates rules, does not modify)
+    secret:
+      list:
+        decide: allow
+        reason: Readonly gh access (lists names only, not values)
+    variable:
+      list:
+        decide: allow
+        reason: Readonly gh access
+    extension:
+      list:
+        decide: allow
+        reason: Readonly gh access
+      search:
+        decide: allow
+        reason: Readonly gh access
+    project:
+      view:
+        decide: allow
+        reason: Readonly gh access
+      list:
+        decide: allow
+        reason: Readonly gh access
+      field-list:
+        decide: allow
+        reason: Readonly gh access
+      item-list:
+        decide: allow
+        reason: Readonly gh access
+    attestation:
+      verify:
+        decide: allow
+        reason: Readonly gh access (verifies attestation, no modification)

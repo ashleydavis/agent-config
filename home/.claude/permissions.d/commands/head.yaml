@@ -1,0 +1,16 @@
+head:
+  description: Output the first lines of files
+  source: head --help
+  positionals:
+    - kind: path
+      description: Input files
+      variadic: true
+  flags:
+    n|lines:
+      arity: 1
+      kind: string
+      description: Number of lines to output
+    c|bytes:
+      arity: 1
+      kind: string
+      description: Number of bytes to output

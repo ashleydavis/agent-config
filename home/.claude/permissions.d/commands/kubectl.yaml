@@ -1,0 +1,69 @@
+kubectl:
+  description: Kubernetes CLI
+  source:
+    - https://kubernetes.io/docs/reference/kubectl/
+    - kubectl get --help
+    - kubectl scale --help
+    - kubectl exec --help
+    - kubectl logs --help
+  flags:
+    context:
+      arity: 1
+      kind: string
+      description: Kubeconfig context name
+    n|namespace:
+      arity: 1
+      kind: string
+      description: Kubernetes namespace
+    o|output:
+      arity: 1
+      kind: string
+      description: Output format
+    l|selector:
+      arity: 1
+      kind: string
+      description: Label selector
+    f|filename:
+      arity: 1
+      kind: path
+      description: Filename or directory containing resource manifests
+    field-selector:
+      arity: 1
+      kind: string
+      description: Field selector filter
+    sort-by:
+      arity: 1
+      kind: string
+      description: Sort list by this field
+    chunk-size:
+      arity: 1
+      kind: string
+      description: Number of objects returned per API call
+    replicas:
+      arity: 1
+      kind: string
+      description: Number of replicas
+    image:
+      arity: 1
+      kind: string
+      description: Container image name
+    c|container:
+      arity: 1
+      kind: string
+      description: Container name
+    port:
+      arity: 1
+      kind: string
+      description: Port to forward or expose
+    timeout:
+      arity: 1
+      kind: string
+      description: Time to wait before giving up
+    as:
+      arity: 1
+      kind: string
+      description: Impersonate a user
+    as-group:
+      arity: 1
+      kind: string
+      description: Impersonate a group

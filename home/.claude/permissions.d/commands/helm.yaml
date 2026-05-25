@@ -1,0 +1,55 @@
+helm:
+  description: Kubernetes package manager
+  source:
+    - https://helm.sh/docs/helm/helm/
+    - helm install --help
+    - helm list --help
+  flags:
+    n|namespace:
+      arity: 1
+      kind: string
+      description: Kubernetes namespace
+    o|output:
+      arity: 1
+      kind: string
+      description: Output format
+    f|values:
+      arity: 1
+      kind: path
+      description: Values YAML file
+    timeout:
+      arity: 1
+      kind: string
+      description: Time to wait for operations
+    version:
+      arity: 1
+      kind: string
+      description: Chart version
+    kube-context:
+      arity: 1
+      kind: string
+      description: Kubeconfig context name
+    kubeconfig:
+      arity: 1
+      kind: path
+      description: Path to kubeconfig file
+    set:
+      arity: 1
+      kind: string
+      description: Set a value override (key=value)
+    set-string:
+      arity: 1
+      kind: string
+      description: Set a string value override
+    set-file:
+      arity: 1
+      kind: path
+      description: Set a value from file
+    set-json:
+      arity: 1
+      kind: string
+      description: Set a JSON value override
+    history-max:
+      arity: 1
+      kind: string
+      description: Maximum number of release revisions to store

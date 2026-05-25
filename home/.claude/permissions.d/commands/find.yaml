@@ -1,0 +1,32 @@
+find:
+  description: Search for files in a directory hierarchy
+  source: find --help
+  positionals:
+    - kind: path
+      description: Directory to search
+      variadic: true
+  flags:
+    maxdepth:
+      arity: 1
+      kind: string
+      description: Descend at most this many levels
+    mindepth:
+      arity: 1
+      kind: string
+      description: Do not apply tests above this level
+    name:
+      arity: 1
+      kind: string
+      description: Match filename pattern
+    path:
+      arity: 1
+      kind: string
+      description: Match path pattern
+    type:
+      arity: 1
+      kind: string
+      description: File type filter
+    exec:
+      arity: 1
+      kind: string
+      description: Execute command on match

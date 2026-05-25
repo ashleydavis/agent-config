@@ -1,0 +1,16 @@
+bun:
+  description: Bun JavaScript runtime, package manager, bundler, and test runner
+  source:
+    - https://bun.sh/docs/cli/run
+    - bun --help
+    - bun run --help
+    - bun install --help
+  flags:
+    F|filter:
+      arity: 1
+      kind: string
+      description: Run script in all workspace packages matching the pattern
+    c|config:
+      arity: 1
+      kind: path
+      description: Path to config file

@@ -1,0 +1,2 @@
+# All rules now live in permissions.d/ as separate per-category layers.
+# See ./permissions.d/ for the split files.

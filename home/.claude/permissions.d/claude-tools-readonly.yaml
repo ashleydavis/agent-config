@@ -1,0 +1,48 @@
+# Readonly Claude Code built-in and MCP discovery tools.
+ToolSearch:
+  decide: allow
+  reason: Searching for tools to use
+
+TodoRead:
+  decide: allow
+  reason: Reading todo lists and task tracking
+
+LS:
+  decide: allow
+  reason: Readonly directory listing
+
+Glob:
+  decide: allow
+  reason: Readonly file pattern matching
+
+Grep:
+  decide: allow
+  reason: Readonly file content search
+
+TaskOutput:
+  decide: allow
+  reason: Read-only access to task output
+
+TaskList:
+  decide: allow
+  reason: Read-only listing of tasks
+
+NotebookRead:
+  decide: allow
+  reason: Readonly notebook access
+
+ListMcpResourcesTool:
+  decide: allow
+  reason: Read-only MCP resource listing
+
+ReadMcpResourceTool:
+  decide: allow
+  reason: Read-only MCP resource access (despite the "Tool" suffix, it only reads)
+
+WebFetch:
+  decide: allow
+  reason: Allow fetching any URL
+
+WebSearch:
+  decide: allow
+  reason: Allow web search

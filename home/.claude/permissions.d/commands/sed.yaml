@@ -1,0 +1,16 @@
+sed:
+  description: Stream editor
+  source: sed --help
+  positionals:
+    - kind: path
+      description: Input files
+      variadic: true
+  flags:
+    e|expression:
+      arity: 1
+      kind: string
+      description: Script expression
+    f|file:
+      arity: 1
+      kind: path
+      description: Read script from file

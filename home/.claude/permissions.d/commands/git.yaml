@@ -1,0 +1,93 @@
+git:
+  description: Git version control
+  source:
+    - https://git-scm.com/docs/git
+    - git commit --help
+    - git push --help
+    - git branch --help
+    - git checkout --help
+    - git grep --help
+  flags:
+    C:
+      arity: 1
+      kind: path
+      description: Run as if git was started in this directory
+  cmds:
+    commit:
+      flags:
+        m|message:
+          arity: 1
+          kind: string
+          description: Commit message
+    tag:
+      flags:
+        m|message:
+          arity: 1
+          kind: string
+          description: Tag message
+        d|delete:
+          arity: 0
+          description: Delete tag
+        f|force:
+          arity: 0
+          description: Force replace existing tag
+    merge:
+      flags:
+        m|message:
+          arity: 1
+          kind: string
+          description: Merge commit message
+    checkout:
+      flags:
+        b:
+          arity: 1
+          kind: string
+          description: New branch name
+        f|force:
+          arity: 0
+          description: Force checkout
+    init:
+      flags:
+        b:
+          arity: 1
+          kind: string
+          description: Initial branch name
+    push:
+      flags:
+        u|set-upstream:
+          arity: 0
+          description: Set upstream tracking branch
+        d|delete:
+          arity: 0
+          description: Delete remote ref
+        f|force:
+          arity: 0
+          description: Force push
+    branch:
+      flags:
+        u|set-upstream-to:
+          arity: 1
+          kind: string
+          description: Set upstream to this ref
+        d|delete:
+          arity: 0
+          description: Delete branch
+        f|force:
+          arity: 0
+          description: Force operation
+    fetch:
+      flags:
+        f|force:
+          arity: 0
+          description: Force fetch
+    add:
+      flags:
+        f|force:
+          arity: 0
+          description: Allow adding ignored files
+    grep:
+      flags:
+        f:
+          arity: 1
+          kind: path
+          description: Read patterns from file

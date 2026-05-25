@@ -1,0 +1,32 @@
+sort:
+  description: Sort lines of text
+  source: sort --help
+  positionals:
+    - kind: path
+      description: Input files
+      variadic: true
+  flags:
+    k|key:
+      arity: 1
+      kind: string
+      description: Sort key field specification
+    t|field-separator:
+      arity: 1
+      kind: string
+      description: Field separator character
+    o|output:
+      arity: 1
+      kind: path
+      description: Write output to file
+    r|reverse:
+      arity: 0
+      kind: string
+      description: Reverse the sort order
+    u|unique:
+      arity: 0
+      kind: string
+      description: Output only unique lines
+    n|numeric-sort:
+      arity: 0
+      kind: string
+      description: Compare according to string numerical value

@@ -1,0 +1,65 @@
+# Readonly kubectl operations. Excludes any subcommand that mutates cluster state.
+bash:
+  kubectl:
+    get:
+      decide: allow
+      reason: Readonly kubectl access
+    describe:
+      decide: allow
+      reason: Readonly kubectl access
+    logs:
+      decide: allow
+      reason: Readonly kubectl access
+    top:
+      decide: allow
+      reason: Readonly kubectl access
+    explain:
+      decide: allow
+      reason: Readonly kubectl access
+    version:
+      decide: allow
+      reason: Readonly kubectl access
+    cluster-info:
+      decide: allow
+      reason: Readonly kubectl access
+    api-resources:
+      decide: allow
+      reason: Readonly kubectl access
+    api-versions:
+      decide: allow
+      reason: Readonly kubectl access
+    events:
+      decide: allow
+      reason: Readonly kubectl access
+    diff:
+      decide: allow
+      reason: Readonly kubectl access (server-side dry-run)
+    wait:
+      decide: allow
+      reason: Readonly kubectl access (observes state, does not modify)
+    options:
+      decide: allow
+      reason: Readonly kubectl access
+    config:
+      get-contexts:
+        decide: allow
+        reason: Readonly kubectl access
+      current-context:
+        decide: allow
+        reason: Readonly kubectl access
+      view:
+        decide: allow
+        reason: Readonly kubectl access
+      get-clusters:
+        decide: allow
+        reason: Readonly kubectl access
+      get-users:
+        decide: allow
+        reason: Readonly kubectl access
+    auth:
+      can-i:
+        decide: allow
+        reason: Readonly kubectl access
+      whoami:
+        decide: allow
+        reason: Readonly kubectl access

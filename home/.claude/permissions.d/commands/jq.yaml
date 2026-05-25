@@ -1,0 +1,36 @@
+jq:
+  description: Command-line JSON processor
+  source:
+    - https://jqlang.org/manual/
+    - jq --help
+  positionals:
+    - kind: string
+      description: jq filter expression
+    - kind: path
+      description: Input files
+      variadic: true
+  flags:
+    f|from-file:
+      arity: 1
+      kind: path
+      description: Read filter from file
+    L:
+      arity: 1
+      kind: path
+      description: Prepend directory to search path for modules
+    n|null-input:
+      arity: 0
+      kind: string
+      description: Use null as input
+    e|exit-status:
+      arity: 0
+      kind: string
+      description: Exit with non-zero status if output is false or null
+    r|raw-output:
+      arity: 0
+      kind: string
+      description: Output raw strings without JSON quoting
+    s|slurp:
+      arity: 0
+      kind: string
+      description: Read all inputs into an array
