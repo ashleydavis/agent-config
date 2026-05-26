@@ -27,6 +27,10 @@ bash:
     decide: allow
     reason: Counting lines/words/chars
 
+  cut:
+    decide: allow
+    reason: Selecting fields/bytes/chars from text
+
   uniq:
     decide: allow
     reason: Deduplicating output

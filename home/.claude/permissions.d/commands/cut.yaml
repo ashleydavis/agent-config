@@ -1,0 +1,28 @@
+cut:
+  description: Select fields, bytes, or characters from lines of text
+  source: https://www.gnu.org/software/coreutils/manual/html_node/cut-invocation.html
+  positionals:
+    - kind: path
+      description: Input files
+      variadic: true
+  flags:
+    b|bytes:
+      arity: 1
+      kind: string
+      description: Select only these bytes
+    c|characters:
+      arity: 1
+      kind: string
+      description: Select only these characters
+    d|delimiter:
+      arity: 1
+      kind: string
+      description: Use the given delimiter instead of tab
+    f|fields:
+      arity: 1
+      kind: string
+      description: Select only these fields
+    output-delimiter:
+      arity: 1
+      kind: string
+      description: Use this string as the output delimiter

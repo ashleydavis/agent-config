@@ -1,0 +1,9 @@
+# Directory creation scoped to the current project or /tmp.
+bash:
+  mkdir:
+    - cmd: "${{PROJECT_DIR}}/**"
+      decide: allow
+      reason: Create directories within the current project
+    - cmd: /tmp/**
+      decide: allow
+      reason: Create directories in /tmp scratch space

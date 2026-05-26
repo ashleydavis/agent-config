@@ -1,0 +1,16 @@
+mkdir:
+  description: Create directories
+  source: https://www.gnu.org/software/coreutils/manual/html_node/mkdir-invocation.html
+  positionals:
+    - kind: path
+      description: Directories to create
+      variadic: true
+  flags:
+    p|parents:
+      arity: 0
+      kind: string
+      description: Create parent directories as needed
+    m|mode:
+      arity: 1
+      kind: string
+      description: Set file mode for created directories

@@ -33,6 +33,7 @@ Only value-taking flags (arity 1) need to be listed. Boolean flags can be omitte
 |---|---|---|
 | `bun.yaml` | `bun` | https://bun.sh/docs/cli |
 | `cat.yaml` | `cat` | https://www.gnu.org/software/coreutils/manual/html_node/cat-invocation.html |
+| `cut.yaml` | `cut` | https://www.gnu.org/software/coreutils/manual/html_node/cut-invocation.html |
 | `find.yaml` | `find` | https://www.gnu.org/software/findutils/manual/html_mono/find.html |
 | `gh.yaml` | `gh` | https://cli.github.com/manual/gh |
 | `git.yaml` | `git` | https://git-scm.com/docs/git |
@@ -41,6 +42,7 @@ Only value-taking flags (arity 1) need to be listed. Boolean flags can be omitte
 | `helm.yaml` | `helm` | https://helm.sh/docs/helm/helm/ |
 | `jq.yaml` | `jq` | https://jqlang.github.io/jq/manual/ |
 | `kubectl.yaml` | `kubectl` | https://kubernetes.io/docs/reference/kubectl/ |
+| `mkdir.yaml` | `mkdir` | https://www.gnu.org/software/coreutils/manual/html_node/mkdir-invocation.html |
 | `sed.yaml` | `sed` | https://www.gnu.org/software/sed/manual/sed.html |
 | `sort.yaml` | `sort` | https://www.gnu.org/software/coreutils/manual/html_node/sort-invocation.html |
 | `tail.yaml` | `tail` | https://www.gnu.org/software/coreutils/manual/html_node/tail-invocation.html |

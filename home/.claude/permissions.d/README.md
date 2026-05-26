@@ -14,6 +14,7 @@ Files are discovered in lexicographic order. A `deny` in any file wins over `all
 | `bash-git-write.yaml` | Deny destructive git ops; require approval for commit, push, rebase, etc. |
 | `bash-helm-readonly.yaml` | Allow readonly `helm` subcommands (get, list, show, status, etc.) |
 | `bash-kubectl-readonly.yaml` | Allow readonly `kubectl` subcommands (get, describe, logs, top, etc.) |
+| `bash-mkdir-write.yaml` | Allow `mkdir` within the current project or `/tmp` |
 | `bash-readonly.yaml` | Allow common read-only utilities (cat, ls, find, grep, sed, jq, etc.) |
 | `bash-tmp-write.yaml` | Allow `tee` to write to `/tmp` |
 | `claude-tools-readonly.yaml` | Rules for Claude Code tool-name patterns (readonly) |
