@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "photosphere": {
+      "type": "http",
+      "url": "http://localhost:3475/mcp"
+    }
+  }
+}
