@@ -23,6 +23,7 @@ Files are discovered in lexicographic order. A `deny` in any file wins over `all
 | `file-tools-write.yaml` | Rules for Write/Edit/MultiEdit file tool calls |
 | `mcp-atlassian-readonly.yaml` | Allow readonly Atlassian MCP tool calls |
 | `mcp-permissions-analyzer-readonly.yaml` | Allow the permissions analyzer MCP tool |
+| `mcp-photosphere.yaml` | Allow Photosphere MCP tool calls |
 
 ## commands/
 

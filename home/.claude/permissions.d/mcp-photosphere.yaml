@@ -1,0 +1,4 @@
+# Photosphere MCP tools.
+mcp__photosphere__*:
+  decide: allow
+  reason: Photosphere MCP access
