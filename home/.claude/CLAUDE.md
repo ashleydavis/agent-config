@@ -7,4 +7,5 @@
 - New plans usually go in ./docs/plans/new/
 - Completed plans usually go in ./docs/plan/done
 - If you can't find ./docs/ you might find it under one of the subdirectories of the current project.
+- Do not add "Human Verification" steps to plans.
 
