@@ -76,3 +76,9 @@ bash:
   ps:
     decide: allow
     reason: Process listing; reads from /proc with no side effects
+
+  command:
+    options:
+      - v
+    decide: allow
+    reason: Command lookup (command -v); read-only, does not execute the target
