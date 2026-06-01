@@ -71,7 +71,11 @@ mkdir -p "$HOME/.claude"
 
 echo "Stowing $PKG_DIR into $HOME/.claude ..."
 cd "$SCRIPT_DIR"
-stow --restow --target="$HOME" home
+# --adopt resolves conflicts where a config target already exists as a real file
+# (e.g. Claude Code rewrote settings.json in place, replacing the symlink): stow
+# moves the live file's content into the repo and recreates the symlink, so
+# nothing is lost. Review/keep/discard the adopted content afterwards with git.
+stow --adopt --target="$HOME" home
 
 echo "Done."
 echo "Config files are symlinked from this repo; runtime state lives in the real"
