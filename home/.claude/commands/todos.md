@@ -15,6 +15,8 @@ Treat a source as present only if it exists and contains at least one item (for 
 
 Extract every item from the chosen sources and combine them into one list. If the same item appears in more than one source, include it only once.
 
+Before starting any work, check the combined list for duplicate items, including ones that are not worded identically but clearly describe the same work. For each set of duplicates, ask the user whether to merge them into a single item or delete all but one. Apply the user's choice before continuing.
+
 **Step 2: Build the list**
 
 Create a todo list with one entry per item found, using your todo-tracking tool. You will resolve them in parallel, marking each done as its sub agent returns.
