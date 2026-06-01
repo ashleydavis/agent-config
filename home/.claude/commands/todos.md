@@ -1,5 +1,7 @@
 Work through every todo item found in the project's todo sources (the "Todo" section of `readme.md`, `todo.md`, or `issues.md`) using sub agents. Items flagged to run on their own (for example "do this first", "don't do this in parallel", "do this sequentially", or "do this by itself") are resolved first, one at a time, in the main repo so each builds on the last; every other item is resolved in parallel, each in its own git worktree.
 
+Never create a new branch at any point. Flagged items commit on the main repo's current branch. Each parallel item gets its own worktree created from the main repo's current branch. DO NOT CREATE NEW BRANCHES.
+
 **Step 1: Find the items**
 
 Look in the project root for these possible sources of todo items:
@@ -25,15 +27,15 @@ Split the items into two groups: flagged items that must run on their own (for e
 
 Resolve every flagged item before any parallel work, in the order they appear, one at a time in the main repo so each builds on the last. If there are no flagged items, skip to Step 4.
 
-For each flagged item, in order, spawn one sub agent (use the Agent tool) and wait for it to return before starting the next. Do not use a worktree: the sub agent works directly in the main repo on the current branch so its commit builds on the previous one. Give the sub agent its item and the same instructions as Step 4 below, with these differences: it is not inside a worktree, so it works directly in the main repo on the current branch (ignore the instructions about already being inside a worktree and about leaving the worktree in place); and it keeps its commit separate from the other items'. Mark each flagged item done as its sub agent returns, then start the next.
+For each flagged item, in order, spawn one sub agent (use the Agent tool) and wait for it to return before starting the next. Do not use a worktree: the sub agent works directly in the main repo on the current branch so its commit builds on the previous one. Give the sub agent its item and the same instructions as Step 4 below, with these differences: it does not use a worktree, so it works directly in the main repo on the current branch (ignore the instructions about creating and working inside a worktree and about leaving the worktree in place); and it keeps its commit separate from the other items. Mark each flagged item done as its sub agent returns, then start the next.
 
 **Step 4: Resolve the remaining items in parallel**
 
-Spawn one sub agent (use the Agent tool) per remaining item, all at once, so they work in parallel and the main context stays clean. Issue all the Agent calls in a single message so they run concurrently. Spawn each sub agent with `isolation: "worktree"` so it starts inside its own git worktree and cannot work outside it. Each item gets its own worktree, so the sub agents do not interfere with each other. Give each sub agent its item and these instructions to follow:
+Spawn one sub agent (use the Agent tool) per remaining item, all at once, so they work in parallel and the main repo stays clean. Issue all the Agent calls in a single message so they run concurrently. Each item is implemented in a separate worktree off the current branch in the main repo. Each item gets its own worktree, so the sub agents do not interfere with each other. Give each sub agent its item and these instructions to follow:
 
 1. Make its own todo list from the steps below to track its progress.
 2. Decide whether the item can be tested without human involvement. Before writing any code, work out how the result will be verified automatically (e.g. unit tests, integration tests, a script). If there is no clear way to test it without a human in the loop, do not start the item: stop and report back that the item was skipped because it cannot be verified automatically, explaining why. Do not create a worktree or make changes for an untestable item. An item that is finished but untested wastes the work, because its worktree will be discarded.
-3. You are already inside your own worktree. Work directly on its current branch; there is no need to create or switch branches.
+3. Create your own worktree without a new branch by running `git worktree add --detach <path> HEAD` (pick a unique path, for example `.claude/worktrees/<short-slug>`), then do all your work inside it. Do not create, switch to, or rename any branch.
 4. Make the changes needed to resolve the item.
 5. Write whatever tests are needed and make sure they work.
 6. Re-read the project's `CLAUDE.md` and check that all of its rules were followed. Fix any rule violations found.
