@@ -45,9 +45,13 @@ cd ~/claude-config
 ./bootstrap.sh
 ```
 
-This runs `stow --adopt -t "$HOME" home`, which symlinks everything under `home/` into `$HOME` (so `~/.claude/CLAUDE.md` → `~/claude-config/home/.claude/CLAUDE.md`, etc.).
+`bootstrap.sh` symlinks the individual config entries under `home/.claude/` into `~/.claude/` (so `~/.claude/CLAUDE.md` → `~/claude-config/home/.claude/CLAUDE.md`, etc.).
 
-If `~/.claude/` already contains real files (not symlinks), `--adopt` will move them into this repo rather than overwriting them. Review with `git status` after.
+### Why bootstrap doesn't just run `stow home`
+
+The stow package contains a single directory (`home/.claude`). If `~/.claude` does not already exist, stow performs **tree folding** and makes `~/.claude` itself a single symlink into this repo. Claude Code then writes all of its runtime state (sessions, projects, shell snapshots, caches, credentials) through that symlink, dumping it into the repo working tree.
+
+To prevent this, `bootstrap.sh` ensures `~/.claude` is a **real directory** before stowing, so only the individual config files/dirs are symlinked and runtime state stays in the real `~/.claude`. The script is idempotent and self-healing: if it finds `~/.claude` already folded into a single symlink, it un-folds it and moves any non-tracked runtime state back out of the repo.
 
 ## Uninstall
 
