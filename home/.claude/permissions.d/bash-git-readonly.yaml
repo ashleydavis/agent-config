@@ -9,6 +9,10 @@ bash:
       decide: allow
       reason: Readonly git access
 
+    cat-file:
+      decide: allow
+      reason: Readonly git access (inspects object type/content, no state changes)
+
     status:
       decide: allow
       reason: Readonly git access
