@@ -6,14 +6,14 @@ Use the plan from the current conversation, or read the most recent 5 files in `
 
 1. Read the plan and identify logical, self-contained chunks of work. Each chunk should be small enough to implement and verify independently, but large enough to be meaningful.
 
-2. The **first step** is always "Write documentation": draft the documentation for the feature or change as it is intended to work, so the user can read it and understand what they are getting before any code is written. Save it to `docs/plans/<plan-name-without-extension>/1-write-documentation.md`.
+2. If the project has existing documentation, the **first step** is "Write documentation": draft the documentation for the feature or change as it is intended to work, so the user can read it and understand what they are getting before any code is written. Save it to `docs/plans/<plan-name-without-extension>/1-write-documentation.md`. Skip this step if the project has no existing documentation. If it is not clear whether the project has documentation, ask the user.
 
 3. For each middle step (the actual implementation steps):
    - If it involves adding or changing code, it must include writing or updating unit tests and/or smoke tests covering the change.
    - End each step with: "Run all tests and confirm they pass before marking this step complete."
    - Save the step to its own markdown file at `docs/plans/<plan-name-without-extension>/<N>-<short-slug>.md`, where `<N>` is the 1-based step number and `<short-slug>` is a kebab-case summary of the step (e.g. `2-add-auth-middleware.md`).
 
-4. The **last step** is always "Update documentation": revise the documentation written in step 1 to reflect the final state of the code, including anything that changed during implementation. Save it to `docs/plans/<plan-name-without-extension>/<N>-update-documentation.md`.
+4. If the project has existing documentation (and step 2 was included), the **last step** is "Update documentation": revise the documentation written in step 1 to reflect the final state of the code, including anything that changed during implementation. Save it to `docs/plans/<plan-name-without-extension>/<N>-update-documentation.md`. Skip this step if the project has no existing documentation.
 
 5. Every step file (first, middle, and last) must end with an empty `## Summary` section to be filled in when the step is implemented, recording what was actually done. Format:
 
