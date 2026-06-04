@@ -4,7 +4,7 @@ Use the plan from the current conversation, or read the most recent 5 files in `
 
 ## Steps
 
-1. Read the plan and identify logical, self-contained chunks of work. Each chunk should be small enough to implement and verify independently, but large enough to be meaningful.
+1. Read the plan and identify logical, self-contained chunks of work. Each chunk should be small enough to implement and verify independently, but large enough to be meaningful. Every step must produce file output (code, tests, or documentation). Do not create steps that only involve reading, researching, or planning with no written output. Do not create steps that only scaffold empty directories with no actual files.
 
 2. If the project has existing documentation, the **first step** is "Write documentation": draft the documentation for the feature or change as it is intended to work, so the user can read it and understand what they are getting before any code is written. Save it to `docs/plans/<plan-name-without-extension>/1-write-documentation.md`. Skip this step if the project has no existing documentation. If it is not clear whether the project has documentation, ask the user.
 
