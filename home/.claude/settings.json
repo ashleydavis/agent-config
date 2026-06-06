@@ -15,8 +15,7 @@
       "NotebookEdit",
       "ExitPlanMode",
       "BashOutput",
-      "KillShell",
-      "mcp__*"
+      "KillShell"
     ]
   },
   "hooks": {
