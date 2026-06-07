@@ -1,6 +1,6 @@
 Create a new plan and save it to `docs/plans/`.
 
-**Important:** You are drafting this plan for an AI agent (Claude) to execute later — not for a human. Do not write steps a human would follow. Write steps as precise AI actions: file edits, function changes, tool calls, and code modifications with exact file paths and names. The exception is the **Human Verification** section at the end, which lists checks a human can perform after the AI has executed the plan to confirm everything works as expected.
+**Important:** You are drafting this plan for an AI agent (Claude) to execute later — not for a human. Do not write steps a human would follow. Write steps as precise AI actions: file edits, function changes, tool calls, and code modifications with exact file paths and names.
 
 1. **Gather intent** — if the user has described the feature or change in this conversation, use that. Otherwise ask: "What do you want to plan?" Wait for their answer before continuing.
 
@@ -28,9 +28,6 @@ Create a new plan and save it to `docs/plans/`.
 
 ## Verify
 <Concrete, observable checks the AI agent can run after implementation — must always include running all unit tests and all smoke tests, plus any additional compile checks or assertions>
-
-## Human Verification
-<Steps a human can take after AI execution to confirm the feature works as expected — e.g. run the app, check UI behaviour, observe outputs>
 
 ## Notes
 <Decisions, trade-offs, open questions, or constraints discovered during research>
