@@ -14,4 +14,5 @@
 - Use bullet points where possible.
 - Keep it easy to understand.
 - Where possible don't use jargon or made up terms.
+- Never end a plan, summary, or message with an offer to perform a dangerous or hard-to-reverse operation (committing, pushing, merging, deleting, force-pushing, publishing, deploying, or similar). No "then commit?", "want me to push?", "shall I merge?", or equivalent. Do not perform such an operation, and do not ask to, unless I explicitly tell you to in that message. I will not necessarily read a whole plan, so an offer tacked on the end is dangerous.
 
