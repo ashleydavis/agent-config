@@ -1,0 +1,39 @@
+terraform:
+  description: Terraform CLI
+  source:
+    - https://developer.hashicorp.com/terraform/cli
+    - terraform plan --help
+    - terraform state --help
+  flags:
+    chdir:
+      arity: 1
+      kind: path
+      description: Switch to a different working directory before executing
+    var:
+      arity: 1
+      kind: string
+      description: Set an input variable value (name=value)
+    var-file:
+      arity: 1
+      kind: path
+      description: Load input variable values from a file
+    out:
+      arity: 1
+      kind: path
+      description: Write the generated plan to the given path
+    state:
+      arity: 1
+      kind: path
+      description: Path to the state file
+    target:
+      arity: 1
+      kind: string
+      description: Limit the operation to the given resource address
+    backend-config:
+      arity: 1
+      kind: string
+      description: Backend configuration value or file
+  positionals:
+    - kind: string   # subcommand
+    - kind: string
+      variadic: true # remaining positionals (resource addresses, etc.)
