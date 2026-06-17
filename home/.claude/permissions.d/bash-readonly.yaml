@@ -55,6 +55,10 @@ bash:
     decide: allow
     reason: Searching file contents
 
+  diff:
+    decide: allow
+    reason: Comparing files; reads only, writes to stdout
+
   sed:
     - cmd: "${{PROJECT_DIR}}/**"
       decide: allow
