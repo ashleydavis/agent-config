@@ -1,0 +1,63 @@
+aws:
+  description: AWS CLI
+  source:
+    - https://docs.aws.amazon.com/cli/latest/
+    - aws help
+  flags:
+    region:
+      arity: 1
+      kind: string
+      description: AWS region to use
+    profile:
+      arity: 1
+      kind: string
+      description: Named profile from the credentials/config file
+    output:
+      arity: 1
+      kind: string
+      description: Output format (json, text, table, yaml)
+    endpoint-url:
+      arity: 1
+      kind: string
+      description: Override the service endpoint URL
+    query:
+      arity: 1
+      kind: string
+      description: JMESPath query to filter output
+    page-size:
+      arity: 1
+      kind: string
+      description: Number of results per API page
+    max-items:
+      arity: 1
+      kind: string
+      description: Total number of items to return
+    starting-token:
+      arity: 1
+      kind: string
+      description: Pagination token to resume from
+    cli-read-timeout:
+      arity: 1
+      kind: string
+      description: Socket read timeout in seconds
+    cli-connect-timeout:
+      arity: 1
+      kind: string
+      description: Socket connect timeout in seconds
+    cli-binary-format:
+      arity: 1
+      kind: string
+      description: How binary input/output is handled
+    ca-bundle:
+      arity: 1
+      kind: path
+      description: CA certificate bundle to use
+    color:
+      arity: 1
+      kind: string
+      description: Whether to colorize output
+  positionals:
+    - kind: string   # service (e.g. ec2, s3api, sts)
+    - kind: string   # operation (e.g. describe-instances)
+    - kind: string
+      variadic: true # remaining positionals

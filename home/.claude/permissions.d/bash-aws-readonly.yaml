@@ -1,0 +1,23 @@
+# Readonly AWS CLI operations.
+#
+# AWS follows a strong naming convention: read-only operations are
+# prefixed describe-, list-, or get-. We allow those across every
+# service (the service is the first positional, the operation the
+# second). Anything that mutates state falls through to the default.
+#
+# This covers the common identity check `aws sts get-caller-identity`
+# (matched by the get-* rule).
+bash:
+  aws:
+    - cmd: "* describe-*"
+      decide: allow
+      reason: Readonly AWS access (describe-*)
+    - cmd: "* list-*"
+      decide: allow
+      reason: Readonly AWS access (list-*)
+    - cmd: "* get-*"
+      decide: allow
+      reason: Readonly AWS access (get-*)
+    - help:
+        decide: allow
+        reason: Readonly AWS access (help text)
