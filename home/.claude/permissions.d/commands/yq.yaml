@@ -1,0 +1,37 @@
+yq:
+  description: Process YAML/JSON documents (mikefarah/yq); prints to stdout unless -i is given
+  positionals:
+    - kind: string
+      description: yq expression
+    - kind: path
+      description: Input file(s); reads stdin when omitted
+      variadic: true
+  flags:
+    i|inplace:
+      arity: 0
+      kind: string
+      description: Edit the file in place (write); not read-only
+    n|null-input:
+      arity: 0
+      kind: string
+      description: Run with no input document
+    P|prettyPrint:
+      arity: 0
+      kind: string
+      description: Pretty print the output
+    o|output-format:
+      arity: 1
+      kind: string
+      description: Output format (yaml, json, props, ...)
+    I|indent:
+      arity: 1
+      kind: string
+      description: Number of spaces to indent
+    s|split-exp:
+      arity: 1
+      kind: string
+      description: Split into multiple files based on expression
+    h|help:
+      arity: 0
+      kind: string
+      description: Show help

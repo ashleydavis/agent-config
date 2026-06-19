@@ -1,0 +1,14 @@
+hcl2json:
+  description: Convert HCL (Terraform) files to JSON; reads a file or stdin, prints JSON to stdout
+  positionals:
+    - kind: path
+      description: HCL file to convert (reads stdin when omitted)
+  flags:
+    simplify:
+      arity: 0
+      kind: string
+      description: Simplify the output
+    h|help:
+      arity: 0
+      kind: string
+      description: Show help

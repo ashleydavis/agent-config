@@ -47,6 +47,17 @@ bash:
     decide: allow
     reason: JSON processing
 
+  hcl2json:
+    decide: allow
+    reason: Converts HCL/Terraform to JSON on stdout; read-only
+
+  yq:
+    decide: allow
+    not:
+      options:
+        - i|inplace
+    reason: YAML processing on stdout; read-only (in-place edits with -i fall through to ask)
+
   sort:
     decide: allow
     reason: Sorting output
