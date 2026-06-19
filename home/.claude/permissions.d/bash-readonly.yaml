@@ -79,9 +79,11 @@ bash:
     reason: Comparing files; reads only, writes to stdout
 
   sed:
-    - cmd: "${{PROJECT_DIR}}/**"
+    - cmd-in:
+        - "${{PROJECT_DIR}}/**"
+        - "/tmp/**"
       decide: allow
-      reason: Allow sed within the current project (read or in-place edit)
+      reason: Allow sed (read or in-place edit) on files within the project directory or /tmp
     - decide: allow
       not:
         cmd-in:
@@ -105,3 +107,9 @@ bash:
       - v
     decide: allow
     reason: Command lookup (command -v); read-only, does not execute the target
+
+  bash:
+    options:
+      - n
+    decide: allow
+    reason: Syntax check only (bash -n / noexec); no commands are executed

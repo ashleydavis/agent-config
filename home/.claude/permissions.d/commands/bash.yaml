@@ -1,0 +1,33 @@
+bash:
+  description: Bourne-again shell; with -n it only syntax-checks (noexec) and runs nothing
+  positionals:
+    - kind: path
+      description: Script file to run (or syntax-check with -n)
+    - kind: string
+      description: Arguments passed to the script
+      variadic: true
+  flags:
+    n:
+      arity: 0
+      kind: string
+      description: Read commands but do not execute them (noexec / syntax check)
+    c:
+      arity: 1
+      kind: string
+      description: Read commands from the given string
+    o:
+      arity: 1
+      kind: string
+      description: Set a shell option by name (set -o)
+    O:
+      arity: 1
+      kind: string
+      description: Set a shopt option by name
+    rcfile|init-file:
+      arity: 1
+      kind: path
+      description: Read startup commands from this file instead of the default
+    h|help:
+      arity: 0
+      kind: string
+      description: Show help
