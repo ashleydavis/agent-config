@@ -1,0 +1,29 @@
+awk:
+  description: Pattern-directed text processing; reads input and prints to stdout
+  positionals:
+    - kind: string
+      description: awk program text (omitted when -f is used)
+    - kind: path
+      description: Input file(s); reads stdin when omitted
+      variadic: true
+  flags:
+    F|field-separator:
+      arity: 1
+      kind: string
+      description: Input field separator
+    v|assign:
+      arity: 1
+      kind: string
+      description: Assign a variable before execution (var=value)
+    f|file:
+      arity: 1
+      kind: path
+      description: Read the awk program from a file
+    e|source:
+      arity: 1
+      kind: string
+      description: Program text supplied on the command line (gawk)
+    h|help:
+      arity: 0
+      kind: string
+      description: Show help

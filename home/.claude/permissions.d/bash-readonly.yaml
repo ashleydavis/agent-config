@@ -58,6 +58,14 @@ bash:
         - i|inplace
     reason: YAML processing on stdout; read-only (in-place edits with -i fall through to ask)
 
+  awk:
+    - decide: allow
+      reason: awk text processing; reads input and prints to stdout
+    - decide: ask
+      cmd-in:
+        - '/system *\(/'
+      reason: awk program calls system(); may execute arbitrary commands
+
   sort:
     decide: allow
     reason: Sorting output
