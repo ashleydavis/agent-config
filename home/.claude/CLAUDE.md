@@ -6,6 +6,7 @@
 - New plans usually go in ./docs/plans/new/
 - Completed plans usually go in ./docs/plan/done
 - If you can't find ./docs/ you might find it under one of the subdirectories of the current project.
+- Prefer a single write per file. When you have several changes to the same file, make them all in one Write (or one Edit) rather than many separate edits that force me to approve each one. Do not stack multiple edits on the same file in one turn.
 
 ## Communication style
 
