@@ -18,6 +18,7 @@
       "KillShell"
     ]
   },
+  "autoMemoryEnabled": false,
   "hooks": {
     "PreToolUse": [
       {
