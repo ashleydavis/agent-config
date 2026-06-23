@@ -9,3 +9,9 @@ Run each command with the Bash tool. After all checks complete, print a summary 
 If any of the checks fail, stop and report to the user. Do not continue running.
 
 Report only, do not attempt to fix failures.
+
+## Next
+
+Recommend the developer run:
+- `/fix:unit` or `/fix:smoke`: if the corresponding checks failed.
+- `/commit:detz`: if every check passed.

@@ -29,3 +29,8 @@ Save the current plan to a markdown file in `docs/plans/new/`.
 ```
 
 4. **Report** — print the path of the saved file.
+
+## Next
+
+Recommend the developer run:
+- `/plan:check`: analyse the saved plan for problems.

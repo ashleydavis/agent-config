@@ -19,3 +19,8 @@ Find the root cause of the problem described in the conversation. Do not propose
    - File, function, and line number
    - How you reproduced it (command or test run and its output)
    - Which experiment proved it and what changed when you ran it
+
+## Next
+
+Recommend the developer run:
+- `/issue:prop`: propose fixes for the root cause just found.

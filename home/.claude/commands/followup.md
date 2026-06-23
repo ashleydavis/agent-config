@@ -24,3 +24,9 @@ Work through the todo list item by item, marking each done as you go:
 **Step 4: Summarise**
 
 After completing the todo list, summarise what was added or changed.
+
+## Next
+
+Recommend the developer run:
+- `/verify`: run all quality checks.
+- `/commit:detz`: once checks pass, produce a commit message.

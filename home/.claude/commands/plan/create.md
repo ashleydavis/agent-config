@@ -38,3 +38,9 @@ Create a new plan and save it to `docs/plans/`.
 5. **Save** — write the plan to `docs/plans/new/<filename>`.
 
 6. **Report** — print the path of the saved file and a one-line summary of what the plan covers.
+
+## Next
+
+Recommend the developer run:
+- `/plan:check`: analyse the new plan for problems.
+- `/plan:simp`: if the plan looks over-engineered, propose simplifications.

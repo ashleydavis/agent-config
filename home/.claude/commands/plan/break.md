@@ -36,3 +36,8 @@ _To be completed when this step is implemented._
 Each checkbox lets the user mark the step complete as they work through it.
 
 7. Report back with the list of files created and a one-line summary of each step.
+
+## Next
+
+Recommend the developer run:
+- `/plan:imp-next`: implement the next step, repeating until every step is done.

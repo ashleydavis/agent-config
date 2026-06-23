@@ -23,3 +23,9 @@ This command is for plans that have been broken into discrete step files (via `/
 9. **If this was the last step, move the plan** — if every item in the Implementation Steps checklist is now `- [x]`, move the plan file and its steps directory from `docs/plans/new/` to `docs/plans/done/`. Otherwise leave the plan in `new/`.
 
 10. **Report** — summarise what was implemented in this step, flag anything that was skipped or deferred, and tell the user which step (if any) is next.
+
+## Next
+
+Recommend the developer run:
+- `/plan:imp-next`: implement the next step, repeating until the plan is done.
+- `/verify`: once all steps are done.

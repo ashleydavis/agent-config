@@ -21,3 +21,9 @@ Re-run `bun run test` to confirm all tests pass. If new failures appear, fix tho
 **Step 5: Summarise**
 
 Report what was fixed and why.
+
+## Next
+
+Recommend the developer run:
+- `/verify`: confirm all quality checks pass.
+- `/commit:detz`: once green, produce a commit message.

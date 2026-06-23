@@ -17,3 +17,8 @@ Output all three clearly labelled so the user can review them. Do not commit any
 **Files to be committed** — discover all relevant git repos (the current repo plus any others involved in the work), then for each repo run `git diff --cached --name-only` and `git diff --name-only` to get staged and unstaged tracked changes. Group the results by repo, showing the repo root path as a header and listing each file beneath it on its own line. Skip repos with no changes.
 
 When you are done, tell the user they can run `/commit:do` to have Claude stage and commit the changes using these details.
+
+## Next
+
+Recommend the developer run:
+- `/commit:do`: stage and commit using the message and description just produced.

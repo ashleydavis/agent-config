@@ -14,3 +14,9 @@ Given the root cause and the chosen proposed fix from this conversation, produce
 3. **Save the plan** — write it as a markdown file to `docs/plans/new/` using a short descriptive filename (e.g. `docs/plans/new/fix-credential-lookup.md`).
 
 4. **Report** — state the filename where the plan was saved.
+
+## Next
+
+Recommend the developer run:
+- `/plan:check`: analyse the plan for problems.
+- `/issue:fix`: implement the fix.

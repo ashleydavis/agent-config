@@ -6,3 +6,9 @@ Given the root cause already identified in this conversation, propose fixes. Do 
 - Prefer minimal code changes. 
 - Each option should be a short paragraph — one or two sentences explaining what you would change and why it solves the root cause.
 - Do not write any code. Do not modify any files.
+
+## Next
+
+Recommend the developer run:
+- `/issue:plan`: produce an implementation plan for the chosen fix.
+- `/issue:fix`: if the fix is trivial, implement it directly.

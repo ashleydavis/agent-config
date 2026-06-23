@@ -13,3 +13,9 @@ This command runs the full workflow interactively:
 3. For each gap, ask the user whether to allow, ask, or deny it (use AskUserQuestion; put your recommendation first). If there are no gaps, say so and stop.
 4. Apply each choice (step 5 of the workflow) by editing the right file under `/home/ash/claude-config/home/.claude/permissions.d/` (see its [README](/home/ash/claude-config/home/.claude/permissions.d/README.md) for the existing file layout).
 5. Finish up (step 6): report what changed and remind the user to run `/reload-plugins`.
+
+## Next
+
+Recommend the developer run:
+- `/permissions:allow`: to allow the command in question.
+- `/permissions:deny`: to deny it.

@@ -20,3 +20,9 @@ For each heading, list findings as bullet points. If nothing was found for a cat
 
 Make a numbered list of issues and put them at the top of the plan under an "Issues" section. Each issue should have a checked box so we can check them off as we work through and address them.
 
+
+## Next
+
+Recommend the developer run:
+- `/plan:fix`: if problems were found.
+- `/plan:imp` (or `/plan:break` first): if the plan is clean.

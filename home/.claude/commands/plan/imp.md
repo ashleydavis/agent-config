@@ -22,3 +22,9 @@ Implement the current plan.
 7. **Move the plan** — move the plan file (and the plans "steps" directory if it has one) from `docs/plans/new/` to `docs/plans/done/`.
 
 8. **Report** — summarise what was implemented and flag anything that was skipped or deferred.
+
+## Next
+
+Recommend the developer run:
+- `/verify`: run all quality checks.
+- `/commit:detz`: once checks pass, produce a commit message.
