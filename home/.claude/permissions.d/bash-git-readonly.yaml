@@ -39,6 +39,10 @@ bash:
       decide: allow
       reason: Readonly git access (queries remote refs, no local or remote state changes)
 
+    rev-parse:
+      decide: allow
+      reason: Readonly git access (resolves ref names to SHAs, no state changes)
+
     tag:
       options:
         - l|list
