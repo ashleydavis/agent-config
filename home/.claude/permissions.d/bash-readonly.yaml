@@ -85,6 +85,15 @@ bash:
       decide: allow
       reason: Allow sed (read or in-place edit) on files within the project directory or /tmp
     - decide: allow
+      options:
+        - n
+      cwd-in:
+        - "./"
+        - "./**"
+        - "/tmp"
+        - "/tmp/**"
+      reason: sed -n when cwd is project or /tmp
+    - decide: allow
       not:
         cmd-in:
           - "**"

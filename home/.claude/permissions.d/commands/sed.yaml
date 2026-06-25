@@ -2,6 +2,8 @@ sed:
   description: Stream editor
   source: sed --help
   positionals:
+    - kind: string
+      description: sed script (omitted when -e or -f is used)
     - kind: path
       description: Input files
       variadic: true
@@ -14,3 +16,7 @@ sed:
       arity: 1
       kind: path
       description: Read script from file
+    n:
+      arity: 0
+      kind: string
+      description: Suppress automatic printing
