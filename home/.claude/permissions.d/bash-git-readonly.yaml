@@ -43,6 +43,10 @@ bash:
       decide: allow
       reason: Readonly git access (resolves ref names to SHAs, no state changes)
 
+    rev-list:
+      decide: allow
+      reason: Readonly git access (lists or counts commits in a ref range, no state changes)
+
     tag:
       options:
         - l|list
