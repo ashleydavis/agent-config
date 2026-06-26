@@ -19,7 +19,7 @@
     ]
   },
   "autoMemoryEnabled": false,
-  "tui": "fullscreen",
+  "tui": "default",
   "hooks": {
     "PreToolUse": [
       {
