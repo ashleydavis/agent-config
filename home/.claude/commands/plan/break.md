@@ -9,8 +9,12 @@ Use the plan from the current conversation, or read the most recent 5 files in `
 2. If the project has existing documentation, the **first step** is "Write documentation": draft the documentation for the feature or change as it is intended to work, so the user can read it and understand what they are getting before any code is written. Save it to `docs/plans/<plan-name-without-extension>/1-write-documentation.md`. Skip this step if the project has no existing documentation. If it is not clear whether the project has documentation, ask the user.
 
 3. For each middle step (the actual implementation steps):
-   - If it involves adding or changing code, it must include writing or updating unit tests and/or smoke tests covering the change.
-   - End each step with: "Run all tests and confirm they pass before marking this step complete."
+   - If it involves adding or changing code, the step must require that the code compiles (or type-checks / builds cleanly for the language) before the step is complete.
+   - The step must include writing or updating tests:
+     - Every new or changed function must have a unit test.
+     - Where possible, behaviour must also be covered by an end-to-end or smoke test.
+     - Exception: React components, contexts, and hooks are not unit tested, but they must still be covered by an end-to-end test.
+   - End each step with: "The code must compile and all tests (unit and smoke/e2e) must pass before marking this step complete."
    - Save the step to its own markdown file at `docs/plans/<plan-name-without-extension>/<N>-<short-slug>.md`, where `<N>` is the 1-based step number and `<short-slug>` is a kebab-case summary of the step (e.g. `2-add-auth-middleware.md`).
 
 4. If the project has existing documentation (and step 2 was included), the **last step** is "Update documentation": revise the documentation written in step 1 to reflect the final state of the code, including anything that changed during implementation. Save it to `docs/plans/<plan-name-without-extension>/<N>-update-documentation.md`. Skip this step if the project has no existing documentation.

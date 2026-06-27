@@ -18,16 +18,16 @@ Create a new plan and save it to `docs/plans/`.
 <Leave empty — populated later by plan:check>
 
 ## Steps
-<Numbered list of concrete implementation steps, each naming the file and function to change>
+<Numbered list of concrete implementation steps, each naming the file and function to change. Each step that produces code must require that the code compiles (or type-checks / builds cleanly for the language) and that tests pass before it is complete: every new or changed function gets a unit test, and behaviour gets an e2e/smoke test where possible. Exception: React components, contexts, and hooks are not unit tested but must be covered by an e2e test.>
 
 ## Unit Tests
-<List of unit tests to write or update, one per new or changed function>
+<List of unit tests to write or update — one per new or changed function. Every function must have a unit test. Exception: React components, contexts, and hooks are not unit tested (cover them with end-to-end tests instead).>
 
 ## Smoke Tests
-<List of end-to-end checks, preferably captured as automated tests in a shell script>
+<List of end-to-end checks, preferably captured as automated tests in a shell script. Where possible every behaviour should be covered by an end-to-end or smoke test. React components, contexts, and hooks must be covered here since they are not unit tested.>
 
 ## Verify
-<Concrete, observable checks the AI agent can run after implementation — must always include running all unit tests and all smoke tests, plus any additional compile checks or assertions>
+<Concrete, observable checks the AI agent can run after implementation. Must always include: the code compiles (or type-checks / builds cleanly for the language), all unit tests pass, and all smoke/e2e tests pass.>
 
 ## Notes
 <Decisions, trade-offs, open questions, or constraints discovered during research>
