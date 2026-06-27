@@ -1,21 +1,23 @@
 ---
-description: Check a highlighted audit-log or pending-approval snippet, explain its decisions, and configure permissions for any gaps.
+description: Check a shell command for safety: explain which parts are safe (and why) and which are potentially dangerous, then suggest allowing the safe parts.
 ---
 
-Check a highlighted snippet from an audit log or a pending permissions approval file: explain why it got the decisions it did, advise on any unconfigured sub-commands, and configure permissions based on the user's choices.
+Check a shell command and report which parts of it are safe and which are potentially dangerous, with the concrete reason for each. This does not change any config: it is an assessment plus a suggestion. Use it before allowing a command, or any time you want to understand the risk of running something.
 
-Follow the workflow in [REVIEWING-DECISIONS.md](/home/ash/claude-permissions/docs/REVIEWING-DECISIONS.md). It links onward to every doc you need (reading the snippet, the safety rubric, and how to write rules). Do not rely on memory for any of that detail: read the docs, since they change.
+Use the safety rubric in [REVIEWING-DECISIONS.md](~/claude-permissions/docs/REVIEWING-DECISIONS.md) (step 4, "Judge whether a sub-command is safe"). Do not rely on memory for the rubric: read the doc, since it changes.
 
-This command runs the full workflow interactively:
-
-1. Get the snippet from the selection or the user's message. If there is none, ask the user to paste it or point you at the file.
-2. Do steps 1–4 of the workflow: identify the source, explain each decision, find the NOMATCH gaps, and classify each gap with the safety rubric, giving a one-line recommendation per gap.
-3. For each gap, ask the user whether to allow, ask, or deny it (use AskUserQuestion; put your recommendation first). If there are no gaps, say so and stop.
-4. Apply each choice (step 5 of the workflow) by editing the right file under `/home/ash/claude-config/home/.claude/permissions.d/` (see its [README](/home/ash/claude-config/home/.claude/permissions.d/README.md) for the existing file layout).
-5. Finish up (step 6): report what changed and remind the user to run `/reload-plugins`.
+1. Get the command from the selection, a command-line argument, or the user's message. If there is none, ask the user to paste it.
+2. Break it into leaf sub-commands the way the permissions engine would (split on pipes, `&&`, `||`, `;`, and command substitutions like `$(...)`). Judge the specific invocation, including its flags and path arguments, not just the binary name.
+3. Classify each sub-command with the safety rubric:
+   - **Safe / read-only**: say why it only observes state (no writes, no network, no arbitrary code, no destructive flags).
+   - **Mutating but routine**: say what local, recoverable state it changes.
+   - **Dangerous**: name the concrete risk (destructive, hard to reverse, exfiltrates data, hits the network, escalates privilege, or runs arbitrary code).
+4. Report the breakdown: lead with a one-line verdict for the whole command (its class is the most dangerous of its parts), then one line per sub-command giving its class and the reason.
+5. (Optional) To show what the live engine currently decides for the command without running it, use the `analyze_permission` MCP tool ([MCP-SERVER.md](~/claude-permissions/docs/MCP-SERVER.md)) or the offline [REPL](~/claude-permissions/docs/REPL.md).
 
 ## Next
 
-Recommend the developer run:
-- `/permissions:allow`: to allow the command in question.
-- `/permissions:deny`: to deny it.
+If any parts are **Safe / read-only**, suggest the developer run:
+- `/permissions:allow`: to add allow rules for those safe parts (it re-checks the safety rubric before writing anything).
+
+Do not suggest allowing parts you classified as **Dangerous**. For those, suggest `/permissions:deny` if they should be blocked outright.
