@@ -111,6 +111,14 @@ bash:
     decide: allow
     reason: Process listing; reads from /proc with no side effects
 
+  nproc:
+    decide: allow
+    reason: Reports CPU count; read-only
+
+  free:
+    decide: allow
+    reason: Reports memory usage; read-only
+
   command:
     options:
       - v
