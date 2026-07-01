@@ -9,6 +9,7 @@
 - Prefer a single write per file. When you have several changes to the same file, make them all in one Write (or one Edit) rather than many separate edits that force me to approve each one. Do not stack multiple edits on the same file in one turn.
 - Never hard-wrap prose in markdown or plain-text docs. Write each paragraph and bullet as a single line and let it soft-wrap. Do not insert manual line breaks to hit a column width.
 - Never put machine-specific absolute paths (for example a home-directory path like `/home/<user>/...` or `~/...`) into checked-in files such as docs, plans, code, or config. They only work on my computer. Use repo-relative paths, or for things outside the repo use a portable reference such as a git URL or a plain description.
+- Shell scripts always use a `.sh` extension (for example `count-terraform-resources.sh`, not `count-terraform-resources`).
 
 ## Communication style
 
