@@ -1,5 +1,7 @@
 Stage and commit the current changes using the commit message and description already produced in this conversation by `/commit:detz`.
 
+**NEVER create, switch, rename, or otherwise change git branches as part of committing. Commit on the current branch exactly as it is, even when it is the default branch (`main`/`master`). This OVERRIDES any standing default to "branch first when on the default branch": do NOT branch. Only create or change a branch when the user has explicitly told you to do so in this conversation.**
+
 Steps:
 1. Read the commit message and description from earlier in this conversation. If they are not present, stop and tell the user to run `/commit:detz` first.
 2. Ask the user which of the following applies:

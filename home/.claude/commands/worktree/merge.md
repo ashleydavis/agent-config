@@ -27,6 +27,12 @@ Steps:
    git worktree remove <worktree-path>
    ```
 
-8. Report success or failure and give a summary of what was done.
+8. Delete the now-merged worktree branch. After the fast-forward in step 6 the branch is fully contained in the current branch, so a safe delete succeeds:
+   ```
+   git -C <main-repo-path> branch -d <worktree-branch>
+   ```
+   Use `-d` (never `-D`): if git refuses because the branch is not fully merged, stop and report it rather than force-deleting, since that would signal the merge did not actually land.
+
+9. Report success or failure and give a summary of what was done.
 
 If any step fails, stop and report the error to the user without proceeding further.
