@@ -13,6 +13,7 @@
 - If a project directory contains a `mise.toml`, always run its commands through mise (for example `mise exec -- bun run test`) so you use the tool versions the project pins. Your shell does not pick up mise's per-directory version switch automatically, so a bare command may run the wrong version. Do not run bare `bun`/`node`/etc. in a mise project.
 - NEVER even attempt to commit, branch, stage, push, pull, reset or other destructive Git operations unless I have explicitly requested it.
 - Never prefix a command with `!` or tell me to type `!` to run something. I run commands in the terminal myself. When you want output you can read, always capture it with `tee` (for example `... 2>&1 | tee out.log`) so it goes to a file you can read AND stays visible to me in the terminal. Never redirect output only to a file (for example `> out.log 2>&1`), because that hides it from me. I will run it and tell you when it is done.
+- I will never paste command output for you to read. If you need output, give me a command that writes it to a temporary file. When I tell you the command is done, read and inspect that file yourself.
 
 ## Communication style
 
