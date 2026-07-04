@@ -23,6 +23,10 @@ bash:
     decide: allow
     reason: Readonly search within current directory (relative paths only)
 
+  file:
+    decide: allow
+    reason: Reports file type via magic bytes; read-only, does not execute the target
+
   wc:
     decide: allow
     reason: Counting lines/words/chars
