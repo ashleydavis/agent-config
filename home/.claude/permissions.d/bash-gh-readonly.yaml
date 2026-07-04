@@ -1,6 +1,11 @@
 # Readonly GitHub CLI operations. Excludes any subcommand that mutates remote state.
 bash:
   gh:
+    api:
+      - not:
+          options-in: [X|method, f|raw-field, F|field, input]
+        decide: allow
+        reason: Readonly gh api (GET by default; blocked when a mutating method or field/input flag is present)
     status:
       decide: allow
       reason: Readonly gh access
