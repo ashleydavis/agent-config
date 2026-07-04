@@ -22,3 +22,7 @@ TaskStop:
 AskUserQuestion:
   decide: allow
   reason: Prompts the user for input; no external side effects
+
+ExitWorktree:
+  decide: allow
+  reason: Exits a worktree session and restores the original working directory; local cleanup only
