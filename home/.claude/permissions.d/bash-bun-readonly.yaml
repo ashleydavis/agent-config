@@ -1,0 +1,31 @@
+# Readonly bun invocations that report state but never modify it.
+# Package/registry subcommands that hit the network (outdated, update, etc.)
+# and script execution are excluded and fall through to ask.
+bash:
+  bun:
+    - options-in:
+        - v|version
+        - h|help
+        - revision
+      decide: allow
+      reason: bun version/help/revision info; read-only
+    - pm:
+        ls:
+          decide: allow
+          reason: List installed packages; read-only, local
+        bin:
+          decide: allow
+          reason: Print bin path; read-only
+        hash:
+          decide: allow
+          reason: Print lockfile hash; read-only
+    - why:
+        decide: allow
+        reason: Explain why a package is installed; read-only, local
+
+  bunx:
+    options-in:
+      - v|version
+      - h|help
+    decide: allow
+    reason: bunx version/help only; running a package downloads and executes code

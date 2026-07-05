@@ -129,6 +129,10 @@ bash:
     decide: allow
     reason: Command lookup (command -v); read-only, does not execute the target
 
+  which:
+    decide: allow
+    reason: Binary lookup in PATH; read-only, does not execute the target
+
   bash:
     options:
       - n

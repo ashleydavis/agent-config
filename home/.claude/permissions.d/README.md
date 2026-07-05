@@ -8,7 +8,10 @@ Files are discovered in lexicographic order. A `deny` in any file wins over `all
 
 | File | Purpose |
 |---|---|
+| `bash-bun-readonly.yaml` | Allow readonly `bun`/`bunx` invocations (version/help info, `pm ls/bin/hash`, `why`) |
 | `bash-bun-write.yaml` | Allow `bun install` and `bun run` within the current project |
+| `bash-node-readonly.yaml` | Allow readonly `node` invocations (version/help, `--check` syntax check) |
+| `bash-npm-readonly.yaml` | Allow readonly `npm` subcommands (`ls`, `config get`, `root`, `pkg get`, etc.) and `npx` version/help |
 | `bash-gh-readonly.yaml` | Allow readonly `gh` subcommands (view, list, status, checks, etc.) |
 | `bash-git-readonly.yaml` | Allow readonly `git` subcommands (log, diff, status, show, etc.) |
 | `bash-git-write.yaml` | Deny destructive git ops; require approval for commit, push, rebase, etc. |

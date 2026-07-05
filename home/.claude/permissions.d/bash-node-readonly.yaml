@@ -1,0 +1,12 @@
+# Readonly Node.js invocations: version/help info and syntax checks only.
+# Running a script file or -e/-p (arbitrary code execution) is deliberately
+# excluded and falls through to ask.
+bash:
+  node:
+    options-in:
+      - v|version
+      - h|help
+      - c|check
+      - v8-options
+    decide: allow
+    reason: node version/help/syntax-check flags; read-only, no script execution

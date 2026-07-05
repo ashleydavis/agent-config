@@ -1,0 +1,54 @@
+# Readonly npm/npx invocations: local info only.
+# Excluded (fall through to ask): registry subcommands that hit the network
+# (view/info/show, outdated, audit, search, ping, whoami, fund, doctor) and
+# anything that installs or executes (install, ci, update, run, test, start,
+# exec, publish, and npx running a package).
+bash:
+  npm:
+    - options-in:
+        - v|version
+        - h|help
+      decide: allow
+      reason: npm version/help; read-only
+    - ls:
+        decide: allow
+        reason: List installed packages; read-only, local
+    - list:
+        decide: allow
+        reason: List installed packages; read-only, local
+    - root:
+        decide: allow
+        reason: Print install root path; read-only
+    - prefix:
+        decide: allow
+        reason: Print prefix path; read-only
+    - bin:
+        decide: allow
+        reason: Print bin path; read-only
+    - explain:
+        decide: allow
+        reason: Explain why a package is installed; read-only, local
+    - help:
+        decide: allow
+        reason: Help text; read-only
+    - config:
+        get:
+          decide: allow
+          reason: Read npm config value; read-only
+        list:
+          decide: allow
+          reason: List npm config; read-only
+        ls:
+          decide: allow
+          reason: List npm config; read-only
+    - pkg:
+        get:
+          decide: allow
+          reason: Read a package.json field; read-only
+
+  npx:
+    options-in:
+      - version
+      - help
+    decide: allow
+    reason: npx version/help only; running a package downloads and executes code
