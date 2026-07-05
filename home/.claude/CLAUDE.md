@@ -10,7 +10,7 @@
 - Never hard-wrap prose in markdown or plain-text docs. Write each paragraph and bullet as a single line and let it soft-wrap. Do not insert manual line breaks to hit a column width.
 - Never put machine-specific absolute paths (for example a home-directory path like `/home/<user>/...` or `~/...`) into checked-in files such as docs, plans, code, or config. They only work on my computer. Use repo-relative paths, or for things outside the repo use a portable reference such as a git URL or a plain description.
 - Shell scripts always use a `.sh` extension (for example `count-terraform-resources.sh`, not `count-terraform-resources`).
-- Never prefix a command with `!` or tell me to type `!` to run something. I run commands in the terminal myself. When you want output you can read, give a plain command that redirects to a file (for example `... > /path/to/out.log 2>&1`) and I will run it and tell you when it is done.
+- Never prefix a command with `!` or tell me to type `!` to run something. I run commands in the terminal myself. When you want output you can read, always capture it with `tee` (for example `... 2>&1 | tee out.log`) so it goes to a file you can read AND stays visible to me in the terminal. Never redirect output only to a file (for example `> out.log 2>&1`), because that hides it from me. I will run it and tell you when it is done.
 
 ## Communication style
 
