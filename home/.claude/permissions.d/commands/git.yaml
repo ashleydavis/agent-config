@@ -65,6 +65,9 @@ git:
           description: Force push
     branch:
       flags:
+        show-current:
+          arity: 0
+          description: Print the name of the current branch
         u|set-upstream-to:
           arity: 1
           kind: string

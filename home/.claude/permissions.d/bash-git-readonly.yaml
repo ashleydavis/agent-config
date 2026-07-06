@@ -5,6 +5,12 @@ bash:
       decide: allow
       reason: Readonly git access
 
+    branch:
+      options:
+        - show-current
+      decide: allow
+      reason: Readonly git access (prints the current branch name, no ref changes)
+
     diff:
       decide: allow
       reason: Readonly git access
