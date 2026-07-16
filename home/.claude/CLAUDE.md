@@ -13,6 +13,8 @@
 - NEVER even attempt to commit, branch, stage, push, pull, reset or other destructive Git operations unless I have explicitly requested it.
 - Never prefix a command with `!` or tell me to type `!` to run something. I run commands in the terminal myself. When you want output you can read, always capture it with `tee` (for example `... 2>&1 | tee out.log`) so it goes to a file you can read AND stays visible to me in the terminal. Never redirect output only to a file (for example `> out.log 2>&1`), because that hides it from me. I will run it and tell you when it is done.
 - I will never paste command output for you to read. If you need output, give me a command that writes it to a temporary file. When I tell you the command is done, read and inspect that file yourself.
+- When I ask to open web pages or open something in the browser, always open them in a new Chrome window using the `google-chrome` command with `--new-window` (for example `google-chrome --new-window <url1> <url2> ...`), so all the pages open together in one new window. Do not use the claude-in-chrome skill or any browser-automation tool.
+- When I ask for code files or text files to be opened, open them in my editor: use `cursor <path>` if I am currently using Cursor, otherwise use `code <path>` for VS Code.
 
 ## Communication style
 
