@@ -15,14 +15,21 @@ Create a pull request from **multiple commits** on the current branch.
 
 ## Jira ticket prefix
 
-If the commits or branch relate to a Jira ticket (branch name, commit subjects/bodies, or clear conversation context), prefix the PR title with the ticket key and a colon, for example `PROJ-1234: Fixed login retry and cleaned up error handling`.
+Only if a single Jira ticket key is **obvious** (for example the branch is clearly named with it, the commits already carry it, or the user stated it in this conversation), prefix the PR title with that key and a colon, for example `PROJ-1234: Fixed login retry and cleaned up error handling`.
 
 - Detect keys like `PROJ-1234` (uppercase project key, hyphen, digits).
 - If the drafted title already starts with that ticket prefix, do not duplicate it.
-- Prefer the ticket from the branch name when present; otherwise from the commits; otherwise from conversation context.
+- **Do not infer, guess, or pick among candidates.** If the ticket is unclear, missing, or there are multiple plausible keys, omit the prefix.
+
+## Draft for approval
+
+1. Show the drafted **PR title** and **PR body** clearly labelled. Do not create the PR yet. Do not open a browser yet.
+2. Ask the user to approve as-is, or to provide revisions (edits to the title and/or body).
+3. If they request revisions, update the draft and show it again. Repeat until they explicitly approve.
+4. Only after explicit approval, continue to Create and open.
 
 ## Create and open
 
-1. Create the PR with `gh pr create --title "..." --body "..."` (HEREDOC for the body). Base branch as appropriate.
+1. Create the PR with `gh pr create --title "..." --body "..."` (HEREDOC for the body), using the approved title and body. Base branch as appropriate.
 2. Open the PR URL in a **new Chrome window**: `google-chrome --new-window <pr-url>`
 3. Report the PR URL when done.

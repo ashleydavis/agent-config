@@ -15,11 +15,11 @@ Create a pull request from the **single commit** on the current branch.
 
 ## Jira ticket prefix
 
-If the commits or branch relate to a Jira ticket (branch name, commit subject/body, or clear conversation context), prefix the PR title with the ticket key and a colon, for example `PROJ-1234: Fixed the flaky login retry`.
+Only if a single Jira ticket key is **obvious** (for example the branch is clearly named with it, the commit already carries it, or the user stated it in this conversation), prefix the PR title with that key and a colon, for example `PROJ-1234: Fixed the flaky login retry`.
 
 - Detect keys like `PROJ-1234` (uppercase project key, hyphen, digits).
 - If the subject already starts with that ticket prefix, do not duplicate it.
-- Prefer the ticket from the branch name when present; otherwise from the commit; otherwise from conversation context.
+- **Do not infer, guess, or pick among candidates.** If the ticket is unclear, missing, or there are multiple plausible keys, omit the prefix.
 
 ## Create and open
 

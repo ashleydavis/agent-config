@@ -10,7 +10,7 @@ Then produce two things:
 
 **Commit message** - one short line, plain English, past tense (e.g. "Added", "Fixed", "Removed", "Updated"), no period at the end. Should convey the intent of the change, not just describe what files changed. Keep it under 72 characters.
 
-**Jira ticket prefix** - if the work relates to a particular Jira ticket (branch name, diffs, plan, or clear conversation context), prefix the commit message with the ticket key and a colon, for example `PROJ-1234: Fixed the flaky login retry`. Detect keys like `PROJ-1234` (uppercase project key, hyphen, digits). If the message already starts with that ticket prefix, do not duplicate it. Prefer the ticket from the branch name when present.
+**Jira ticket prefix** - only if a single Jira ticket key is **obvious** (for example the branch is clearly named with it, or the user stated it in this conversation). Prefix the commit message with that key and a colon, for example `PROJ-1234: Fixed the flaky login retry`. Detect keys like `PROJ-1234` (uppercase project key, hyphen, digits). If the message already starts with that ticket prefix, do not duplicate it. **Do not infer, guess, or pick among candidates.** If the ticket is unclear, missing, or there are multiple plausible keys, omit the prefix.
 
 **Commit description** - a summary of what changed, why, and any notable decisions or trade-offs. Aim for 3 to 5 paragraphs - substantially longer than the title, but not exhaustive. Do not list every file in the commit. This goes in the body of the commit, separated from the subject by a blank line.
 
