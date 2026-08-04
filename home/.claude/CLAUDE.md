@@ -1,5 +1,6 @@
 # Claude Instructions
 
+- Guessing is banned. Never guess. Never tell me "I'll stop guessing now".
 - Sibling config: `claude-config` and `cursor-config` are sibling repos (checked out next to each other). Keep mirrored paths in sync in the same edit: this file ↔ `../cursor-config/home/.cursor/AGENTS.md` (adapt only where they intentionally differ: titles, Claude-specific vs Cursor-specific lines); `home/.claude/commands/` ↔ `../cursor-config/home/.cursor/commands/` (same relative paths and contents); and any personal skills under each side's `skills/` directory the same way. When those mirrored changes are committed, commit them in both repos together. Do not leave the siblings out of sync.
 - Never use memory. Do not read, write, or update any memory files.
 - Never use em dashes. Use a period, comma, colon, or parentheses instead.
