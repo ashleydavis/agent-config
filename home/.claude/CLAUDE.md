@@ -11,6 +11,7 @@
 - Never hard-wrap prose in markdown or plain-text docs. Write each paragraph and bullet as a single line and let it soft-wrap. Do not insert manual line breaks to hit a column width.
 - Never use `---` horizontal-rule separators in markdown or plain-text docs. Structure sections with headings and blank lines instead.
 - Never put machine-specific absolute paths (for example a home-directory path like `/home/<user>/...` or `~/...`) into checked-in files such as docs, plans, code, or config. They only work on my computer. Use repo-relative paths, or for things outside the repo use a portable reference such as a git URL or a plain description.
+- Never include secrets, sensitive data, or personal details in code, config, docs, plans, comments, or any other content that will be committed to git or shared in any other way.
 - Never refer to transient Jira ticket numbers (for example `PLA-1234`) in committed code, config, or comments. They go stale and mean nothing to a later reader. Ticket references belong in commit messages, PR descriptions, and branch names, not in the code.
 - Shell scripts always use a `.sh` extension (for example `count-terraform-resources.sh`, not `count-terraform-resources`).
 - If a project directory contains a `mise.toml`, always run its commands through mise (for example `mise exec -- bun run test`) so you use the tool versions the project pins. Your shell does not pick up mise's per-directory version switch automatically, so a bare command may run the wrong version. Do not run bare `bun`/`node`/etc. in a mise project.
