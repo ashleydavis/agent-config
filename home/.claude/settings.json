@@ -1,6 +1,9 @@
 {
   "permissions": {
     "defaultMode": "acceptEdits",
+    "additionalDirectories": [
+      "~/cursor-config"
+    ],
     "allow": [
       "Bash",
       "Read",

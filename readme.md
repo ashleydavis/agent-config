@@ -2,13 +2,23 @@
 
 Personal Claude Code global configuration: instructions (CLAUDE.md), settings, slash commands, and permissions rules.
 
+## Sibling: cursor-config
+
+This repo is a sibling of `cursor-config`. Check both out next to each other (for example under your home directory). Mirrored paths must stay in sync and be committed in both repos together:
+
+- `home/.claude/CLAUDE.md` ↔ `home/.cursor/AGENTS.md` (adapt only intentional tool-specific differences)
+- `home/.claude/commands/` ↔ `home/.cursor/commands/` (same relative paths and contents)
+- personal `skills/` (if present) ↔ matching `skills/` on the other side
+
+`settings.json` lists `~/cursor-config` under `permissions.additionalDirectories` so Claude Code can read and edit the sibling.
+
 ## Layout
 
 ```
 home/
 └── .claude/
     ├── CLAUDE.md          # Global Claude instructions
-    ├── settings.json      # Claude Code settings (permissions, hooks)
+    ├── settings.json      # Claude Code settings (permissions, hooks, sibling dirs)
     ├── permissions.yaml   # Top-level permissions config
     ├── permissions.d/     # Modular permissions rules (compiled into settings)
     └── commands/          # Custom slash commands (/q, /verify, /plan/*, etc.)
