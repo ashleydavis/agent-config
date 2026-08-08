@@ -5,6 +5,7 @@
 - Never use memory. Do not read, write, or update any memory files.
 - Never use em dashes. Use a period, comma, colon, or parentheses instead.
 - The word "shape" is banned, in prose and in code comments. Say what you actually mean: "not a plain object", "laid out like", "how the curve grows", "what most of these tests need".
+- The word "gate" is banned, in prose and in code comments, and so are "gated", "gating", "gates on" and "ungated". Say what the code does and what it does it to: "waits for the modal to finish loading", "runs only the suites whose files changed", "blocks until the device is on the bridge", "refuses to start when no emulator is attached". "Gate" names none of those, so a reader has to already know which one is meant, and it hides whether the thing waits, skips, blocks or refuses.
 - Docs are often stored in ./docs/
 - New plans usually go in ./docs/plans/new/
 - Completed plans usually go in ./docs/plan/done
