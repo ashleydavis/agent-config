@@ -10,6 +10,8 @@ Draft a Jira ticket comment summarizing recent work, show it for approval, then 
 
 3. **Draft the comment.** Write a concise Jira-ready update in markdown: what changed, why it matters for the ticket, and links to PRs / docs when available. Show the full draft to the human. Do **not** post yet.
 
+   **Clickable links (required):** Atlassian markdown does not reliably auto-link bare URLs. Every URL in the draft and in the posted comment must use markdown link form `[label](url)` (for example `[cloudfront-distribution#28](https://github.com/ArkoseLabs/cloudfront-distribution/pull/28)` or `[PLA-8110](https://arkoselabs.atlassian.net/browse/PLA-8110)`). Never paste a bare `https://...` URL. Never wrap a URL in backticks (that makes it unclickable).
+
 4. **Wait for approval.** Ask the human to reply `a` (approve) or `d` (deny).
    - **`a`:** Post the approved comment with Atlassian MCP `addCommentToJiraIssue` (`contentFormat: "markdown"`). Resolve `cloudId` via `getAccessibleAtlassianResources` if needed. Report the issue key and that the comment was posted.
    - **`d`:** Stop. Do not post. Say we are not ready to comment yet.
@@ -19,4 +21,5 @@ Draft a Jira ticket comment summarizing recent work, show it for approval, then 
 
 - Never post a comment without an explicit `a` in this turn sequence.
 - Never invent a ticket key.
+- Never post bare or backtick-wrapped URLs in Jira comments; always use `[label](url)`.
 - If the human revises the draft, show the updated draft and wait for `a` / `d` again.
