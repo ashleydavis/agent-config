@@ -2,8 +2,6 @@
 
 Personal Claude Code and Cursor global configuration: instructions, settings, slash commands, and permissions rules.
 
-Clone/checkout directory on this machine stays `~/claude-config` (do not rename the directory).
-
 ## Layout
 
 ```
@@ -49,12 +47,12 @@ Both hooks are invoked via `bun`, so `bun` must be on `PATH` as well.
 ## Install
 
 ```bash
-git clone <repo-url> ~/claude-config
-cd ~/claude-config
+git clone <repo-url> ~/agent-config
+cd ~/agent-config
 ./bootstrap.sh
 ```
 
-`bootstrap.sh` symlinks the individual config entries under `home/.claude/` and `home/.cursor/` into `~/.claude/` and `~/.cursor/` (so `~/.claude/CLAUDE.md` → `~/claude-config/home/.claude/CLAUDE.md`, `~/.cursor/AGENTS.md` → `~/claude-config/home/.cursor/AGENTS.md`, etc.).
+`bootstrap.sh` symlinks the individual config entries under `home/.claude/` and `home/.cursor/` into `~/.claude/` and `~/.cursor/` (so `~/.claude/CLAUDE.md` → `~/agent-config/home/.claude/CLAUDE.md`, `~/.cursor/AGENTS.md` → `~/agent-config/home/.cursor/AGENTS.md`, etc.).
 
 ### Why bootstrap doesn't just run `stow home`
 
@@ -65,7 +63,7 @@ To prevent this, `bootstrap.sh` ensures both targets are **real directories** be
 ## Uninstall
 
 ```bash
-cd ~/claude-config
+cd ~/agent-config
 stow -D -t "$HOME" home
 ```
 
