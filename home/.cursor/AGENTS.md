@@ -1,7 +1,7 @@
-# Claude Instructions
+# Cursor Instructions
 
 - Guessing is banned. Never guess. Never tell the human "I'll stop guessing now".
-- Shared config in this repo: edit slash commands only under `home/.claude/commands/` (`home/.cursor/commands` is a symlink to that tree). Keep this file and `home/.cursor/AGENTS.md` aligned in the same edit when shared rules change; adapt only where they intentionally differ (titles, Claude-specific vs Cursor-specific lines).
+- Shared config in this repo: edit slash commands only under `home/.claude/commands/` (`home/.cursor/commands` is a symlink to that tree). Keep this file and `home/.claude/CLAUDE.md` aligned in the same edit when shared rules change; adapt only where they intentionally differ (titles, Cursor-specific vs Claude-specific lines).
 - Never use memory. Do not read, write, or update any memory files.
 - Never use em dashes. Use a period, comma, colon, or parentheses instead.
 - The word "shape" is banned, in prose and in code comments. Say what you actually mean: "not a plain object", "laid out like", "how the curve grows", "what most of these tests need".
@@ -21,13 +21,13 @@
 - When creating a feature branch, use the normal form only: update trunk first if needed, then `git checkout -b <branch>` (or `git switch -c <branch>`) from that trunk. Never create a branch with `git checkout -B <branch> origin/<trunk>`, `git checkout -b <branch> origin/<trunk>`, `--track origin/<trunk>`, or any other form that sets the new branch's upstream to `main`/`master` (or another trunk). That breaks plain `git push` / `gps` because the local name no longer matches the upstream. First push should be `git push -u origin HEAD` (or equivalent) so upstream becomes `origin/<branch>`.
 - Never prefix a command with `!` or tell the human to type `!` to run something. The human runs commands in the terminal. When you want output you can read, always capture it with `tee` (for example `... 2>&1 | tee out.log`) so it goes to a file you can read AND stays visible to the human in the terminal. Never redirect output only to a file (for example `> out.log 2>&1`), because that hides it from the human. The human will run it and tell you when it is done.
 - The human will never paste command output for you to read. If you need output, give the human a command that writes it to a temporary file. When the human tells you the command is done, read and inspect that file yourself.
-- When the human asks to open web pages or open something in the browser, always open them in a new Chrome window using the `google-chrome` command with `--new-window` (for example `google-chrome --new-window <url1> <url2> ...`), so all the pages open together in one new window. Do not use the claude-in-chrome skill or any browser-automation tool.
-- When the human asks for code files or text files to be opened, open them in the human's editor: use `cursor <path>` if the human is currently using Cursor, otherwise use `code <path>` for VS Code.
-- Never tell the human that something is impossible, blocked, or theirs to run until you have searched the tools available to you for one that changes the situation. A refusal from the harness describes the restriction as it stands at that moment, not as it has to stay, and the refusal text will not name the tool that lifts it. Look for the capability by name before reporting failure: a session isolated to a git worktree is released with `ExitWorktree`, which returns the session to the main checkout and ends the isolation, and deferred tools have to be loaded with `ToolSearch` before they can be called at all, so a tool being absent from the prompt is not evidence it does not exist. Handing work back because you did not look costs the human more than the restriction did, because they then have to find what you should have found, and arguing that you are blocked while an unopened tool sits there is worse again.
+- When the human asks to open web pages or open something in the browser, always open them in a new Chrome window using the `google-chrome` command with `--new-window` (for example `google-chrome --new-window <url1> <url2> ...`), so all the pages open together in one new window. Do not use browser-automation tools.
+- When the human asks for code files or text files to be opened, open them with `cursor <path>`.
+- Never tell the human that something is impossible, blocked, or theirs to run until you have searched the tools available to you for one that changes the situation. A refusal from the harness describes the restriction as it stands at that moment, not as it has to stay, and the refusal text will not name the tool that lifts it. Look for the capability by name before reporting failure, including tools that have to be loaded or enabled before they can be called, so a tool being absent from the prompt is not evidence it does not exist. Handing work back because you did not look costs the human more than the restriction did, because they then have to find what you should have found, and arguing that you are blocked while an unopened tool sits there is worse again.
 
 ## Communication style
 
-**Default format (always — same as `/tmi`):**
+**Default format (always):**
 
 1. **One short heading** that states the answer or conclusion immediately.
 2. **Bullet points only** for what follows. Minimum words. No preamble.

@@ -1,24 +1,22 @@
 #!/bin/bash
 
-# Claude Config Bootstrap
-# Symlinks Claude configuration into ~/.claude using GNU Stow, while keeping
-# Claude Code's runtime state (sessions, projects, caches, credentials, ...)
-# OUT of this repo.
+# Agent Config Bootstrap
+# Symlinks Claude and Cursor configuration into ~/.claude and ~/.cursor using
+# GNU Stow, while keeping each tool's runtime state OUT of this repo.
 #
 # Why this is not just "stow home":
-# The stow package contains a single directory (home/.claude). If ~/.claude does
-# not already exist, stow "folds" the tree and makes ~/.claude a single symlink
-# pointing into this repo. Claude Code then writes ALL of its runtime state
-# through that symlink, dumping it into the repo working tree. To prevent that we
-# ensure ~/.claude is a REAL directory first, so stow only links the individual
-# config files/dirs and runtime state stays in the real ~/.claude.
+# The stow package contains home/.claude and home/.cursor. If ~/.claude or
+# ~/.cursor does not already exist, stow "folds" the tree and makes that path a
+# single symlink pointing into this repo. The tool then writes ALL of its runtime
+# state through that symlink, dumping it into the repo working tree. To prevent
+# that we ensure each target is a REAL directory first, so stow only links the
+# individual config files/dirs and runtime state stays in the real home dirs.
 #
 # Usage: ./bootstrap.sh
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PKG_DIR="$SCRIPT_DIR/home/.claude"
 
 if ! command -v stow &> /dev/null; then
     echo "ERROR: GNU Stow is not installed." >&2
@@ -26,57 +24,62 @@ if ! command -v stow &> /dev/null; then
     exit 1
 fi
 
-if [[ ! -d "$PKG_DIR" ]]; then
-    echo "ERROR: Expected directory not found: $PKG_DIR" >&2
-    exit 1
-fi
+# Un-fold a target dir if it is a single symlink into this package, then ensure
+# it exists as a real directory before stow.
+unfold_if_needed() {
+    local tool_name="$1"   # e.g. claude
+    local home_target="$2" # e.g. $HOME/.claude
+    local pkg_dir="$3"     # e.g. $SCRIPT_DIR/home/.claude
+    local git_prefix="$4"  # e.g. home/.claude
 
-# If ~/.claude is a single symlink, stow previously folded the whole tree.
-# Un-fold it: replace the symlink with a real directory and move any runtime
-# state (everything git does NOT track) back out of the repo.
-if [[ -L "$HOME/.claude" ]]; then
-    echo "Detected folded ~/.claude symlink; un-folding..."
-
-    # Tracked top-level entries under home/.claude are the config we KEEP in the
-    # repo. Everything else in the package dir is runtime state to evict.
-    mapfile -t KEEP < <(git -C "$SCRIPT_DIR" ls-files 'home/.claude' \
-        | awk -F/ 'NF>=3 {print $3}' | sort -u)
-    if [[ ${#KEEP[@]} -eq 0 ]]; then
-        echo "ERROR: could not determine tracked config entries; aborting so we" >&2
-        echo "       don't accidentally move config out of the repo." >&2
+    if [[ ! -d "$pkg_dir" ]]; then
+        echo "ERROR: Expected directory not found: $pkg_dir" >&2
         exit 1
     fi
 
-    rm "$HOME/.claude"
-    mkdir -p "$HOME/.claude"
+    if [[ -L "$home_target" ]]; then
+        echo "Detected folded $home_target symlink; un-folding..."
 
-    shopt -s dotglob nullglob
-    for path in "$PKG_DIR"/*; do
-        name="$(basename "$path")"
-        keep=false
-        for k in "${KEEP[@]}"; do
-            [[ "$name" == "$k" ]] && { keep=true; break; }
-        done
-        if ! $keep; then
-            echo "  evicting runtime state from repo -> ~/.claude/: $name"
-            mv "$path" "$HOME/.claude/"
+        mapfile -t KEEP < <(git -C "$SCRIPT_DIR" ls-files "$git_prefix" \
+            | awk -F/ 'NF>=3 {print $3}' | sort -u)
+        if [[ ${#KEEP[@]} -eq 0 ]]; then
+            echo "ERROR: could not determine tracked config entries for $tool_name; aborting so we" >&2
+            echo "       don't accidentally move config out of the repo." >&2
+            exit 1
         fi
-    done
-    shopt -u dotglob nullglob
-fi
 
-# Ensure ~/.claude exists as a REAL directory so stow links individual entries
-# instead of folding the whole tree into one symlink.
-mkdir -p "$HOME/.claude"
+        rm "$home_target"
+        mkdir -p "$home_target"
 
-echo "Stowing $PKG_DIR into $HOME/.claude ..."
+        shopt -s dotglob nullglob
+        for path in "$pkg_dir"/*; do
+            name="$(basename "$path")"
+            keep=false
+            for k in "${KEEP[@]}"; do
+                [[ "$name" == "$k" ]] && { keep=true; break; }
+            done
+            if ! $keep; then
+                echo "  evicting runtime state from repo -> $home_target/: $name"
+                mv "$path" "$home_target/"
+            fi
+        done
+        shopt -u dotglob nullglob
+    fi
+
+    mkdir -p "$home_target"
+}
+
+unfold_if_needed "claude" "$HOME/.claude" "$SCRIPT_DIR/home/.claude" "home/.claude"
+unfold_if_needed "cursor" "$HOME/.cursor" "$SCRIPT_DIR/home/.cursor" "home/.cursor"
+
+echo "Stowing $SCRIPT_DIR/home into $HOME ..."
 cd "$SCRIPT_DIR"
 # --adopt resolves conflicts where a config target already exists as a real file
-# (e.g. Claude Code rewrote settings.json in place, replacing the symlink): stow
-# moves the live file's content into the repo and recreates the symlink, so
+# (e.g. a tool rewrote settings.json or AGENTS.md in place, replacing the symlink):
+# stow moves the live file's content into the repo and recreates the symlink, so
 # nothing is lost. Review/keep/discard the adopted content afterwards with git.
 stow --adopt --target="$HOME" home
 
 echo "Done."
 echo "Config files are symlinked from this repo; runtime state lives in the real"
-echo "~/.claude and is never written into the repo."
+echo "~/.claude and ~/.cursor and is never written into the repo."

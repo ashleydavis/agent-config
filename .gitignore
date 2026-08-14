@@ -1,3 +1,11 @@
 # Claude runtime/state directories created when claude runs in this repo
 .claude/permissions-log/
 .claude/permissions-debug.log
+
+# Cursor runtime/state that must never end up in this repo
+.cursor/projects/
+.cursor/extensions/
+.cursor/ai-tracking/
+.cursor/plugins/
+.cursor/plans/
+.cursor/skills-cursor/
