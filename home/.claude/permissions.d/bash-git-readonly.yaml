@@ -6,10 +6,18 @@ bash:
       reason: Readonly git access
 
     branch:
-      options:
-        - show-current
-      decide: allow
-      reason: Readonly git access (prints the current branch name, no ref changes)
+      # Suppressed as soon as a branch name is given, since creating, deleting, renaming and copying all name a branch.
+      # The regex excludes the word "branch" itself because not: cmd-in reads the raw positionals, subcommand word included,
+      # so the usual "**" would suppress this rule on every git branch invocation.
+      not:
+        cmd-in:
+          - "/^(?!branch$)/"
+      rules:
+        # These write an upstream or a branch description without naming a branch, so the parent block does not stop them.
+        - not:
+            options-in: [u|set-upstream, set-upstream-to, unset-upstream, edit-description]
+          decide: allow
+          reason: Readonly git access (lists branches, or prints the current one with --show-current)
 
     diff:
       decide: allow

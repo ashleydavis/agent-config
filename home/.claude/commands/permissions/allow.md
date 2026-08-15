@@ -12,4 +12,6 @@ Follow the workflow in [REVIEWING-DECISIONS.md](~/claude-permissions/docs/REVIEW
 4. Apply an allow rule for each (step 5 of the workflow), scoped as tightly as is reasonable, in the right file under `~/agent-config/home/.claude/permissions.d/` (see its [README](~/agent-config/home/.claude/permissions.d/README.md) for the existing file layout).
 5. Finish up (step 6): report what changed and remind the user to run `/reload-plugins`.
 
+Note: write `allow` rules only. `ask` is what the engine already does when nothing matches, so an `ask` rule adds nothing and is not wanted here: leave every form you are not allowing to fall through to the default. That makes the scoping of the allow rule the whole of the safety. Where one rule would also cover a form you do not want allowed, narrow it (`not:`, `options`, `cmd`, or a `rules:` block under a parent filter, which is the way to require two conditions at once) instead of adding an `ask` beside it.
+
 Note: a `deny` rule in any file beats an allow. If a sub-command stays blocked, an existing deny rule is the cause: identify it for the user rather than adding more allow rules.
