@@ -111,6 +111,13 @@ bash:
     decide: allow
     reason: Pauses execution; no side effects
 
+  date:
+    decide: allow
+    not:
+      options:
+        - s|set
+    reason: Prints the current date/time; read-only (setting the system clock with -s/--set falls through to ask)
+
   ps:
     decide: allow
     reason: Process listing; reads from /proc with no side effects
