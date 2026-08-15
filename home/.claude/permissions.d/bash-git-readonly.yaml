@@ -63,3 +63,8 @@ bash:
       list:
         decide: allow
         reason: Readonly git access (listing worktrees only)
+
+    config:
+      cmd: core.hooksPath
+      decide: allow
+      reason: Readonly git access (prints the configured hooks path; setting a value or naming another config file is asked about in bash-git-write.yaml)
