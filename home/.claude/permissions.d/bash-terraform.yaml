@@ -2,64 +2,35 @@
 #
 # - Commands that mutate something beyond the local machine (real
 #   infrastructure, remote state, remote workspaces, stored cloud
-#   credentials, remote state locks) always ASK, regardless of cwd.
+#   credentials, remote state locks) carry no rule, so they fall through
+#   to the engine's default and prompt.
 # - Every other command (plan, validate, show, output, fmt, init,
 #   state list/show, workspace list/show, ...) is ALLOWED when run
 #   inside the project directory.
 #
-# `ask` beats `allow`, so the mutating commands ask even inside the project.
+# The mutating ones are excluded with `not:` rather than written as `ask` rules, because `ask`
+# outranks `allow` (src/ast-nodes/ast-node.ts: abstain < allow < ask < deny), so an `ask` here
+# would beat a project's own `allow` and no project could ever authorise them.
 bash:
   terraform:
-    - apply:
-        decide: ask
-        reason: Applies changes to real infrastructure
-    - destroy:
-        decide: ask
-        reason: Destroys real infrastructure
-    - import:
-        decide: ask
-        reason: Writes to (possibly remote) state
-    - refresh:
-        decide: ask
-        reason: Updates (possibly remote) state
-    - taint:
-        decide: ask
-        reason: Modifies (possibly remote) state
-    - untaint:
-        decide: ask
-        reason: Modifies (possibly remote) state
-    - force-unlock:
-        decide: ask
-        reason: Releases a remote state lock
-    - test:
-        decide: ask
-        reason: Provisions and destroys real infrastructure
-    - login:
-        decide: ask
-        reason: Modifies stored cloud credentials
-    - logout:
-        decide: ask
-        reason: Modifies stored cloud credentials
-    - state:
-        push:
-          decide: ask
-          reason: Overwrites remote state
-        rm:
-          decide: ask
-          reason: Modifies (possibly remote) state
-        mv:
-          decide: ask
-          reason: Modifies (possibly remote) state
-        replace-provider:
-          decide: ask
-          reason: Modifies (possibly remote) state
-    - workspace:
-        new:
-          decide: ask
-          reason: Creates a (possibly remote) workspace
-        delete:
-          decide: ask
-          reason: Deletes a (possibly remote) workspace
-    - cwd: "${{PROJECT_DIR}}/**"
-      decide: allow
-      reason: Local / read-only Terraform inside the project directory
+    not:
+      cmd-in:
+        - apply
+        - destroy
+        - import
+        - refresh
+        - taint
+        - untaint
+        - force-unlock
+        - test
+        - login
+        - logout
+        - push
+        - rm
+        - mv
+        - replace-provider
+        - new
+        - delete
+    cwd: "${{PROJECT_DIR}}/**"
+    decide: allow
+    reason: Local / read-only Terraform inside the project directory

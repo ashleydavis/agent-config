@@ -1,4 +1,9 @@
-# Git operations that change state. Destructive ones are denied; publishing/history-changing ones (commit, merge, push, rebase) require approval.
+# Git operations that change state. Destructive ones are denied.
+#
+# checkout, switch, rebase, commit, merge and push carry no rule: nothing matches them, so they
+# fall through to the engine's default and still prompt. They are not written as `ask` rules
+# because `ask` outranks `allow` (src/ast-nodes/ast-node.ts: abstain < allow < ask < deny), so an
+# `ask` here would beat a project's own `allow` and no project could ever authorise them.
 bash:
   git:
     stash:
@@ -17,30 +22,6 @@ bash:
       decide: deny
       reason: Avoid rewriting history or losing changes
 
-    checkout:
-      decide: ask
-      reason: The developer wants to be able to review and approve commands like this.
-
-    switch:
-      decide: ask
-      reason: The developer wants to be able to review and approve commands like this.
-
     clean:
       decide: deny
       reason: Avoid permanently deleting untracked files
-
-    rebase:
-      decide: ask
-      reason: Rewrites commit history — confirm each rebase. Not denied because /worktree:merge needs to rebase worktree branches onto their base.
-
-    commit:
-      decide: ask
-      reason: The developer wants to be able to review and approve commands like this.
-
-    merge:
-      decide: ask
-      reason: The developer wants to be able to review and approve commands like this.
-
-    push:
-      decide: ask
-      reason: The developer wants to be able to review and approve commands like this.
