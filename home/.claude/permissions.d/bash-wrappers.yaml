@@ -1,0 +1,11 @@
+# Commands that run another command. The wrapper is allowed on its own, and the command it runs is decided by its own rules; the stricter of the two decisions wins, so an unmatched inner command still asks.
+bash:
+  mise:
+    decide: allow
+    reason: mise only selects pinned tool versions; the command it runs is decided on its own
+  timeout:
+    decide: allow
+    reason: timeout only time-limits the command it runs; that command is decided on its own
+  xargs:
+    decide: allow
+    reason: xargs only feeds stdin to the command it runs; that command is decided on its own

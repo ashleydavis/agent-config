@@ -25,6 +25,19 @@ mycommand:
       variadic: true   # captures all remaining positionals from this index onward
 ```
 
+A command that runs another command (`xargs rm`, `timeout 30 cmd`, `mise exec -- cmd`) sets `wrapper: true`. Its own positional slots are the ones listed before the variadic slot; everything after them is parsed as the command it runs, so rules for that inner command still apply. When only some sub-commands wrap, put `wrapper: true` on the `cmds` entry instead:
+
+```yaml
+mise:
+  cmds:
+    exec:
+      wrapper: true
+      positionals:
+        - kind: string
+          description: The command mise runs, with its own arguments
+          variadic: true
+```
+
 Only value-taking flags (arity 1) need to be listed. Boolean flags can be omitted; they default to arity 0.
 
 ## Files
@@ -42,12 +55,15 @@ Only value-taking flags (arity 1) need to be listed. Boolean flags can be omitte
 | `helm.yaml` | `helm` | https://helm.sh/docs/helm/helm/ |
 | `jq.yaml` | `jq` | https://jqlang.github.io/jq/manual/ |
 | `kubectl.yaml` | `kubectl` | https://kubernetes.io/docs/reference/kubectl/ |
+| `mise.yaml` | `mise` | https://mise.jdx.dev/cli/ |
 | `mkdir.yaml` | `mkdir` | https://www.gnu.org/software/coreutils/manual/html_node/mkdir-invocation.html |
 | `sed.yaml` | `sed` | https://www.gnu.org/software/sed/manual/sed.html |
 | `sort.yaml` | `sort` | https://www.gnu.org/software/coreutils/manual/html_node/sort-invocation.html |
 | `tail.yaml` | `tail` | https://www.gnu.org/software/coreutils/manual/html_node/tail-invocation.html |
 | `tee.yaml` | `tee` | https://www.gnu.org/software/coreutils/manual/html_node/tee-invocation.html |
+| `timeout.yaml` | `timeout` | https://www.gnu.org/software/coreutils/manual/html_node/timeout-invocation.html |
 | `wc.yaml` | `wc` | https://www.gnu.org/software/coreutils/manual/html_node/wc-invocation.html |
+| `xargs.yaml` | `xargs` | https://www.gnu.org/software/findutils/manual/html_mono/find.html |
 
 ## Layer order
 

@@ -1,0 +1,38 @@
+mise:
+  description: mise-en-place tool version manager and task runner
+  source:
+    - https://mise.jdx.dev/cli/
+    - mise --help
+    - mise exec --help
+  flags:
+    c|command:
+      arity: 1
+      kind: string
+      description: Command string to execute
+    j|jobs:
+      arity: 1
+      kind: string
+      description: Number of jobs to run in parallel
+    C|cd:
+      arity: 1
+      kind: path
+      description: Change directory before running the command
+    E|env:
+      arity: 1
+      kind: string
+      description: Environment to load mise.<ENV>.toml for
+  cmds:
+    exec:
+      description: Run a command with mise-managed tools on PATH
+      wrapper: true
+      positionals:
+        - kind: string
+          description: The command mise runs, with its own arguments
+          variadic: true
+    x:
+      description: Alias for mise exec
+      wrapper: true
+      positionals:
+        - kind: string
+          description: The command mise runs, with its own arguments
+          variadic: true

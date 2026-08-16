@@ -1,0 +1,21 @@
+timeout:
+  description: Run a command with a time limit
+  source:
+    - https://www.gnu.org/software/coreutils/manual/html_node/timeout-invocation.html
+    - timeout --help
+  wrapper: true
+  positionals:
+    - kind: string
+      description: Time limit, e.g. 30 or 5m
+    - kind: string
+      description: The command timeout runs, with its own arguments
+      variadic: true
+  flags:
+    k|kill-after:
+      arity: 1
+      kind: string
+      description: Also send a KILL signal this long after the initial signal
+    s|signal:
+      arity: 1
+      kind: string
+      description: Signal sent when the time limit is reached

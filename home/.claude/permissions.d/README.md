@@ -20,6 +20,7 @@ Files are discovered in lexicographic order. A `deny` in any file wins over `all
 | `bash-mkdir-write.yaml` | Allow `mkdir` within the current project or `/tmp` |
 | `bash-readonly.yaml` | Allow common read-only utilities (cat, ls, find, grep, sed, jq, etc.) |
 | `bash-tmp-write.yaml` | Allow `tee` to write to `/tmp` |
+| `bash-wrappers.yaml` | Allow `mise`, `timeout` and `xargs`; the command each one runs keeps its own decision |
 | `claude-tools-readonly.yaml` | Rules for Claude Code tool-name patterns (readonly) |
 | `claude-tools-write.yaml` | Rules for Claude Code tool-name patterns (write/mutating) |
 | `file-tools-readonly.yaml` | Rules for Read/Grep file tool calls |

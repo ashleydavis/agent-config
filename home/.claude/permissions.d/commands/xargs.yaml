@@ -1,0 +1,43 @@
+xargs:
+  description: Build and run command lines from standard input
+  source:
+    - https://www.gnu.org/software/findutils/manual/html_mono/find.html#xargs-options
+    - xargs --help
+  wrapper: true
+  positionals:
+    - kind: string
+      description: The command xargs runs, with its own arguments
+      variadic: true
+  flags:
+    a|arg-file:
+      arity: 1
+      kind: path
+      description: Read items from a file instead of standard input
+    E:
+      arity: 1
+      kind: string
+      description: End-of-file string; input after it is ignored
+    I|replace:
+      arity: 1
+      kind: string
+      description: Replace occurrences of this string in the command with input items
+    L|max-lines:
+      arity: 1
+      kind: string
+      description: Use at most this many input lines per command line
+    n|max-args:
+      arity: 1
+      kind: string
+      description: Use at most this many arguments per command line
+    P|max-procs:
+      arity: 1
+      kind: string
+      description: Run this many commands at once
+    s|max-chars:
+      arity: 1
+      kind: string
+      description: Maximum characters per command line
+    d|delimiter:
+      arity: 1
+      kind: string
+      description: Input item delimiter
