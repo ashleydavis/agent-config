@@ -2,3 +2,8 @@
 mcp__permissions-analyzer__analyze_permission:
   decide: allow
   reason: Analyze permission decisions without side effects
+  examples:
+    allow:
+      - tool mcp__permissions-analyzer__analyze_permission
+    ask:
+      - tool mcp__permissions-analyzer__write_rule

@@ -4,6 +4,13 @@ bash:
     log:
       decide: allow
       reason: Readonly git access
+      examples:
+        allow:
+          - git log --oneline
+          - git log -n 5 --stat
+        ask:
+          # Not the log subcommand, so nothing here covers it.
+          - git shortlog
 
     branch:
       # Suppressed as soon as a branch name is given, since creating, deleting, renaming and copying all name a branch.
@@ -18,61 +25,139 @@ bash:
             options-in: [u|set-upstream, set-upstream-to, unset-upstream, edit-description]
           decide: allow
           reason: Readonly git access (lists branches, or prints the current one with --show-current)
+          examples:
+            allow:
+              - git branch
+              - git branch --show-current
+              - git branch -a
+            ask:
+              - git branch new-feature
+              - git branch -d old-feature
+              - git branch --set-upstream-to origin/main
+              - git branch --edit-description
 
     diff:
       decide: allow
       reason: Readonly git access
+      examples:
+        allow:
+          - git diff
+          - git diff --stat HEAD~1
 
     cat-file:
       decide: allow
       reason: Readonly git access (inspects object type/content, no state changes)
+      examples:
+        allow:
+          - git cat-file -p HEAD
 
     status:
       decide: allow
       reason: Readonly git access
+      examples:
+        allow:
+          - git status
+          - git status --short
 
     show:
       decide: allow
       reason: Readonly git access
+      examples:
+        allow:
+          - git show HEAD
 
     remote:
       options:
         - v
       decide: allow
       reason: Readonly git access
+      examples:
+        allow:
+          - git remote -v
+        ask:
+          - git remote add origin git@github.com:example/repo.git
+          - git remote remove origin
 
     ls-tree:
       decide: allow
       reason: Readonly git access
+      examples:
+        allow:
+          - git ls-tree HEAD
 
     ls-files:
       decide: allow
       reason: Readonly git access
+      examples:
+        allow:
+          - git ls-files
 
     ls-remote:
       decide: allow
       reason: Readonly git access (queries remote refs, no local or remote state changes)
+      examples:
+        allow:
+          - git ls-remote origin
 
     rev-parse:
       decide: allow
       reason: Readonly git access (resolves ref names to SHAs, no state changes)
+      examples:
+        allow:
+          - git rev-parse HEAD
 
     rev-list:
       decide: allow
       reason: Readonly git access (lists or counts commits in a ref range, no state changes)
+      examples:
+        allow:
+          - git rev-list --count HEAD
 
     tag:
       options:
         - l|list
       decide: allow
       reason: Readonly git access (listing tags only)
+      examples:
+        allow:
+          - git tag --list
+          - git tag -l "v*"
+        ask:
+          - git tag v1.0.0
+          - git tag -d v1.0.0
 
     worktree:
       list:
         decide: allow
         reason: Readonly git access (listing worktrees only)
+        examples:
+          allow:
+            - git worktree list
+          ask:
+            - git worktree add ../feature-branch
+            - git worktree remove ../feature-branch
 
     config:
-      cmd: core.hooksPath
-      decide: allow
-      reason: Readonly git access (prints the configured hooks path; setting a value or naming another config file is asked about in bash-git-write.yaml)
+      # Suppressed as soon as a positional other than the key itself appears, since that positional is
+      # the value being written. The regex excludes the subcommand word "config" and the key itself
+      # because not: cmd-in reads the raw positionals, subcommand word included.
+      not:
+        cmd-in:
+          - '/^(?!config$|core\.hooksPath$)/'
+      rules:
+        # These rewrite or relocate the setting without naming a value, so the parent block does not stop them.
+        - not:
+            options-in: [unset, unset-all, add, replace-all, edit, file, global, system, local, worktree]
+          cmd: core.hooksPath
+          decide: allow
+          reason: Readonly git access (prints the configured hooks path; setting a value or naming another config file is asked about in bash-git-write.yaml)
+          examples:
+            allow:
+              - git config core.hooksPath
+              - git config --get core.hooksPath
+            ask:
+              - git config core.hooksPath .githooks
+              - git config --unset core.hooksPath
+              - git config --global core.hooksPath .githooks
+              - git config user.email someone@example.com
+              - git config --global core.editor vim

@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bun ~/claude-permissions/src/pre-hook.ts"
+            "command": "bun ~/expressive-permissions/src/pre-hook.ts"
           }
         ]
       }
@@ -39,7 +39,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bun ~/claude-permissions/src/post-hook.ts"
+            "command": "bun ~/expressive-permissions/src/post-hook.ts"
           }
         ]
       }

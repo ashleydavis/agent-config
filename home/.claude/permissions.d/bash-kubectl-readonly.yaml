@@ -4,62 +4,135 @@ bash:
     get:
       decide: allow
       reason: Readonly kubectl access
+      examples:
+        allow:
+          - kubectl get pods
+          - kubectl get deployment my-app -o yaml
+        ask:
+          # Writes to the cluster, and no rule covers it.
+          - kubectl apply -f deployment.yaml
+          - kubectl delete pod my-pod
     describe:
       decide: allow
       reason: Readonly kubectl access
+      examples:
+        allow:
+          - kubectl describe pod my-pod
     logs:
       decide: allow
       reason: Readonly kubectl access
+      examples:
+        allow:
+          - kubectl logs my-pod --tail 100
+        ask:
+          # Runs a command inside the container.
+          - kubectl exec my-pod -- sh
     top:
       decide: allow
       reason: Readonly kubectl access
+      examples:
+        allow:
+          - kubectl top nodes
     explain:
       decide: allow
       reason: Readonly kubectl access
+      examples:
+        allow:
+          - kubectl explain pod.spec
     version:
       decide: allow
       reason: Readonly kubectl access
+      examples:
+        allow:
+          - kubectl version --client
     cluster-info:
       decide: allow
       reason: Readonly kubectl access
+      examples:
+        allow:
+          - kubectl cluster-info
     api-resources:
       decide: allow
       reason: Readonly kubectl access
+      examples:
+        allow:
+          - kubectl api-resources
     api-versions:
       decide: allow
       reason: Readonly kubectl access
+      examples:
+        allow:
+          - kubectl api-versions
     events:
       decide: allow
       reason: Readonly kubectl access
+      examples:
+        allow:
+          - kubectl events --all-namespaces
     diff:
       decide: allow
       reason: Readonly kubectl access (server-side dry-run)
+      examples:
+        allow:
+          - kubectl diff -f deployment.yaml
     wait:
       decide: allow
       reason: Readonly kubectl access (observes state, does not modify)
+      examples:
+        allow:
+          - kubectl wait --for=condition=Ready pod/my-pod
     options:
       decide: allow
       reason: Readonly kubectl access
+      examples:
+        allow:
+          - kubectl options
     config:
       get-contexts:
         decide: allow
         reason: Readonly kubectl access
+        examples:
+          allow:
+            - kubectl config get-contexts
+          ask:
+            # Switches the context every later command runs against.
+            - kubectl config use-context production
       current-context:
         decide: allow
         reason: Readonly kubectl access
+        examples:
+          allow:
+            - kubectl config current-context
       view:
         decide: allow
         reason: Readonly kubectl access
+        examples:
+          allow:
+            - kubectl config view
+          ask:
+            - kubectl config set-context --current --namespace production
       get-clusters:
         decide: allow
         reason: Readonly kubectl access
+        examples:
+          allow:
+            - kubectl config get-clusters
       get-users:
         decide: allow
         reason: Readonly kubectl access
+        examples:
+          allow:
+            - kubectl config get-users
     auth:
       can-i:
         decide: allow
         reason: Readonly kubectl access
+        examples:
+          allow:
+            - kubectl auth can-i create pods
       whoami:
         decide: allow
         reason: Readonly kubectl access
+        examples:
+          allow:
+            - kubectl auth whoami

@@ -5,107 +5,226 @@ bash:
     completion:
       decide: allow
       reason: Readonly helm access (generates completion scripts)
+      examples:
+        allow:
+          - helm completion bash
     diff:
       decide: allow
       reason: Readonly helm access (preview diffs only; does not apply changes)
+      examples:
+        allow:
+          - helm diff upgrade my-release ./chart
+        ask:
+          # Applies the change, and no rule covers it.
+          - helm upgrade my-release ./chart
     env:
       decide: allow
       reason: Readonly helm access
+      examples:
+        allow:
+          - helm env
     get:
       all:
         decide: allow
         reason: Readonly helm access
+        examples:
+          allow:
+            - helm get all my-release
       hooks:
         decide: allow
         reason: Readonly helm access
+        examples:
+          allow:
+            - helm get hooks my-release
       manifest:
         decide: allow
         reason: Readonly helm access
+        examples:
+          allow:
+            - helm get manifest my-release
       metadata:
         decide: allow
         reason: Readonly helm access
+        examples:
+          allow:
+            - helm get metadata my-release
       notes:
         decide: allow
         reason: Readonly helm access
+        examples:
+          allow:
+            - helm get notes my-release
       values:
         decide: allow
         reason: Readonly helm access
+        examples:
+          allow:
+            - helm get values my-release
     history:
       decide: allow
       reason: Readonly helm access
+      examples:
+        allow:
+          - helm history my-release
+        ask:
+          # Moves the release back to an earlier revision, and no rule covers it.
+          - helm rollback my-release 1
     lint:
       decide: allow
       reason: Readonly helm access (chart validation)
+      examples:
+        allow:
+          - helm lint ./chart
     list:
       decide: allow
       reason: Readonly helm access
+      examples:
+        allow:
+          - helm list --all-namespaces
+        ask:
+          - helm uninstall my-release
     search:
       decide: allow
       reason: Readonly helm access (chart search)
+      examples:
+        allow:
+          - helm search repo nginx
     show:
       all:
         decide: allow
         reason: Readonly helm access
+        examples:
+          allow:
+            - helm show all ./chart
       chart:
         decide: allow
         reason: Readonly helm access
+        examples:
+          allow:
+            - helm show chart ./chart
       crds:
         decide: allow
         reason: Readonly helm access
+        examples:
+          allow:
+            - helm show crds ./chart
       readme:
         decide: allow
         reason: Readonly helm access
+        examples:
+          allow:
+            - helm show readme ./chart
       values:
         decide: allow
         reason: Readonly helm access
+        examples:
+          allow:
+            - helm show values ./chart
     inspect:
       all:
         decide: allow
         reason: Readonly helm access (alias for show)
+        examples:
+          allow:
+            - helm inspect all ./chart
       chart:
         decide: allow
         reason: Readonly helm access (alias for show)
+        examples:
+          allow:
+            - helm inspect chart ./chart
       crds:
         decide: allow
         reason: Readonly helm access (alias for show)
+        examples:
+          allow:
+            - helm inspect crds ./chart
       readme:
         decide: allow
         reason: Readonly helm access (alias for show)
+        examples:
+          allow:
+            - helm inspect readme ./chart
       values:
         decide: allow
         reason: Readonly helm access (alias for show)
+        examples:
+          allow:
+            - helm inspect values ./chart
     status:
       decide: allow
       reason: Readonly helm access
+      examples:
+        allow:
+          - helm status my-release
     template:
       decide: allow
       reason: Readonly helm access (local render)
+      examples:
+        allow:
+          - helm template my-release ./chart
+        ask:
+          - helm install my-release ./chart
     verify:
       decide: allow
       reason: Readonly helm access (signature verification)
+      examples:
+        allow:
+          - helm verify ./chart-1.0.0.tgz
     version:
       decide: allow
       reason: Readonly helm access
+      examples:
+        allow:
+          - helm version
     dependency:
       list:
         decide: allow
         reason: Readonly helm access (list dependencies only)
+        examples:
+          allow:
+            - helm dependency list ./chart
+          ask:
+            # Downloads charts into the local chart directory.
+            - helm dependency update ./chart
     dep:
       list:
         decide: allow
         reason: Readonly helm access (list dependencies only)
+        examples:
+          allow:
+            - helm dep list ./chart
+          ask:
+            - helm dep build ./chart
     dependencies:
       list:
         decide: allow
         reason: Readonly helm access (list dependencies only)
+        examples:
+          allow:
+            - helm dependencies list ./chart
     repo:
       list:
         decide: allow
         reason: Readonly helm access (list repositories only)
+        examples:
+          allow:
+            - helm repo list
+          ask:
+            - helm repo add bitnami https://charts.bitnami.com/bitnami
+            - helm repo update
     plugin:
       list:
         decide: allow
         reason: Readonly helm access (list plugins only)
+        examples:
+          allow:
+            - helm plugin list
+          ask:
+            - helm plugin install https://github.com/databus23/helm-diff
       verify:
         decide: allow
         reason: Readonly helm access (plugin signature verification)
+        examples:
+          allow:
+            - helm plugin verify ./plugin

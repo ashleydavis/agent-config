@@ -2,3 +2,10 @@
 mcp__photosphere__*:
   decide: allow
   reason: Photosphere MCP access
+  examples:
+    allow:
+      - tool mcp__photosphere__get_assets
+      - tool mcp__photosphere__set_description
+    ask:
+      # Another server's tools do not match the glob.
+      - tool mcp__other_server__get_assets

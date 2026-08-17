@@ -9,19 +9,51 @@ bash:
     stash:
       decide: deny
       reason: Avoid losing uncommitted work
+      examples:
+        deny:
+          - git stash
+          - git stash push -m "work in progress"
+          - git stash pop
+        ask:
+          # Deliberately unmatched, so it prompts instead of being denied outright.
+          - git commit -m "work in progress"
 
     restore:
       decide: deny
       reason: Avoid discarding uncommitted changes
+      examples:
+        deny:
+          - git restore src/index.ts
+          - git restore --staged src/index.ts
+        ask:
+          # Same effect as restore, deliberately unmatched so a project can authorise it.
+          - git checkout -- src/index.ts
 
     revert:
       decide: deny
       reason: Avoid creating revert commits without explicit approval
+      examples:
+        deny:
+          - git revert HEAD
+        ask:
+          - git cherry-pick 1a2b3c4
 
     reset:
       decide: deny
       reason: Avoid rewriting history or losing changes
+      examples:
+        deny:
+          - git reset --hard HEAD~1
+          - git reset --soft HEAD~1
+        ask:
+          - git rebase main
 
     clean:
       decide: deny
       reason: Avoid permanently deleting untracked files
+      examples:
+        deny:
+          - git clean -fd
+          - git clean --force
+        ask:
+          - git rm --cached notes.txt

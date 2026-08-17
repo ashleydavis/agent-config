@@ -10,41 +10,90 @@ bash:
         - h|help
       decide: allow
       reason: npm version/help; read-only
+      examples:
+        allow:
+          - npm --version
+          - npm -v
+          - npm --help
+        ask:
+          - npm install express
+          - npm publish
     - ls:
         decide: allow
         reason: List installed packages; read-only, local
+        examples:
+          allow:
+            - npm ls
+            - npm ls --depth 0
+          ask:
+            # Hits the registry, so no rule covers it.
+            - npm outdated
     - list:
         decide: allow
         reason: List installed packages; read-only, local
+        examples:
+          allow:
+            - npm list
     - root:
         decide: allow
         reason: Print install root path; read-only
+        examples:
+          allow:
+            - npm root
     - prefix:
         decide: allow
         reason: Print prefix path; read-only
+        examples:
+          allow:
+            - npm prefix
     - bin:
         decide: allow
         reason: Print bin path; read-only
+        examples:
+          allow:
+            - npm bin
     - explain:
         decide: allow
         reason: Explain why a package is installed; read-only, local
+        examples:
+          allow:
+            - npm explain picomatch
     - help:
         decide: allow
         reason: Help text; read-only
+        examples:
+          allow:
+            - npm help install
     - config:
         get:
           decide: allow
           reason: Read npm config value; read-only
+          examples:
+            allow:
+              - npm config get registry
+            ask:
+              - npm config set registry https://registry.example.com
         list:
           decide: allow
           reason: List npm config; read-only
+          examples:
+            allow:
+              - npm config list
         ls:
           decide: allow
           reason: List npm config; read-only
+          examples:
+            allow:
+              - npm config ls
     - pkg:
         get:
           decide: allow
           reason: Read a package.json field; read-only
+          examples:
+            allow:
+              - npm pkg get version
+            ask:
+              - npm pkg set version=2.0.0
 
   npx:
     options-in:
@@ -52,3 +101,9 @@ bash:
       - help
     decide: allow
     reason: npx version/help only; running a package downloads and executes code
+    examples:
+      allow:
+        - npx --version
+        - npx --help
+      ask:
+        - npx cowsay hello

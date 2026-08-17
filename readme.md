@@ -39,7 +39,7 @@ brew install stow
 
 `settings.json` wires in hooks that shell out to two other repos. Both must be cloned into `$HOME` (the paths are hard-coded in the hook commands) and have their dependencies installed before Claude Code will run cleanly:
 
-- [`claude-permissions`](https://github.com/ashleydavis/claude-permissions): provides the `PreToolUse` and `PostToolUse` hooks (`~/claude-permissions/src/pre-hook.ts`, `post-hook.ts`).
+- [`expressive-permissions`](https://github.com/ashleydavis/expressive-permissions): provides the `PreToolUse` and `PostToolUse` hooks (`~/expressive-permissions/src/pre-hook.ts`, `post-hook.ts`).
 - [`claude-tools-runner`](https://github.com/ashleydavis/claude-tools-runner): provides the `Stop` hook (`~/claude-tools-runner/src/stop-hook.ts`).
 
 Both hooks are invoked via `bun`, so `bun` must be on `PATH` as well.
@@ -68,6 +68,41 @@ stow -D -t "$HOME" home
 ```
 
 Removes the symlinks but leaves the files in this repo.
+
+## Testing the permissions rules
+
+Every rule under `home/.claude/permissions.d/` carries an `examples:` block: real commands listed under the decision each one should produce.
+
+```yaml
+    tag:
+      options:
+        - l|list
+      decide: allow
+      reason: Readonly git access (listing tags only)
+      examples:
+        allow:
+          - git tag --list
+          - git tag -l "v*"
+        ask:
+          - git tag v1.0.0
+          - git tag -d v1.0.0
+```
+
+`allow` and `deny` list what the rule is meant to decide. `ask` lists the near misses it deliberately leaves alone: nothing matches them, so they fall through to a prompt. An entry is either a command string, or `cmd` plus the `cwd` the command runs in when the rule matches on the working directory. A relative `cwd` resolves against the stand-in project described below, and the examples in this repo use relative paths, so no rule names a directory that only exists on one machine. Non-Bash rules (Read, Write, Edit, WebFetch, MCP and other tools) use the prefix syntax: `read <path>`, `write <path>`, `webfetch <url>`, `tool <name>`, and the Read, Write and Edit examples name an absolute path under that stand-in project, for example `read /project/readme.md`.
+
+The [`permissions` workflow](.github/workflows/permissions.yml) runs these on every push and pull request. It checks out [expressive-permissions](https://github.com/ashleydavis/expressive-permissions) beside this repo's checkout and, from the engine checkout, runs `bun run check-config ../agent-config/home`. That decides every example with the real permissions engine, calling it directly rather than through the REPL, and fails when a rule stops deciding what it says it decides, or when a rule has no example at all.
+
+To run the same check locally, with the engine cloned beside this repo as `expressive-permissions` (the location the prerequisites above describe), starting from this repo's root:
+
+```bash
+cd ../expressive-permissions
+bun install
+bun run check-config ../agent-config/home
+```
+
+The one argument is the `.claude` directory holding the rules, and the rules load from there. The examples themselves are decided against a stand-in project directory, `/project`: that is what `${{PROJECT_DIR}}` expands to while checking, what a relative `cwd` resolves against, and the working directory an example runs in unless it names its own. It does not have to exist, which is why no example in this repo names a directory belonging to one machine. Add `--filter <text>` to check one file or one command, and `--list` to print the collected examples without checking them.
+
+The `/permissions:examples:*` commands do this from inside any project, over the global rules plus that project's own `.claude` rules: `setup` writes examples for rules that have none, `add` records one command against the rule that decides it, and `test` runs the check. See [their readme](home/.claude/commands/permissions/examples/README.txt).
 
 ## Cursor troubleshooting
 

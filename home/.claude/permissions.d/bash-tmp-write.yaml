@@ -4,3 +4,10 @@ bash:
     cmd: /tmp/**
     decide: allow
     reason: tee output to /tmp (safe scratch area; common for capturing logs)
+    examples:
+      allow:
+        - tee /tmp/build.log
+        - tee -a /tmp/build.log
+      ask:
+        - tee /etc/hosts
+        - tee build.log

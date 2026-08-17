@@ -2,15 +2,34 @@
 mcp__claude_ai_Atlassian__searchJiraIssuesUsingJql:
   decide: allow
   reason: Readonly Jira access
+  examples:
+    allow:
+      - tool mcp__claude_ai_Atlassian__searchJiraIssuesUsingJql
+    ask:
+      # Creating or editing an issue is not covered by any rule.
+      - tool mcp__claude_ai_Atlassian__createJiraIssue
 
 mcp__claude_ai_Atlassian__getJiraIssue:
   decide: allow
   reason: Readonly Jira access
+  examples:
+    allow:
+      - tool mcp__claude_ai_Atlassian__getJiraIssue
 
 mcp__claude_ai_Atlassian__getTransitionsForJiraIssue:
   decide: allow
   reason: Readonly Jira access
+  examples:
+    allow:
+      - tool mcp__claude_ai_Atlassian__getTransitionsForJiraIssue
+    ask:
+      - tool mcp__claude_ai_Atlassian__transitionJiraIssue
 
 mcp__claude_ai_Atlassian__getConfluencePage:
   decide: allow
   reason: Readonly Confluence access
+  examples:
+    allow:
+      - tool mcp__claude_ai_Atlassian__getConfluencePage
+    ask:
+      - tool mcp__claude_ai_Atlassian__updateConfluencePage

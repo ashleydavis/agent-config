@@ -34,3 +34,26 @@ bash:
     cwd: "${{PROJECT_DIR}}/**"
     decide: allow
     reason: Local / read-only Terraform inside the project directory
+    examples:
+      allow:
+        # A relative cwd resolves against the project directory.
+        - cmd: terraform plan
+          cwd: infrastructure
+        # The project root matches the cwd pattern as well as directories under it.
+        - cmd: terraform plan
+          cwd: .
+        - cmd: terraform validate
+          cwd: infrastructure
+        - cmd: terraform state list
+          cwd: infrastructure
+      ask:
+        # Mutating subcommands, suppressed by the not: block.
+        - cmd: terraform apply
+          cwd: infrastructure
+        - cmd: terraform destroy
+          cwd: infrastructure
+        - cmd: terraform state rm aws_s3_bucket.example
+          cwd: infrastructure
+        # Outside the project tree.
+        - cmd: terraform plan
+          cwd: /tmp

@@ -4,56 +4,104 @@ bash:
     cmd: "${{PROJECT_DIR}}/**"
     decide: allow
     reason: Readonly file access within current project
+    examples:
+      allow:
+        # Relative paths resolve against cwd, which is inside the project.
+        - cat readme.md
+      ask:
+        - cat /etc/passwd
 
   ls:
     decide: allow
     reason: Readonly file system access
+    examples:
+      allow:
+        - ls
+        - ls -la /etc
 
   pwd:
     decide: allow
     reason: Print working directory (read-only)
+    examples:
+      allow:
+        - pwd
 
   cd:
     cmd: "${{PROJECT_DIR}}/**"
     decide: allow
     reason: cd targets under the project (same ./** semantics as cat/find)
+    examples:
+      allow:
+        - cd src
+      ask:
+        - cd /etc
 
   find:
     cmd: "${{PROJECT_DIR}}/**"
     decide: allow
     reason: Readonly search within current directory (relative paths only)
+    examples:
+      allow:
+        - find src -name "*.ts"
+        - find src -type f
+      ask:
+        - find /etc -name "*.conf"
 
   file:
     decide: allow
     reason: Reports file type via magic bytes; read-only, does not execute the target
+    examples:
+      allow:
+        - file readme.md
 
   wc:
     decide: allow
     reason: Counting lines/words/chars
+    examples:
+      allow:
+        - wc -l readme.md
 
   cut:
     decide: allow
     reason: Selecting fields/bytes/chars from text
+    examples:
+      allow:
+        - cut -d, -f1 data.csv
 
   uniq:
     decide: allow
     reason: Deduplicating output
+    examples:
+      allow:
+        - uniq names.txt
 
   head:
     decide: allow
     reason: Readonly file access
+    examples:
+      allow:
+        - head -n 20 readme.md
 
   tail:
     decide: allow
     reason: Readonly file access
+    examples:
+      allow:
+        - tail -n 20 readme.md
 
   jq:
     decide: allow
     reason: JSON processing
+    examples:
+      allow:
+        - jq .name package.json
 
   hcl2json:
     decide: allow
     reason: Converts HCL/Terraform to JSON on stdout; read-only
+    examples:
+      allow:
+        - hcl2json main.tf
 
   yq:
     decide: allow
@@ -61,6 +109,12 @@ bash:
       options:
         - i|inplace
     reason: YAML processing on stdout; read-only (in-place edits with -i fall through to ask)
+    examples:
+      allow:
+        - yq .services docker-compose.yaml
+      ask:
+        - yq -i ".bash.ls.decide = \"deny\"" config.yaml
+        - yq --inplace ".a = 1" config.yaml
 
   awk:
     not:
@@ -68,25 +122,56 @@ bash:
         - '/system *\(/'
     decide: allow
     reason: awk text processing; reads input and prints to stdout. A program calling system() matches nothing and falls through to the default prompt
+    examples:
+      allow:
+        - awk "{print $1}" data.txt
+      ask:
+        - awk "{system(\"rm -rf /\")}" data.txt
 
   sort:
     decide: allow
     reason: Sorting output
+    examples:
+      allow:
+        - sort -u names.txt
 
   grep:
     decide: allow
     reason: Searching file contents
+    examples:
+      allow:
+        - grep -rn TODO src
 
   diff:
     decide: allow
     reason: Comparing files; reads only, writes to stdout
+    examples:
+      allow:
+        - diff readme.md docs/readme.md
 
   sed:
-    - cmd-in:
+    # cmd-in is satisfied by any one positional, and a sed script such as "s/old/new/" is itself
+    # read as a relative path inside the project, so cmd-in alone would allow an in-place edit of
+    # any file named alongside it. These two regexes take that back: the first suppresses the rule
+    # on an absolute path outside the project and /tmp, the second on any path stepping up through
+    # "..". Regex cmd-in patterns match the positional as written, before it is resolved.
+    - not:
+        cmd-in:
+          - '/^(?!\/tmp\/)(?!${{PROJECT_DIR}}\/)\//'
+          - '/(^|\/)\.\.(\/|$)/'
+      cmd-in:
         - "${{PROJECT_DIR}}/**"
         - "/tmp/**"
       decide: allow
       reason: Allow sed (read or in-place edit) on files within the project directory or /tmp
+      examples:
+        allow:
+          - sed -i "s/old/new/" readme.md
+          - sed "s/old/new/" /tmp/scratch.txt
+        ask:
+          - sed -i "s/old/new/" /etc/hosts
+          - sed -i "s/old/new/" ../outside-the-project/readme.md
+          - sed -i "s/old/new/" src/../../outside-the-project/readme.md
     - decide: allow
       options:
         - n
@@ -96,19 +181,36 @@ bash:
         - "/tmp"
         - "/tmp/**"
       reason: sed -n when cwd is project or /tmp
+      examples:
+        allow:
+          - cmd: sed -n "1,10p"
+            cwd: /tmp
+        ask:
+          - cmd: sed -n "1,10p"
+            cwd: /etc
     - decide: allow
       not:
         cmd-in:
           - "**"
       reason: sed with no positional args (stdin only); not applies when any path arg exists
+      examples:
+        allow:
+          - cmd: sed
+            cwd: /etc
 
   echo:
     decide: allow
     reason: Just printing stuff
+    examples:
+      allow:
+        - echo hello
 
   sleep:
     decide: allow
     reason: Pauses execution; no side effects
+    examples:
+      allow:
+        - sleep 5
 
   date:
     decide: allow
@@ -116,31 +218,62 @@ bash:
       options:
         - s|set
     reason: Prints the current date/time; read-only (setting the system clock with -s/--set falls through to ask)
+    examples:
+      allow:
+        - date
+        - date +%Y-%m-%d
+      ask:
+        - date -s "2026-01-01 00:00:00"
+        - date --set "2026-01-01 00:00:00"
 
   ps:
     decide: allow
     reason: Process listing; reads from /proc with no side effects
+    examples:
+      allow:
+        - ps aux
 
   nproc:
     decide: allow
     reason: Reports CPU count; read-only
+    examples:
+      allow:
+        - nproc
 
   free:
     decide: allow
     reason: Reports memory usage; read-only
+    examples:
+      allow:
+        - free -h
 
   command:
     options:
       - v
     decide: allow
     reason: Command lookup (command -v); read-only, does not execute the target
+    examples:
+      allow:
+        - command -v bun
+      ask:
+        # Without -v this runs the command instead of looking it up.
+        - command rm -rf build
 
   which:
     decide: allow
     reason: Binary lookup in PATH; read-only, does not execute the target
+    examples:
+      allow:
+        - which bun
 
   bash:
     options:
       - n
     decide: allow
     reason: Syntax check only (bash -n / noexec); no commands are executed
+    examples:
+      allow:
+        - bash -n deploy.sh
+      ask:
+        - bash deploy.sh
+        - bash -c "rm -rf build"

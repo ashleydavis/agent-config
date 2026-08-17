@@ -1,3 +1,6 @@
+# Scratch space for test runs (permissions test home, captured output)
+tmp/
+
 # Claude runtime/state directories created when claude runs in this repo
 .claude/permissions-log/
 .claude/permissions-debug.log

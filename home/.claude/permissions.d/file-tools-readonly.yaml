@@ -3,3 +3,9 @@ read:
   path: "${{PROJECT_DIR}}/**"
   decide: allow
   reason: OK to read any files in the current project
+  examples:
+    allow:
+      - read /project/readme.md
+      - read /project/src/index.ts
+    ask:
+      - read /etc/hosts

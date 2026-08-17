@@ -4,6 +4,20 @@ bash:
     - cmd: "${{PROJECT_DIR}}/**"
       decide: allow
       reason: Create directories within the current project
+      examples:
+        allow:
+          # Relative paths resolve against cwd, which is inside the project.
+          - mkdir tmp
+          - mkdir -p tmp/output
+        ask:
+          - mkdir /etc/example
+          - mkdir /usr/local/example
     - cmd: /tmp/**
       decide: allow
       reason: Create directories in /tmp scratch space
+      examples:
+        allow:
+          - mkdir /tmp/scratch
+          - mkdir -p /tmp/scratch/logs
+        ask:
+          - mkdir /var/tmp/scratch

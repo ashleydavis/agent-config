@@ -3,9 +3,26 @@ bash:
   mise:
     decide: allow
     reason: mise only selects pinned tool versions; the command it runs is decided on its own
+    examples:
+      allow:
+        - mise --version
+        - mise exec -- bun --version
+      ask:
+        # The wrapper is allowed, the command it runs is not, and the stricter decision wins.
+        - mise exec -- npm install express
   timeout:
     decide: allow
     reason: timeout only time-limits the command it runs; that command is decided on its own
+    examples:
+      allow:
+        - timeout 30 git status
+      ask:
+        - timeout 30 npm install express
   xargs:
     decide: allow
     reason: xargs only feeds stdin to the command it runs; that command is decided on its own
+    examples:
+      allow:
+        - xargs grep decide
+      ask:
+        - xargs rm

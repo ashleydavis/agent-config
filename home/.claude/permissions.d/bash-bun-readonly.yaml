@@ -9,19 +9,46 @@ bash:
         - revision
       decide: allow
       reason: bun version/help/revision info; read-only
+      examples:
+        allow:
+          - bun --version
+          - bun -v
+          - bun --help
+          - bun --revision
+        ask:
+          - bun outdated
+          - bun update
     - pm:
         ls:
           decide: allow
           reason: List installed packages; read-only, local
+          examples:
+            allow:
+              - bun pm ls
+              - bun pm ls --all
+            ask:
+              - bun pm cache rm
         bin:
           decide: allow
           reason: Print bin path; read-only
+          examples:
+            allow:
+              - bun pm bin
         hash:
           decide: allow
           reason: Print lockfile hash; read-only
+          examples:
+            allow:
+              - bun pm hash
     - why:
         decide: allow
         reason: Explain why a package is installed; read-only, local
+        examples:
+          allow:
+            - bun why picomatch
+          ask:
+            # Runs the package's code, so no rule covers it.
+            - bun x cowsay hello
 
   bunx:
     options-in:
@@ -29,3 +56,9 @@ bash:
       - h|help
     decide: allow
     reason: bunx version/help only; running a package downloads and executes code
+    examples:
+      allow:
+        - bunx --version
+        - bunx --help
+      ask:
+        - bunx cowsay hello

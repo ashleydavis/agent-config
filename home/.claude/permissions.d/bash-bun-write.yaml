@@ -5,16 +5,36 @@ bash:
       cwd-in:
         # "./" → resolved project directory only. Matches e.g. cwd `/home/you/acme` when the project is `acme`. Does not match e.g. `/home/you/acme/apps/api`.
         - "./"
-        # "./**" → cwd strictly inside that directory (any depth). Matches e.g. `/home/you/acme/apps/api`. Does not match cwd exactly `/home/you/acme` alone (the `/**` pattern excludes the bare base path in claude-permissions).
+        # "./**" → cwd strictly inside that directory (any depth). Matches e.g. `/home/you/acme/apps/api`. Does not match cwd exactly `/home/you/acme` alone (the `/**` pattern excludes the bare base path in expressive-permissions).
         - "./**"
       decide: allow
       reason: bun install with cwd at project root or under it (./ and ./** per load-config baseDir)
+      examples:
+        allow:
+          - bun install
+          - cmd: bun install
+            cwd: packages/api
+        ask:
+          # Outside the project tree, so the cwd-in patterns miss it.
+          - cmd: bun install
+            cwd: /tmp
     run:
       cmd: "${{PROJECT_DIR}}/**"
       cwd-in:
         # "./" → resolved project directory only. Matches e.g. cwd `/home/you/acme` when the project is `acme`. Does not match e.g. `/home/you/acme/apps/api`.
         - "./"
-        # "./**" → cwd strictly inside that directory (any depth). Matches e.g. `/home/you/acme/apps/api`. Does not match cwd exactly `/home/you/acme` alone (the `/**` pattern excludes the bare base path in claude-permissions).
+        # "./**" → cwd strictly inside that directory (any depth). Matches e.g. `/home/you/acme/apps/api`. Does not match cwd exactly `/home/you/acme` alone (the `/**` pattern excludes the bare base path in expressive-permissions).
         - "./**"
       decide: allow
       reason: bun run project scripts/paths; cwd at project root or under it
+      examples:
+        allow:
+          - bun run scripts/build.ts
+          # A package.json script name resolves against cwd, so it lands inside the project too.
+          - bun run build
+        ask:
+          # A path outside the project.
+          - bun run /etc/profile.d/example.ts
+          # Inside the project, but run from outside it.
+          - cmd: bun run scripts/build.ts
+            cwd: /tmp

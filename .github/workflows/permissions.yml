@@ -1,0 +1,38 @@
+name: permissions
+
+# Decides every example written into the permission rules with the expressive-permissions engine
+# and fails when a rule stops deciding what it says it decides.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  rule-examples:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out this config
+        uses: actions/checkout@v4
+        with:
+          path: agent-config
+
+      - name: Check out the permissions engine
+        uses: actions/checkout@v4
+        with:
+          repository: ashleydavis/expressive-permissions
+          path: expressive-permissions
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+
+      - name: Install engine dependencies
+        working-directory: expressive-permissions
+        run: bun install --frozen-lockfile
+
+      - name: Check every rule against its examples
+        run: agent-config/scripts/test-global-permission.sh "$GITHUB_WORKSPACE/expressive-permissions"

@@ -4,7 +4,7 @@ description: Review an automatic permissions decision from an audit-log or pendi
 
 Review a highlighted snippet from an audit log or a pending permissions approval file: explain why it got the decisions it did, advise on any unconfigured sub-commands, and configure permissions based on the user's choices.
 
-Follow the workflow in [REVIEWING-DECISIONS.md](~/claude-permissions/docs/REVIEWING-DECISIONS.md). It links onward to every doc you need (reading the snippet, the safety rubric, and how to write rules). Do not rely on memory for any of that detail: read the docs, since they change.
+Follow the workflow in [REVIEWING-DECISIONS.md](~/expressive-permissions/docs/REVIEWING-DECISIONS.md). It links onward to every doc you need (reading the snippet, the safety rubric, and how to write rules). Do not rely on memory for any of that detail: read the docs, since they change.
 
 This command runs the full workflow interactively:
 

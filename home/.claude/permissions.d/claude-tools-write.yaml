@@ -2,27 +2,51 @@
 TodoWrite:
   decide: allow
   reason: Managing todo lists and task tracking
+  examples:
+    allow:
+      - tool TodoWrite
 
 Agent:
   decide: allow
   reason: Spawning subagents for research and parallel work
+  examples:
+    allow:
+      - tool Agent
 
 TaskCreate:
   decide: allow
   reason: Creating tasks has no significant side effects
+  examples:
+    allow:
+      - tool TaskCreate
 
 TaskUpdate:
   decide: allow
   reason: Updating a task list entry has no significant side effects
+  examples:
+    allow:
+      - tool TaskUpdate
 
 TaskStop:
   decide: allow
   reason: Terminates a background task started in this session; local cleanup only
+  examples:
+    allow:
+      - tool TaskStop
 
 AskUserQuestion:
   decide: allow
   reason: Prompts the user for input; no external side effects
+  examples:
+    allow:
+      - tool AskUserQuestion
 
 ExitWorktree:
   decide: allow
   reason: Exits a worktree session and restores the original working directory; local cleanup only
+  examples:
+    allow:
+      - tool ExitWorktree
+    ask:
+      # Entering a worktree is not covered by any rule.
+      - tool EnterWorktree

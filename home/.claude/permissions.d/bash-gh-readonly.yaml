@@ -6,152 +6,348 @@ bash:
           options-in: [X|method, f|raw-field, F|field, input]
         decide: allow
         reason: Readonly gh api (GET by default; blocked when a mutating method or field/input flag is present)
+        examples:
+          allow:
+            - gh api repos/example/repo
+            - gh api /user --jq .login
+          ask:
+            - gh api -X POST repos/example/repo/issues
+            - gh api repos/example/repo/issues -f title=bug
+            - gh api repos/example/repo/issues --input payload.json
     status:
       decide: allow
       reason: Readonly gh access
+      examples:
+        allow:
+          - gh status
     version:
       decide: allow
       reason: Readonly gh access
+      examples:
+        allow:
+          - gh version
     search:
       decide: allow
       reason: Readonly gh search (all subcommands are readonly)
+      examples:
+        allow:
+          - gh search repos permissions
+          - gh search issues --repo example/repo is:open
     browse:
       decide: allow
       reason: Opens a browser, no remote side effects
+      examples:
+        allow:
+          - gh browse
+          - gh browse --no-browser
     auth:
       status:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh auth status
+          ask:
+            - gh auth login
+            - gh auth refresh --scopes repo
     repo:
       view:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh repo view example/repo
+          ask:
+            - gh repo create example/new-repo --public
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh repo list example
+          ask:
+            - gh repo delete example/repo
     issue:
       view:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh issue view 42
+          ask:
+            - gh issue close 42
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh issue list --state open
+          ask:
+            - gh issue create --title "Broken" --body "Details"
       status:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh issue status
     pr:
       view:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh pr view 7
+          ask:
+            - gh pr merge 7 --squash
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh pr list --state open
+          ask:
+            - gh pr create --title "Add tests" --body "Details"
       status:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh pr status
+          ask:
+            - gh pr close 7
       checks:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh pr checks 7
       diff:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh pr diff 7
+          ask:
+            - gh pr review 7 --approve
     release:
       view:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh release view v1.0.0
+          ask:
+            - gh release create v1.0.0
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh release list
+          ask:
+            - gh release delete v1.0.0
     run:
       view:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh run view 123456
+          ask:
+            - gh run cancel 123456
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh run list --workflow ci.yml
+          ask:
+            - gh run rerun 123456
       watch:
         decide: allow
         reason: Readonly gh access (observes run, no modification)
+        examples:
+          allow:
+            - gh run watch 123456
     workflow:
       view:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh workflow view ci.yml
+          ask:
+            - gh workflow run ci.yml
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh workflow list
+          ask:
+            - gh workflow disable ci.yml
     label:
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh label list
+          ask:
+            - gh label create bug --color ff0000
     gist:
       view:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh gist view abc123
+          ask:
+            - gh gist create notes.txt
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh gist list
+          ask:
+            - gh gist delete abc123
     org:
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh org list
     ssh-key:
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh ssh-key list
+          ask:
+            - gh ssh-key add key.pub
     gpg-key:
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh gpg-key list
+          ask:
+            - gh gpg-key add key.asc
     codespace:
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh codespace list
+          ask:
+            - gh codespace create --repo example/repo
       view:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh codespace view
+          ask:
+            - gh codespace delete --codespace example-codespace
     cache:
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh cache list
+          ask:
+            - gh cache delete --all
     ruleset:
       view:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh ruleset view 1
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh ruleset list
       check:
         decide: allow
         reason: Readonly gh access (evaluates rules, does not modify)
+        examples:
+          allow:
+            - gh ruleset check --branch main
     secret:
       list:
         decide: allow
         reason: Readonly gh access (lists names only, not values)
+        examples:
+          allow:
+            - gh secret list
+          ask:
+            - gh secret set API_TOKEN
     variable:
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh variable list
+          ask:
+            - gh variable set BUILD_ENV --body production
     extension:
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh extension list
+          ask:
+            - gh extension install example/gh-extension
       search:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh extension search dashboard
     project:
       view:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh project view 1
+          ask:
+            - gh project create --title Roadmap
       list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh project list
       field-list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh project field-list 1
       item-list:
         decide: allow
         reason: Readonly gh access
+        examples:
+          allow:
+            - gh project item-list 1
+          ask:
+            - gh project item-add 1 --url https://github.com/example/repo/issues/42
     attestation:
       verify:
         decide: allow
         reason: Readonly gh access (verifies attestation, no modification)
+        examples:
+          allow:
+            - gh attestation verify example.tar.gz --owner example

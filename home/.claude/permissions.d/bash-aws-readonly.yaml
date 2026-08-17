@@ -12,12 +12,36 @@ bash:
     - cmd: "* describe-*"
       decide: allow
       reason: Readonly AWS access (describe-*)
+      examples:
+        allow:
+          - aws ec2 describe-instances
+          - aws rds describe-db-instances --region ap-southeast-2
+        ask:
+          - aws ec2 terminate-instances --instance-ids i-1234567890abcdef0
     - cmd: "* list-*"
       decide: allow
       reason: Readonly AWS access (list-*)
+      examples:
+        allow:
+          - aws s3api list-buckets
+          - aws lambda list-functions
+        ask:
+          - aws lambda delete-function --function-name my-function
     - cmd: "* get-*"
       decide: allow
       reason: Readonly AWS access (get-*)
+      examples:
+        allow:
+          - aws sts get-caller-identity
+          - aws secretsmanager get-secret-value --secret-id my-secret
+        ask:
+          - aws secretsmanager put-secret-value --secret-id my-secret --secret-string x
     - help:
         decide: allow
         reason: Readonly AWS access (help text)
+        examples:
+          allow:
+            - aws help
+          ask:
+            # s3 cp writes objects, and no rule covers it.
+            - aws s3 cp local.txt s3://example-bucket/local.txt
