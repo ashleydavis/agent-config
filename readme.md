@@ -58,7 +58,7 @@ cd ~/agent-config
 
 The stow package contains `home/.claude` and `home/.cursor`. If either `~/.claude` or `~/.cursor` does not already exist, stow performs **tree folding** and makes that path itself a single symlink into this repo. The tool then writes all of its runtime state through that symlink, dumping it into the repo working tree.
 
-To prevent this, `bootstrap.sh` ensures both targets are **real directories** before stowing, so only the individual config files/dirs are symlinked and runtime state stays in the real home dirs. The script is idempotent and self-healing: if it finds either path already folded into a single symlink, it un-folds it and moves any non-tracked runtime state back out of the repo.
+To prevent this, `bootstrap.sh` ensures both targets are **real directories** before stowing, so only the individual config files/dirs are symlinked and runtime state stays in the real home dirs. The script is idempotent and self-healing: if it finds either path already folded into a single symlink, it un-folds it and moves any non-tracked runtime state back out of the repo. It also replaces stale package-entry symlinks that point outside this repo (e.g. leftovers after a directory rename) and `--adopt`s plain-file conflicts so a re-run does not abort.
 
 ## Uninstall
 

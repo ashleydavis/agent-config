@@ -69,8 +69,40 @@ unfold_if_needed() {
     mkdir -p "$home_target"
 }
 
+# Remove package-entry symlinks that point outside this repo. --adopt only
+# handles plain files; leftovers from a previous install path (e.g. the repo
+# was renamed from claude-config -> agent-config) are "not owned by stow" and
+# abort the whole run. Runtime dirs/files that are not package entries are
+# left alone.
+clear_foreign_package_symlinks() {
+    local home_subdir="$1" # e.g. .claude
+    local git_prefix="$2"  # e.g. home/.claude
+
+    mapfile -t ENTRIES < <(git -C "$SCRIPT_DIR" ls-files "$git_prefix" \
+        | awk -F/ 'NF>=3 {print $3}' | sort -u)
+    if [[ ${#ENTRIES[@]} -eq 0 ]]; then
+        return 0
+    fi
+
+    for name in "${ENTRIES[@]}"; do
+        local dest="$HOME/$home_subdir/$name"
+        [[ -L "$dest" ]] || continue
+
+        local resolved
+        resolved="$(realpath -m "$dest")"
+        if [[ "$resolved" != "$SCRIPT_DIR"/* ]]; then
+            echo "  removing stale symlink $dest (-> $(readlink "$dest"))"
+            rm "$dest"
+        fi
+    done
+}
+
 unfold_if_needed "claude" "$HOME/.claude" "$SCRIPT_DIR/home/.claude" "home/.claude"
 unfold_if_needed "cursor" "$HOME/.cursor" "$SCRIPT_DIR/home/.cursor" "home/.cursor"
+
+echo "Clearing stale package symlinks (if any) ..."
+clear_foreign_package_symlinks ".claude" "home/.claude"
+clear_foreign_package_symlinks ".cursor" "home/.cursor"
 
 echo "Stowing $SCRIPT_DIR/home into $HOME ..."
 cd "$SCRIPT_DIR"
