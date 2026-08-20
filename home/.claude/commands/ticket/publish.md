@@ -32,7 +32,9 @@ This is the second half of `/ticket:draft`. It publishes what that produced. It 
    - **`d`:** stop. Create nothing. Say what would need to change.
    - Anything else: ask again for `a` or `d`.
 
-7. **Record it.** Add the created issue key and URL to the top of the draft file so the local file and the Jira issue stay connected.
+7. **Open it in Chrome.** Run `google-chrome --new-window <browse url>` so the human can check the created issue straight away. The fields that were mapped by id are worth seeing rendered, and a mistake is far easier to fix in the first minute than later.
+
+8. **Record it.** Add the created issue key and URL to the top of the draft file so the local file and the Jira issue stay connected.
 
 ## Hard stops
 
