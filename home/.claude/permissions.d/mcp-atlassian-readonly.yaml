@@ -33,3 +33,4 @@ mcp__claude_ai_Atlassian__getConfluencePage:
       - tool mcp__claude_ai_Atlassian__getConfluencePage
     ask:
       - tool mcp__claude_ai_Atlassian__updateConfluencePage
+      - tool mcp__claude_ai_Atlassian__createConfluencePage

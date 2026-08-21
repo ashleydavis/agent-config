@@ -24,10 +24,10 @@ Follow the runsheet style guide available in `~/notes` for local mirror / publis
 4. **Overwrite confirmation (mandatory when the target file already exists).**
 
    - If the destination path already exists, **stop and ask the human to confirm** they want to overwrite that local file with the latest Confluence content.
-   - State clearly: the path that will be replaced, and that local edits not yet uploaded will be lost.
+   - State clearly: the path that will be replaced, and that local edits not yet published will be lost.
    - **Do not overwrite without an explicit yes.** If they decline, stop without writing (or ask for a different filename).
 
-5. **Write the file** with this HTML comment header (required for `/runsheet/upload` conflict checks), then the markdown body from Confluence. Do not “improve” the procedure on download.
+5. **Write the file** with this HTML comment header (required for `/runsheet/publish` conflict checks), then the markdown body from Confluence. Do not “improve” the procedure on download.
 
    ```html
    <!--

@@ -10,6 +10,6 @@ Find and read that guide before reviewing. Do not invent a parallel style.
 
 3. **Preserve Confluence metadata.** Keep the top HTML comment (`Source`, `Confluence page id`, `Downloaded`, `Version at download`) unchanged unless the human asks to refresh it via `/runsheet/download`.
 
-4. **Do not upload to Confluence** unless the human explicitly asks; if they do, use `/runsheet/upload`.
+4. **Do not publish to Confluence** unless the human explicitly asks; if they do, use `/runsheet/publish`.
 
 5. **Report.** Path updated, main fixes applied, and any remaining open questions.
