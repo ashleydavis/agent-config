@@ -1,4 +1,4 @@
-# Readonly file tool: Claude's Read tool, scoped to the current project tree.
+# Readonly file tools: Claude's Read tool and SendUserFile, both scoped to the current project tree.
 read:
   path: "${{PROJECT_DIR}}/**"
   decide: allow
@@ -9,3 +9,18 @@ read:
       - read /project/src/index.ts
     ask:
       - read /etc/hosts
+
+# SendUserFile puts the contents of every file it names into the conversation, so it is scoped the
+# same way read is. Each file in one call is decided on its own: a call naming anything outside the
+# project falls through to the prompt, however many of its other files are inside.
+send_user_file:
+  path: "${{PROJECT_DIR}}/**"
+  decide: allow
+  reason: OK to send files from the current project
+  examples:
+    allow:
+      - send_user_file /project/docs/report.md
+      - send_user_file /project/docs/report.md /project/docs/chart.svg
+    ask:
+      - send_user_file /home/user/.ssh/id_rsa
+      - send_user_file /project/docs/report.md /home/user/.ssh/id_rsa

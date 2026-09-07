@@ -23,7 +23,7 @@ Files are discovered in lexicographic order. A `deny` in any file wins over `all
 | `bash-wrappers.yaml` | Allow `mise`, `timeout` and `xargs`; the command each one runs keeps its own decision |
 | `claude-tools-readonly.yaml` | Rules for Claude Code tool-name patterns (readonly) |
 | `claude-tools-write.yaml` | Rules for Claude Code tool-name patterns (write/mutating) |
-| `file-tools-readonly.yaml` | Rules for Read/Grep file tool calls |
+| `file-tools-readonly.yaml` | Rules for Read/Grep file tool calls, and for SendUserFile, each scoped to the current project |
 | `file-tools-write.yaml` | Rules for Write/Edit/MultiEdit file tool calls |
 | `mcp-atlassian-readonly.yaml` | Allow readonly Atlassian MCP tool calls |
 | `mcp-permissions-analyzer-readonly.yaml` | Allow the permissions analyzer MCP tool |
