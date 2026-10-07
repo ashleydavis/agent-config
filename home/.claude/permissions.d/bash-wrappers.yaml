@@ -10,6 +10,14 @@ bash:
       ask:
         # The wrapper is allowed, the command it runs is not, and the stricter decision wins.
         - mise exec -- npm install express
+  time:
+    decide: allow
+    reason: time only measures how long the command it runs takes; that command is decided on its own
+    examples:
+      allow:
+        - time git status
+      ask:
+        - time npm install express
   timeout:
     decide: allow
     reason: timeout only time-limits the command it runs; that command is decided on its own

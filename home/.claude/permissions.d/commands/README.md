@@ -62,6 +62,7 @@ Only value-taking flags (arity 1) need to be listed. Boolean flags can be omitte
 | `tail.yaml` | `tail` | https://www.gnu.org/software/coreutils/manual/html_node/tail-invocation.html |
 | `tee.yaml` | `tee` | https://www.gnu.org/software/coreutils/manual/html_node/tee-invocation.html |
 | `timeout.yaml` | `timeout` | https://www.gnu.org/software/coreutils/manual/html_node/timeout-invocation.html |
+| `time.yaml` | `time` | https://www.gnu.org/software/bash/manual/html_node/Pipelines.html |
 | `wc.yaml` | `wc` | https://www.gnu.org/software/coreutils/manual/html_node/wc-invocation.html |
 | `xargs.yaml` | `xargs` | https://www.gnu.org/software/findutils/manual/html_mono/find.html |
 

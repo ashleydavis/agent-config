@@ -1,0 +1,14 @@
+# Test scripts a project keeps in its own scripts/ directory, run from the project root.
+bash:
+  ./scripts/test-everything.sh:
+    cwd-in:
+      - "./"
+    decide: allow
+    reason: Runs the project's own build and test suite from its root
+    examples:
+      allow:
+        - ./scripts/test-everything.sh
+      ask:
+        # Run from outside the project, so the script is not the project's own.
+        - cmd: ./scripts/test-everything.sh
+          cwd: /tmp

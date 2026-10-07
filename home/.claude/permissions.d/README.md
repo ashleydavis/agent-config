@@ -18,9 +18,10 @@ Files are discovered in lexicographic order. A `deny` in any file wins over `all
 | `bash-helm-readonly.yaml` | Allow readonly `helm` subcommands (get, list, show, status, etc.) |
 | `bash-kubectl-readonly.yaml` | Allow readonly `kubectl` subcommands (get, describe, logs, top, etc.) |
 | `bash-mkdir-write.yaml` | Allow `mkdir` within the current project or `/tmp` |
+| `bash-project-scripts.yaml` | Allow a project's own `./scripts/test-everything.sh`, run from the project root |
 | `bash-readonly.yaml` | Allow common read-only utilities (cat, ls, find, grep, sed, jq, etc.) |
 | `bash-tmp-write.yaml` | Allow `tee` to write to `/tmp` |
-| `bash-wrappers.yaml` | Allow `mise`, `timeout` and `xargs`; the command each one runs keeps its own decision |
+| `bash-wrappers.yaml` | Allow `mise`, `time`, `timeout` and `xargs`; the command each one runs keeps its own decision |
 | `claude-tools-readonly.yaml` | Rules for Claude Code tool-name patterns (readonly) |
 | `claude-tools-write.yaml` | Rules for Claude Code tool-name patterns (write/mutating) |
 | `file-tools-readonly.yaml` | Rules for Read/Grep file tool calls, and for SendUserFile, each scoped to the current project |

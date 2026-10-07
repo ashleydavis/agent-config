@@ -1,0 +1,10 @@
+time:
+  description: Run a command and report how long it took
+  source:
+    - https://www.gnu.org/software/bash/manual/html_node/Pipelines.html
+    - help time
+  wrapper: true
+  positionals:
+    - kind: string
+      description: The command time runs, with its own arguments
+      variadic: true
