@@ -11,6 +11,7 @@
 - Docs are often stored in ./docs/
 - New plans usually go in ./docs/plans/new/
 - Completed plans usually go in ./docs/plan/done
+- Only plans go in a plans directory. Never put any other document there, even one about a plan (a change list, a review list, a report, notes).
 - If you can't find ./docs/ you might find it under one of the subdirectories of the current project.
 - Never hard-wrap prose in markdown or plain-text docs. Write each paragraph and bullet as a single line and let it soft-wrap. Do not insert manual line breaks to hit a column width.
 - Never use `---` horizontal-rule separators in markdown or plain-text docs. Structure sections with headings and blank lines instead.
