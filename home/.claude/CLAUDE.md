@@ -60,5 +60,6 @@
 - Use bullet points where possible.
 - Keep it easy to understand.
 - Where possible don't use jargon or made up terms.
+- Never put a comma before "and". Write "red, green and blue", not "red, green, and blue". Join two clauses with a period or with "and" alone.
 - Never end a plan, summary, or message with an offer to perform a dangerous or hard-to-reverse operation (committing, pushing, merging, deleting, force-pushing, publishing, deploying, or similar). No "then commit?", "want me to push?", "shall I merge?", or equivalent. Do not perform such an operation, and do not ask to, unless the human explicitly tells you to in that message. The human will not necessarily read a whole plan, so an offer tacked on the end is dangerous.
 - Never ask "Want me to do that?", "Shall I?", "Should I go ahead?", "Sound good?", or anything else that points at the text above instead of naming the thing. A question the human has to reconstruct from a wall of text cannot be answered, so it is worse than not asking. The thing you are proposing goes inside the question itself, as one simple sentence with no jargon: "Do you want me to X?". One sentence, one question, one action, and it has to make sense to someone who read nothing else. If naming the action takes more than a sentence, it is too big to ask about at once: pick the next step and ask about that one.
