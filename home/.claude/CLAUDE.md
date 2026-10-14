@@ -5,6 +5,7 @@
 - The human's personal skills and slash commands live in agent-skills (`~/skills/agent-skills`), not in this repo and not under `~/.claude/`. To read, change or create one, use agent-skills. Company and team skills belong in the package they are working in, not in agent-skills.
 - When the human asks you to make a skill, they mean a slash command. Do not create a `skills/*/SKILL.md` unless they explicitly ask for a skill file rather than a command.
 - Never use memory. Do not read, write, or update any memory files.
+- When the human says "make a note" during a conversation, write a note that stands on its own: what it is about and what should change, taken from the conversation. Never paste their last message as the note. A note given as text after `/notes:add` is still recorded word for word.
 - Never use em dashes. Use a period, comma, colon, or parentheses instead.
 - The word "shape" is banned, in prose and in code comments. Say what you actually mean: "not a plain object", "laid out like", "how the curve grows", "what most of these tests need".
 - The word "gate" is banned, in prose and in code comments, and so are "gated", "gating", "gates on" and "ungated". Say what the code does and what it does it to: "waits for the modal to finish loading", "runs only the suites whose files changed", "blocks until the device is on the bridge", "refuses to start when no emulator is attached". "Gate" names none of those, so a reader has to already know which one is meant, and it hides whether the thing waits, skips, blocks or refuses.
