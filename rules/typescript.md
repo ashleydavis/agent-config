@@ -68,6 +68,8 @@ These rules apply only to new code and to code being edited. Do not rewrite exis
 ## Testing
 
 - Use Jest as the test runner.
+- Keep the Jest config in its own `jest.config.js`, never in `package.json`.
+- Set up TypeScript, Bun and Jest as `docs/typescript-bun-jest.md` in the agent-config repository says.
 - Tests go under `src/test/`, in a directory that mirrors the path of the file being tested. Test file names end in `.test.ts`.
 - Use `test(` not `it(` in Jest test files, grouped in `describe(` by the unit under test.
 - Tests **never** use `test.skip` or `describe.skip`.
