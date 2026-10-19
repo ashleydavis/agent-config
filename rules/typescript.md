@@ -18,6 +18,7 @@ These rules apply only to new code and to code being edited. Do not rewrite exis
 ## Project layout
 
 - Every source file lives under its package's `src/` directory. No source files sit directly in the package root.
+- Each package has exactly one `tsconfig.json`. No `tsconfig.build.json` or any other extra tsconfig file.
 - Every package (frontend, backend, mobile or any other kind) has a `src/lib/` directory for reusable code shared across the package. A project may be made up of many packages. Code goes in `src/lib/` only when two or more files use it. Code used in one place stays with that place.
 
 ## Imports and exports
