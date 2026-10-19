@@ -1,3 +1,10 @@
+---
+paths:
+  - "**/*.{ts,tsx}"
+  - "**/tsconfig.json"
+  - "**/package.json"
+---
+
 # TypeScript coding rules
 
 The human can explicitly ask to override any of these rules. When they do, follow the request and do not argue against it.

@@ -1,3 +1,8 @@
+---
+paths:
+  - "**/*.{tsx,jsx}"
+---
+
 # React rules
 
 These rules apply to projects that use React. They add to the TypeScript rules.

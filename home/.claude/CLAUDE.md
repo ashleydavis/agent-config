@@ -19,6 +19,7 @@
 - HIGH PRIORITY: Never create, modify, or delete credentials files. If you need access to something, ask the human. If they allow it, they will give you access.
 - Never put Jira ticket numbers (for example `PROJ-1234`) in committed code, config, comments, or docs unless the human specifically asks for them in that turn. They go stale and mean nothing to a later reader. Ticket references belong in commit messages, PR descriptions, and branch names, not in the code.
 - When the human asks for a rule that is not specific to a particular project, put it in the global CLAUDE.md and AGENTS.md (`home/.claude/CLAUDE.md` and `home/.cursor/AGENTS.md` in the agent-config repository).
+- At the start of every task, before planning, writing docs or writing code, read the project's root marker files (`package.json`, `tsconfig.json`, `bun.lock`, `build.zig`, `build.zig.zon`) with the Read tool to learn which languages and tools it uses, then read every rule file below that applies.
 - When coding in any language, refer to `rules/general.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
 - When coding in Zig, refer to `rules/zig.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
 - When coding in TypeScript, refer to `rules/typescript.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).

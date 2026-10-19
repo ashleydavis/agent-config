@@ -6,6 +6,7 @@ The human can explicitly ask to override any of these rules. When they do, follo
 
 These rules apply only to new code and to code being edited. Do not rewrite existing code just to make it match these rules unless the human has explicitly asked for that.
 
+- Before planning, writing docs or writing code in a project, read its marker files with the Read tool: every `package.json`, `tsconfig.json`, `bun.lock`, `build.zig` and `build.zig.zon` at the project root. Reading one loads the matching language rules. When starting a new project, write its marker file first.
 - After making changes, always compile or build the code in the way that suits the language and the project, following the rules the project defines. Make sure the compile or build exits with code 0. If you have created compile errors, you must fix them.
 
 ## Baseline

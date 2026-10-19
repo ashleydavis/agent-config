@@ -1,3 +1,10 @@
+---
+paths:
+  - "**/package.json"
+  - "**/bun.lock"
+  - "**/bunfig.toml"
+---
+
 # Bun rules
 
 These rules apply to projects that use Bun. They add to the TypeScript rules.
