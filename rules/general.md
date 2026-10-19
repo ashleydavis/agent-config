@@ -117,6 +117,7 @@ Inspired by [Tiger Style](https://github.com/tigerbeetle/tigerbeetle/blob/main/d
 - When writing a test, put a description at the top explaining its goal and method.
 - Product code never references test code. Test helpers, fixtures and fakes live in test files, never in product files. The one exception is the Zig block that imports a code file's test file.
 - Never fake a test. Tests should always validly test the prod code they are testing. They should fail if that prod code is broken.
+- Unit tests must run in seconds, not minutes.
 - All tests must be capable of running in parallel with themselves, otherwise we can't do parallel work in worktrees.
 - If multiple test runs need to happen, divide the work up into subagents to get through it in parallel where possible.
 
