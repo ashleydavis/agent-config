@@ -32,14 +32,14 @@ These rules apply only to new code and to code being edited. Do not rewrite exis
 - Export every function, including helpers a module only uses itself, so unit tests can call it.
 - Never define a function and call it in the same expression, for example `(async () => { ... })()` or `(async function* () { ... })()`. Extract it to a named function and call that instead.
 - Don't use default or optional parameter values unless specifically asked to.
-- Use an options object, typed with a named interface, when arguments can be mixed up, for example a function taking two numbers or two strings.
+- Use an options object only for arguments that can be confused with each other, such as two strings or two numbers. Its type may be an anonymous object type written inline in the parameter list.
 
 ## Types
 
 - Do not use the `any` type, in normal code or in test code, unless the human has requested it. Prefer not to use the `unknown` type either.
 - Interface methods use method signature syntax (`doSomething(arg: string): void`), not arrow property syntax (`doSomething: (arg: string) => void`).
 - Unless the human asks for something else, date and time fields are `Date`, never a string or a unix number. Durations are numbers with the unit in the field name (`timeoutMs`).
-- Never use anonymous object types inline (e.g. `Promise<{ foo: number }>`). Always define a named interface instead, unless specifically asked to use an anonymous type.
+- Never use anonymous object types inline (e.g. `Promise<{ foo: number }>`). Always define a named interface instead, unless specifically asked to use an anonymous type. The one exception is the type of an options object parameter.
 - Never use `ReturnType<typeof ...>`, `satisfies` or `as const`. Use the actual type directly (e.g. `NodeJS.Timeout` instead of `ReturnType<typeof setTimeout>`).
 - Never define a type as a union of object types. Use separate interfaces extending a common base instead. This applies to type definitions only: a field or parameter whose value comes in more than one form is written as a union (`string | string[]`).
 - Never return `null` for absent values. Use `undefined`.
