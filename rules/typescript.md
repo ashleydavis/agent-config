@@ -23,6 +23,7 @@ These rules apply only to new code and to code being edited. Do not rewrite exis
 
 ## Imports and exports
 
+- Named exports only, no default exports. ESM only.
 - Dynamic imports (`await import(...)`) and `require(...)` are banned, including `import("...")` inside a type (for example `provider?: import("api").IProvider`). Use static `import` statements at the top of the file only. Break circular dependencies with dependency injection, not lazy loading.
 
 ## Functions

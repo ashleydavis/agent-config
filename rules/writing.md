@@ -12,6 +12,7 @@ These rules apply only to new writing and to writing being edited. Do not rewrit
   - "shape". Say what you actually mean: "not a plain object", "laid out like", "how the curve grows", "what most of these tests need".
   - "gate", "gated", "gating", "gates on" and "ungated". Say what the code does and what it does it to: "waits for the modal to finish loading", "runs only the suites whose files changed", "blocks until the device is on the bridge", "refuses to start when no emulator is attached". "Gate" names none of those, so a reader has to already know which one is meant, and it hides whether the thing waits, skips, blocks or refuses.
   - "by hand". Say what the reader does instead, or what it is done without: "without the command", "yourself", "from the Actions tab".
+  - "pin", "pins", "pinned" and "pinning" for a version. Say "lock" and "locked": "locked in `mise.toml`", "locks Zig to an exact version".
   - "nothing" and "nobody" in docs. Name the thing that is absent: "no call reached it", "no list refers to it".
 - Never hard-wrap prose in markdown or plain-text docs. Write each paragraph and bullet as a single line and let it soft-wrap. Do not insert manual line breaks to hit a column width.
 - Never use `---` horizontal-rule separators in markdown or plain-text docs. Structure sections with headings and blank lines instead.

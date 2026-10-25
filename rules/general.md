@@ -83,7 +83,7 @@ Inspired by [Tiger Style](https://github.com/tigerbeetle/tigerbeetle/blob/main/d
 ## Dependencies
 
 - Avoid vendoring third-party tools, libraries or code where possible, unless there is a significant benefit (justify it in a comment or doc) or the human requests it. Anything vendored comes with a script that updates the vendored copy to the latest version. Anything vendored also comes with a `.md` file next to it that explains what it is, why it is needed, how to update it (pointing to the update script) and the justification for vendoring it.
-- When a dependency or tool is added or updated, pin it to the latest version as an exact version, so every machine and every run uses the same one. Never pin to the string `latest`, in `mise.toml`, `package.json`, workflows, scripts or anywhere else. Do not update dependencies to new versions unless there is a significant benefit (document it in a comment or doc) or the human has requested it.
+- When a dependency or tool is added or updated, lock it to the latest version as an exact version, so every machine and every run uses the same one. Never lock to the string `latest`, in `mise.toml`, `package.json`, workflows, scripts or anywhere else. Do not update dependencies to new versions unless there is a significant benefit (document it in a comment or doc) or the human has requested it.
 - Never patch, reimplement or reinvent third-party tools, libraries or code unless the human requests it.
 
 ## Naming
