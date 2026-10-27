@@ -20,7 +20,7 @@ To be added.
 
 ## Imports and exports
 
-To be added.
+- Every `@import` goes in a `const` declaration at the top of the file. Never write `@import` anywhere else: not inside a function, a type, a parameter list or an expression.
 
 ## Functions
 

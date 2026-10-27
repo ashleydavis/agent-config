@@ -107,19 +107,7 @@ Inspired by [Tiger Style](https://github.com/tigerbeetle/tigerbeetle/blob/main/d
 
 ## Testing
 
-- After making changes, always run the tests in the way that suits the language and the project, following the rules the project defines. Make sure the test run exits with code 0. If you have caused tests to fail, you must fix them.
-- When working on a specific test or tests, run whatever command runs only the tests that need to run. Do not run the whole test suite when only some tests are affected.
-- Never skip a failing test. Fix the production code or the test code properly. Never delete a failing test or its failing assertion, comment it out, loosen an assertion or catch the error to make it pass. Avoid adding a wait or retry to make it pass, unless one is required.
-- Add new tests for new code. Every function that is new, that you edit, or that the user asks you about should have unit tests.
-- New or edited code must have at least 95% test coverage.
-- Do not force all tests to run, and do not use the `--force` argument. If the test script caches results and skips tests that do not need to run, those tests do not have to run, so do not force them.
-- A unit test reaches nothing outside the process: no network, no cloud account, no emulator. External dependencies must be mocked. Do not use real external dependencies. Put every external service behind an interface, with a real implementation, a mock and a way to inject faults, so tests can make the service fail.
-- When writing a test, put a description at the top explaining its goal and method.
-- Product code never references test code. Test helpers, fixtures and fakes live in test files, never in product files. The one exception is the Zig block that imports a code file's test file.
-- Never fake a test. Tests should always validly test the prod code they are testing. They should fail if that prod code is broken.
-- Unit tests must run in seconds, not minutes.
-- All tests must be capable of running in parallel with themselves, otherwise we can't do parallel work in worktrees.
-- If multiple test runs need to happen, divide the work up into subagents to get through it in parallel where possible.
+- Follow `testing.md`.
 
 ## Shell scripts
 
