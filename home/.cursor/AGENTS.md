@@ -13,7 +13,7 @@
 - Completed plans usually go in ./docs/plan/done
 - Only plans go in a plans directory. Never put any other document there, even one about a plan (a change list, a review list, a report, notes).
 - If you can't find ./docs/ you might find it under one of the subdirectories of the current project.
-- Never put machine-specific absolute paths (for example a home-directory path like `/home/<user>/...` or `~/...`) into checked-in files such as docs, plans, code, or config. They only work on the human's computer. Use repo-relative paths, or for things outside the repo use a portable reference such as a git URL or a plain description.
+- Never put absolute paths that contain the human's user name (for example `/home/<user>/...`) into checked-in files such as docs, plans, code, or config. A path that starts with `~/` is allowed. Prefer repo-relative paths where they work.
 - Never include secrets, sensitive data, or personal details in code, config, docs, plans, comments, or any other content that will be committed to git or shared in any other way.
 - Never put account numbers in anything committed or shared. Use a placeholder such as `<account-id>` for an AWS account number.
 - HIGH PRIORITY: Never create, modify, or delete credentials files. If you need access to something, ask the human. If they allow it, they will give you access.
