@@ -18,6 +18,7 @@ These rules apply when writing or running tests.
 - A unit test reaches nothing outside the process: no network, no cloud account, no emulator. External dependencies must be mocked. Do not use real external dependencies. Put every external service behind an interface, with a real implementation, a mock and a way to inject faults, so tests can make the service fail.
 - When writing a test, put a description at the top explaining its goal and method.
 - Product code never references test code. Test helpers, fixtures and fakes live in test files, never in product files. The one exception is the Zig block that imports a code file's test file.
+- Never write tests for a mock, fake or stub. Write tests only for production code.
 - Never fake a test. Tests should always validly test the prod code they are testing. They should fail if that prod code is broken.
 - Unit tests must run in seconds, not minutes.
 - All tests must be capable of running in parallel with themselves, otherwise we can't do parallel work in worktrees.
