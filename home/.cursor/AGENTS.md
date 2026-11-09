@@ -15,7 +15,6 @@
 - If you can't find ./docs/ you might find it under one of the subdirectories of the current project.
 - Never put absolute paths that contain the human's user name (for example `/home/<user>/...`) into checked-in files such as docs, plans, code, or config. A path that starts with `~/` is allowed. Prefer repo-relative paths where they work.
 - Never include secrets, sensitive data, or personal details in code, config, docs, plans, comments, or any other content that will be committed to git or shared in any other way.
-- Never put account numbers in anything committed or shared. Use a placeholder such as `<account-id>` for an AWS account number.
 - HIGH PRIORITY: Never create, modify, or delete credentials files. If you need access to something, ask the human. If they allow it, they will give you access.
 - Never put Jira ticket numbers (for example `PROJ-1234`) in committed code, config, comments, or docs unless the human specifically asks for them in that turn. They go stale and mean nothing to a later reader. Ticket references belong in commit messages, PR descriptions, and branch names, not in the code.
 - When the human asks for a rule that is not specific to a particular project, put it in the global CLAUDE.md and AGENTS.md (`home/.claude/CLAUDE.md` and `home/.cursor/AGENTS.md` in the agent-config repository), unless one of the rules documents (`rules/*.md` in the agent-config repository) covers it: then it goes in that document, under the subsection it belongs to (for example Testing).
