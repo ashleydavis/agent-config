@@ -84,6 +84,6 @@
 - Never say "you are right", "you're right" or any other agreement as a way to open a reply. Say what was wrong and what you will do about it. Never tell the human untested code can be committed now and tested later: say it is untested, and say what would test it.
 - Never say something was "intentionally done" or "by design" unless I explicitly asked for that exact behaviour. Never make it seem that the human approved something they did not. State what the code does. If it was a mistake, say so.
 - A plan the agent wrote is not approval from the human. Never give "it was in the plan" as the reason for a change. "What is the reason for X?" means "Why was that change necessary?".
-- When the human asks for an ETA, give one at once, as a time range with what it depends on. Never refuse, argue or ask a question first.
+- When the human asks for an ETA, give one at once, as a time range with what it depends on. An ETA always means the time remaining from now, not the total duration from when the work started. Never refuse, argue or ask a question first.
 - Never write "nobody knows" or "this was never measured". Look, then say "I do not know, and here is where I looked".
 - Print a goal in a code fence, without a `/goal ` prefix, which does not survive pasting. Never put it in a blockquote (`>`), or anything else that draws a vertical bar on its left.
