@@ -1,6 +1,6 @@
 # agent-config
 
-**Skills and slash commands have moved** to [`~/agent-skills`](https://github.com/ashleydavis/agent-skills). Install them with `skl -g add ashleydavis/agent-skills --ns me`.
+**Skills and slash commands have moved** to [`~/agent-skills`](https://github.com/ashleydavis/agent-skills). Install them by running `./bootstrap.sh install` in that repo.
 
 Personal Claude Code and Cursor global configuration: instructions, settings, and permissions rules.
 

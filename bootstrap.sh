@@ -5,7 +5,7 @@
 # GNU Stow, while keeping each tool's runtime state OUT of this repo.
 #
 # Slash commands and personal skills do not live in this repo. They moved to
-# agent-skills (~/agent-skills) and are installed with skl. This script
+# agent-skills (~/agent-skills) and are installed by its own bootstrap.sh. This script
 # never stows home/.claude/commands, home/.cursor/commands, or a skills tree,
 # and it removes leftover links from earlier installs that still point here.
 #
@@ -121,8 +121,8 @@ clear_foreign_package_symlinks() {
 }
 
 # Remove leftover slash-command and personal-skill links this repo used to stow.
-# Only delete symlinks that resolve into this repo. skl-managed links (me, ark,
-# pla, and anything else under ~/.skilled) point elsewhere and stay.
+# Only delete symlinks that resolve into this repo. Links that point elsewhere,
+# such as the ones agent-skills installs, stay.
 remove_legacy_skill_links() {
     local dest_dir="$1"
 
@@ -178,4 +178,4 @@ echo "Done."
 echo "Config files are symlinked from this repo; runtime state lives in the real"
 echo "~/.claude and ~/.cursor and is never written into the repo."
 echo "Slash commands and personal skills are not installed from this repo."
-echo "Install them from agent-skills with: skl -g add ashleydavis/agent-skills --ns me"
+echo "Install them by running ./bootstrap.sh install in ~/agent-skills."
