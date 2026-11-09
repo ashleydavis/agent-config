@@ -31,15 +31,6 @@ sudo apt install stow
 brew install stow
 ```
 
-### Companion plugins
-
-`settings.json` wires in hooks that shell out to two other repos. Both must be cloned into `$HOME` (the paths are hard-coded in the hook commands) and have their dependencies installed before Claude Code will run cleanly:
-
-- [`expressive-permissions`](https://github.com/ashleydavis/expressive-permissions): provides the `PreToolUse` and `PostToolUse` hooks (`~/expressive-permissions/src/pre-hook.ts`, `post-hook.ts`).
-- [`claude-tools-runner`](https://github.com/ashleydavis/claude-tools-runner): provides the `Stop` hook (`~/claude-tools-runner/src/stop-hook.ts`).
-
-Both hooks are invoked via `bun`, so `bun` must be on `PATH` as well.
-
 ## Install
 
 ```bash

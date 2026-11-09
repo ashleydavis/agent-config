@@ -18,30 +18,6 @@
     ],
     "defaultMode": "acceptEdits"
   },
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bun ~/expressive-permissions/src/pre-hook.ts"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bun ~/expressive-permissions/src/post-hook.ts"
-          }
-        ]
-      }
-    ]
-  },
   "tui": "default",
   "autoMemoryEnabled": false,
   "skipDangerousModePermissionPrompt": true,
