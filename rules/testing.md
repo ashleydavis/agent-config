@@ -17,7 +17,7 @@ These rules apply when writing or running tests.
 - Do not force all tests to run, and do not use the `--force` argument, including on the "test everything" script. If the test script caches results and skips tests that do not need to run, those tests do not have to run, so do not force them.
 - A unit test reaches nothing outside the process: no network, no cloud account, no emulator. External dependencies must be mocked. Do not use real external dependencies. Put every external service behind an interface, with a real implementation, a mock and a way to inject faults, so tests can make the service fail.
 - When writing a test, put a description at the top explaining its goal and method.
-- Product code never references test code. Test helpers, fixtures and fakes live in test files, never in product files. The one exception is the Zig block that imports a code file's test file.
+- Product code never references test code. Mocks, fakes, stubs, test helpers and fixtures live in test files, never in product files. Product code never holds code that only tests use, such as an interface, callback list or export kept for a mock. The one exception is the Zig block that imports a code file's test file.
 - Never write tests for a mock, fake or stub. Write tests only for production code.
 - Never fake a test. Tests should always validly test the prod code they are testing. They should fail if that prod code is broken.
 - Unit tests must run in seconds, not minutes.
