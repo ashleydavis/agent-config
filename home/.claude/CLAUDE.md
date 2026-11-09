@@ -4,7 +4,7 @@
 - Stopping to ask the human is extremely undesirable. When an agent does this, it wastes time doing nothing when it could be working. Docs in this repo should never include text like "stop and ask the human".
 - Guessing is banned. Never guess. Never tell the human "I'll stop guessing now".
 - Keep this file and `home/.cursor/AGENTS.md` aligned in the same edit when shared rules change; adapt only where they intentionally differ (titles, Claude-specific vs Cursor-specific lines).
-- The human's personal skills and slash commands live in agent-skills (`~/skills/agent-skills`), not in this repo and not under `~/.claude/`. To read, change or create one, use agent-skills. Company and team skills belong in the package they are working in, not in agent-skills.
+- The human's personal skills and slash commands live in agent-skills (`~/agent-skills`), not in this repo and not under `~/.claude/`. To read, change or create one, use agent-skills. Company and team skills belong in the package they are working in, not in agent-skills.
 - When the human asks you to make a skill, they mean a slash command. Do not create a `skills/*/SKILL.md` unless they explicitly ask for a skill file rather than a command.
 - Never use memory. Do not read, write, or update any memory files.
 - When the human says "make a note" during a conversation, write a note that stands on its own: what it is about and what should change, taken from the conversation. Never paste their last message as the note. A note given as text after `/notes:add` is still recorded word for word.

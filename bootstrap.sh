@@ -5,7 +5,7 @@
 # GNU Stow, while keeping each tool's runtime state OUT of this repo.
 #
 # Slash commands and personal skills do not live in this repo. They moved to
-# agent-skills (~/skills/agent-skills) and are installed with skl. This script
+# agent-skills (~/agent-skills) and are installed with skl. This script
 # never stows home/.claude/commands, home/.cursor/commands, or a skills tree,
 # and it removes leftover links from earlier installs that still point here.
 #
