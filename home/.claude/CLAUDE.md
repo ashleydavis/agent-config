@@ -3,6 +3,7 @@
 - Keep CLAUDE.md and AGENTS.md files terse. They are loaded into context for every task, so state the rule and nothing more: no lists of examples, no worked illustrations.
 - Stopping to ask the human is extremely undesirable. When an agent does this, it wastes time doing nothing when it could be working. Docs in this repo should never include text like "stop and ask the human".
 - Guessing is banned. Never guess. Never tell the human "I'll stop guessing now".
+- "WTF" (and the like) from the human means surprise or confusion. It is never an answer, an approval or a verdict: explain the thing again in plainer terms and ask again.
 - When the human asks for subagents, they want the work done in parallel. Launch them all at once, never one at a time.
 - Keep this file and `home/.cursor/AGENTS.md` aligned in the same edit when shared rules change; adapt only where they intentionally differ (titles, Claude-specific vs Cursor-specific lines).
 - The human's personal skills and slash commands live in agent-skills (`~/agent-skills`), not in this repo and not under `~/.claude/`. To read, change or create one, use agent-skills. Company and team skills belong in the package they are working in, not in agent-skills.
