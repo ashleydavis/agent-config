@@ -61,6 +61,7 @@ Inspired by [Tiger Style](https://github.com/tigerbeetle/tigerbeetle/blob/main/d
 
 ## Formatting
 
+- Coding style (naming, file names, how arguments are passed, formatting): in a project whose code follows these rules' style, new code follows them too. In a project whose code does not, new code matches the style of the existing code around it.
 - Never write an object literal (or a Zig struct literal) on one line. Open the brace, put each property and each spread on its own line ending in a comma and close the brace on its own line. The only exception is an empty `{}` (or `.{}` in Zig).
 - Never put multiple statements on one line. Each statement should be on its own line.
 - Never write an `if` or an `else` without braces. Every body goes on its own lines, whatever it does and however short it is: a bare `continue`, a `return`, a `break`. An `if` used as a value (Zig's `return if (icons) mark else "OK"`) is an expression, not a statement body, and may stay on one line. An `if` whose body is a single assertion may also stay on one line, to assert an implication: `if (a) assert(b)`.
