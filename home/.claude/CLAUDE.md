@@ -29,6 +29,8 @@
 - When writing code comments, text the code displays, commit messages or docs, refer to `rules/writing.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
 - When writing a commit message, refer to `rules/commits.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
 - When writing a pull request title or description, refer to `rules/prs.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When writing or changing AWS IAM policies, refer to `rules/aws-permissions.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When starting, rerunning or restarting a CI workflow run, refer to `rules/workflows.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
 - When running any git command, committing, pushing or setting up a remote, refer to `rules/git.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
 - When debugging, finding the cause of a problem or fixing a bug, refer to `rules/debugging.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
 - The agent is responsible for the whole repo. "It was pre-existing" and "it happened before this session" are not reasons, on their own, to leave a compile error or failing test unfixed.
