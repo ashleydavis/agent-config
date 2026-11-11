@@ -25,4 +25,5 @@ What changed and why. Any decision a later reader could not work out from the di
 - Never put open todos, future work, open items, decisions still to be made or test plans in a commit message. It records what was done, not what is left.
 - Leave out anything restating a file that is in the commit, any explanation of how a tool or format works, background on why the general practice is good or any sentence that would be equally true of some other commit. If a paragraph could be deleted without the reader losing something they needed, delete it.
 - Describe the change as it stands in this repository. Never mention another repository, project or directory the work came from. Never say a change was copied, moved, ported or brought in from anywhere. The exception is when the human asks for the other repository to be named.
+- Never use an acronym or jargon the agent made up, such as a short name for a repository. Well-known in-house and industry acronyms and jargon are fine.
 - Never hard-wrap the description. Write one line per paragraph, with a blank line between paragraphs.
