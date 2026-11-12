@@ -13,8 +13,8 @@ These rules apply when writing, checking or implementing a plan.
 ## External actions and deletions
 
 - Nothing external goes in a plan (commit, push, release, tag, publish, running a workflow, any other call to an outside system) unless the human explicitly asked for it, or invoked a command that names that action. Each one is stamped "requested explicitly by the human".
-- Those actions go in a "Release" step, second to last.
-- No deletion of anything, real or temporary, goes in the body of the plan. Every deletion goes in a "Clean up" step, the very last step, after every edit, step, test and check.
+- Those actions go in an "External actions" step, last, after "Clean up".
+- No deletion of anything, real or temporary, goes in the body of the plan. Every deletion goes in a "Clean up" step, after every edit, step and test, and just before "External actions".
 
 ## Research before writing
 
@@ -30,4 +30,12 @@ These rules apply when writing, checking or implementing a plan.
 ## Implementing a plan
 
 - First check that the plan, or the part being implemented, has no stops, no questions and no parts that need a human. If it has any, exit at once saying: THIS PLAN CANNOT BE COMPLETED WITHOUT A HUMAN, THE PLAN NEEDS FIXING
-- The plan is not the implementer's to change. It ticks steps and records what was done under each.
+- The plan is not the implementer's to change. It ticks steps and records what was done under each. The one exception is the Self Review step, below.
+
+## Self Review
+
+The plan's last step is the Self Review. It is many checks, not a run of the tests. It checks the evidence the earlier steps collected and checks that every "Review" checklist item was met. It does not collect evidence.
+
+- It can uncheck previously checked steps that are incomplete, including "Verify".
+- It can add new steps for things missed, before Verify.
+- When it fails its checks, the implementer restarts implementing the plan from the first unchecked step. It does not skip the step or move the plan.
