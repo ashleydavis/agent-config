@@ -66,21 +66,6 @@ Inspired by [Tiger Style](https://github.com/tigerbeetle/tigerbeetle/blob/main/d
 - Never put multiple statements on one line. Each statement should be on its own line.
 - Never write an `if` or an `else` without braces. Every body goes on its own lines, whatever it does and however short it is: a bare `continue`, a `return`, a `break`. An `if` used as a value (Zig's `return if (icons) mark else "OK"`) is an expression, not a statement body, and may stay on one line. An `if` whose body is a single assertion may also stay on one line, to assert an implication: `if (a) assert(b)`.
 
-## Comments
-
-- **Comments**: Line comments with `//` preceded by blank line, method docs above function. Use `//` comments for method docs. Never use `///` doc comments or trailing comments on the same line as code. Wrap comments at 100 columns. Write every comment block with an empty `//` line above and below the text:
-
-  ```
-  //
-  // <comment line 1>
-  // ...
-  // <comment line x>
-  //
-  ```
-
-- Every top-level function, variable and type has a comment block above it saying what it is for, what the intention is with it and why it is done this way rather than another way. Every field of a struct, interface or class has the same kind of comment. Comments state intent, not how the code works. Do not restate the type. Do not put a function's name in its own comment.
-- Comments describe the code as it is, never its history (what it used to be, what was removed or why it changed). History goes in the commit message.
-
 ## Dependencies
 
 - Avoid vendoring third-party tools, libraries or code where possible, unless there is a significant benefit (justify it in a comment or doc) or the human requests it. Anything vendored comes with a script that updates the vendored copy to the latest version. Anything vendored also comes with a `.md` file next to it that explains what it is, why it is needed, how to update it (pointing to the update script) and the justification for vendoring it.

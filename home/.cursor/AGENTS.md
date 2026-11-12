@@ -23,21 +23,22 @@
 - Never put Jira ticket numbers (for example `PROJ-1234`) in committed code, config, comments, or docs unless the human specifically asks for them in that turn. They go stale and mean nothing to a later reader. Ticket references belong in commit messages, PR descriptions, and branch names, not in the code.
 - When the human asks for a rule that is not specific to a particular project, put it in the global CLAUDE.md and AGENTS.md (`home/.claude/CLAUDE.md` and `home/.cursor/AGENTS.md` in the agent-config repository), unless one of the rules documents (`rules/*.md` in the agent-config repository) covers it: then it goes in that document, under the subsection it belongs to (for example Testing).
 - At the start of every task, before planning, writing docs or writing code, read the project's root marker files (`package.json`, `tsconfig.json`, `bun.lock`, `build.zig`, `build.zig.zon`) to learn which languages and tools it uses, then read every rule file below that applies.
-- When coding in any language, refer to `rules/general.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When writing code that can fail, refer to `rules/error-handling.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When coding in Zig, refer to `rules/zig.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When coding in TypeScript, refer to `rules/typescript.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When working in a project that uses Bun, refer to `rules/bun.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When working in a project that uses React, refer to `rules/react.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When writing code comments, text the code displays, commit messages or docs, refer to `rules/writing.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When writing a commit message, refer to `rules/commits.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When writing a pull request title or description, refer to `rules/prs.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When running any AWS command or doing any other work with an AWS account, refer to `rules/aws.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When writing or changing AWS IAM policies, refer to `rules/aws-permissions.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When working with Terraform, or giving the human Terraform commands, refer to `rules/terraform.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When starting, rerunning or restarting a CI workflow run, refer to `rules/workflows.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When running any git command, committing, pushing or setting up a remote, refer to `rules/git.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When debugging, finding the cause of a problem or fixing a bug, refer to `rules/debugging.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When coding in any language, read `rules/general.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When writing code that can fail, read `rules/error-handling.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When coding in Zig, read `rules/zig.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When coding in TypeScript, read `rules/typescript.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When working in a project that uses Bun, read `rules/bun.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When working in a project that uses React, read `rules/react.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When writing text the code displays, commit messages or docs, read `rules/writing.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When writing code comments, read `rules/code-comments.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When writing a commit message, read `rules/commits.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When writing a pull request title or description, read `rules/prs.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When running any AWS command or doing any other work with an AWS account, read `rules/aws.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When writing or changing AWS IAM policies, read `rules/aws-permissions.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When working with Terraform, or giving the human Terraform commands, read `rules/terraform.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When starting, rerunning or restarting a CI workflow run, read `rules/workflows.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When running any git command, committing, pushing or setting up a remote, read `rules/git.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When debugging, finding the cause of a problem or fixing a bug, read `rules/debugging.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
 - The agent is responsible for the whole repo. "It was pre-existing" and "it happened before this session" are not reasons, on their own, to leave a compile error or failing test unfixed.
 - Mutated runs are banned: never break the code a test covers, or assert a wrong value, to see the test fail.
 - If a project directory contains a `mise.toml`, always run its commands through mise (for example `mise exec -- bun run test`) so you use the tool versions the project pins. Your shell does not pick up mise's per-directory version switch automatically, so a bare command may run the wrong version. Do not run bare `bun`/`node`/etc. in a mise project.
