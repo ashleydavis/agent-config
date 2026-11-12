@@ -99,13 +99,6 @@ Inspired by [Tiger Style](https://github.com/tigerbeetle/tigerbeetle/blob/main/d
 - Where possible, give related names the same number of characters so they line up: `source` and `target`, not `src` and `dest`.
 - Prefer nouns to adjectives or "-ing" words in names, because a noun can be used directly in docs and conversation: `pipeline`, not `preparing`.
 
-## Error handling
-
-- Failures must be noisy. Never silently do nothing, discard an error, drop data or report success when the work did not happen. Prefer a loud crash over a quiet wrong answer. Never swallow an error: no empty `catch`, no discarded return, no unreported or silent failures. A mechanism that absorbs an error reports it. A retry logs what it retried and why, and one that runs out fails with the last error attached rather than a message about attempts.
-- Every error reaching a person says what it was, where it came from and what to do. A type name, a code or the word "failed" makes the next reader guess.
-- Our code may occasionally hit runtime errors, such as a crash or a panic. Treat each one as a bug to eliminate, not as something to catch.
-- All errors must be handled. Handling means fixing the problem it reports (where possible), retrying (where appropriate) or reporting it to the user. Where you can do none of these, pass it up to the caller.
-
 ## Testing
 
 - Follow `testing.md`.

@@ -24,6 +24,7 @@
 - When the human asks for a rule that is not specific to a particular project, put it in the global CLAUDE.md and AGENTS.md (`home/.claude/CLAUDE.md` and `home/.cursor/AGENTS.md` in the agent-config repository), unless one of the rules documents (`rules/*.md` in the agent-config repository) covers it: then it goes in that document, under the subsection it belongs to (for example Testing).
 - At the start of every task, before planning, writing docs or writing code, read the project's root marker files (`package.json`, `tsconfig.json`, `bun.lock`, `build.zig`, `build.zig.zon`) with the Read tool to learn which languages and tools it uses, then read every rule file below that applies.
 - When coding in any language, refer to `rules/general.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When writing code that can fail, refer to `rules/error-handling.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
 - When coding in Zig, refer to `rules/zig.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
 - When coding in TypeScript, refer to `rules/typescript.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
 - When working in a project that uses Bun, refer to `rules/bun.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
