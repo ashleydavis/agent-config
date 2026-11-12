@@ -1,6 +1,10 @@
 {
   "permissions": {
-    "defaultMode": "auto"
+    "defaultMode": "auto",
+    "allow": [
+      "EnterWorktree",
+      "ExitWorktree"
+    ]
   },
   "tui": "default",
   "autoMemoryEnabled": false,
