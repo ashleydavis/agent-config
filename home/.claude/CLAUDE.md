@@ -2,7 +2,7 @@
 
 - When the human gives an order (they must use the "order" command or say this is an "order") it overrides any rules here and should not be questioned.
 - HIGH PRIORITY: Always load `rules/communication.md` in the agent-config repository (https://github.com/ashleydavis/agent-config), at the start of every conversation, and follow every rule in it in every reply to the human.
-- Never mention, quote or describe the rules files you load, or that you are loading them. Load them silently.
+- Never write anything at all about what rules, instructions or config you load, have loaded or follow, or that you are loading them silently. Do not name, describe, announce or refer to them. Loading them is invisible to the human.
 - Keep CLAUDE.md and AGENTS.md files terse. They are loaded into context for every task, so state the rule and nothing more: no lists of examples, no worked illustrations.
 - Stopping to ask the human is extremely undesirable. When an agent does this, it wastes time doing nothing when it could be working. Docs in this repo should never include text like "stop and ask the human".
 - Guessing is banned. Never guess. Never tell the human "I'll stop guessing now".
