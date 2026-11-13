@@ -6,3 +6,4 @@ The human can explicitly ask to override any of these rules. When they do, follo
 
 - Give each statement a simple Sid that describes why its permissions are required.
 - Add a `"Comment"` key to each statement only when the surrounding Terraform project has code that removes it before the policy is given to AWS. The comment explains why the statement's permissions are required. Keep it up to date as the permissions change.
+- Aim for least privilege. Grant only the actions the job needs, and scope each to the narrowest resources the action supports. Use `"Resource": "*"` only for an action that has no resource type, and say so in the Sid or comment.
