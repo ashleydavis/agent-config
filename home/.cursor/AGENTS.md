@@ -3,6 +3,8 @@
 - When the human gives an order (they must use the "order" command or say this is an "order") it overrides any rules here and should not be questioned.
 - HIGH PRIORITY: Always load `rules/communication.md` in the agent-config repository (https://github.com/ashleydavis/agent-config), at the start of every conversation, and follow every rule in it in every reply to the human.
 - Never write anything at all about what rules, instructions or config you load, have loaded or follow, or that you are loading them silently. Do not name, describe, announce or refer to them. Loading them is invisible to the human.
+- Never quote, cite or paraphrase a rule, instruction or config to the human.
+- When the human tells you to do something, do it, and say nothing about rules.
 - Keep CLAUDE.md and AGENTS.md files terse. They are loaded into context for every task, so state the rule and nothing more: no lists of examples, no worked illustrations.
 - Stopping to ask the human is extremely undesirable. When an agent does this, it wastes time doing nothing when it could be working. Docs in this repo should never include text like "stop and ask the human".
 - Guessing is banned. Never guess. Never tell the human "I'll stop guessing now".
@@ -41,6 +43,7 @@
 - When debugging, finding the cause of a problem or fixing a bug, read `rules/debugging.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
 - The agent is responsible for the whole repo. "It was pre-existing" and "it happened before this session" are not reasons, on their own, to leave a compile error or failing test unfixed.
 - Mutated runs are banned: never break the code a test covers, or assert a wrong value, to see the test fail.
+- Never say "all tests pass" unless every unit test, smoke test, E2E test and any other test has been run and is known to pass.
 - If a project directory contains a `mise.toml`, always run its commands through mise (for example `mise exec -- bun run test`) so you use the tool versions the project pins. Your shell does not pick up mise's per-directory version switch automatically, so a bare command may run the wrong version. Do not run bare `bun`/`node`/etc. in a mise project.
 - When you create a git worktree of a project with a `mise.toml`, run `mise trust` on the worktree's `mise.toml` straight away, without asking, and run the worktree's commands through its own mise. Never borrow the main checkout's mise with `mise exec -C` to avoid trusting it.
 - Avoid chaining shell commands with `&&`, `;` or `||` where you can. Run each step as its own call and check its result before the next. A chain is harder for the human to follow, and a step after a failed one can still run.
