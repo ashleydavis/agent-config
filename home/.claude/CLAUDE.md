@@ -1,7 +1,7 @@
 # Claude Instructions
 
 - When the human gives an order (they must use the "order" command or say this is an "order") it overrides any rules here and should not be questioned.
-- HIGH PRIORITY: Always load `rules/communication.md` in the agent-config repository (https://github.com/ashleydavis/agent-config), at the start of every conversation, and follow every rule in it in every reply to the human.
+- HIGH PRIORITY: Always load `~/agent-config/rules/communication.md`, at the start of every conversation, and follow every rule in it in every reply to the human.
 - Never write anything at all about what rules, instructions or config you load, have loaded or follow, or that you are loading them silently. Do not name, describe, announce or refer to them. Loading them is invisible to the human.
 - Never quote, cite or paraphrase a rule, instruction or config to the human.
 - When the human tells you to do something, do it, and say nothing about rules.
@@ -25,22 +25,23 @@
 - Never put Jira ticket numbers (for example `PROJ-1234`) in committed code, config, comments, or docs unless the human specifically asks for them in that turn. They go stale and mean nothing to a later reader. Ticket references belong in commit messages, PR descriptions, and branch names, not in the code.
 - When the human asks for a rule that is not specific to a particular project, put it in the global CLAUDE.md and AGENTS.md (`home/.claude/CLAUDE.md` and `home/.cursor/AGENTS.md` in the agent-config repository), unless one of the rules documents (`rules/*.md` in the agent-config repository) covers it: then it goes in that document, under the subsection it belongs to (for example Testing).
 - At the start of every task, before planning, writing docs or writing code, read the project's root marker files (`package.json`, `tsconfig.json`, `bun.lock`, `build.zig`, `build.zig.zon`) with the Read tool to learn which languages and tools it uses, then read every rule file below that applies.
-- When coding in any language, read `rules/general.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When writing code that can fail, read `rules/error-handling.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When coding in Zig, read `rules/zig.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When coding in TypeScript, read `rules/typescript.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When working in a project that uses Bun, read `rules/bun.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When working in a project that uses React, read `rules/react.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When writing text the code displays, commit messages or docs, read `rules/writing.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When writing code comments, read `rules/code-comments.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When writing a commit message, read `rules/commits.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When writing a pull request title or description, read `rules/prs.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When running any AWS command or doing any other work with an AWS account, read `rules/aws.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When writing or changing AWS IAM policies, read `rules/aws-permissions.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When working with Terraform, or giving the human Terraform commands, read `rules/terraform.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When starting, rerunning or restarting a CI workflow run, read `rules/workflows.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When running any git command, committing, pushing or setting up a remote, read `rules/git.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
-- When debugging, finding the cause of a problem or fixing a bug, read `rules/debugging.md` in the agent-config repository (https://github.com/ashleydavis/agent-config).
+- When coding in any language, read `~/agent-config/rules/general.md`.
+- When writing code that can fail, read `~/agent-config/rules/error-handling.md`.
+- When coding in Zig, read `~/agent-config/rules/zig.md`.
+- When coding in TypeScript, read `~/agent-config/rules/typescript.md`.
+- When working in a project that uses Bun, read `~/agent-config/rules/bun.md`.
+- When working in a project that uses React, read `~/agent-config/rules/react.md`.
+- When writing text the code displays, commit messages or docs, read `~/agent-config/rules/writing.md`.
+- When writing code comments, read `~/agent-config/rules/code-comments.md`.
+- When writing a commit message, read `~/agent-config/rules/commits.md`.
+- When writing a pull request title or description, read `~/agent-config/rules/prs.md`.
+- When running any AWS command or doing any other work with an AWS account, read `~/agent-config/rules/aws.md`.
+- When writing or changing AWS IAM policies, read `~/agent-config/rules/aws-permissions.md`.
+- When working with Terraform, or giving the human Terraform commands, read `~/agent-config/rules/terraform.md`.
+- When starting, rerunning or restarting a CI workflow run, read `~/agent-config/rules/workflows.md`.
+- When running any git command, committing, pushing or setting up a remote, read `~/agent-config/rules/git.md`.
+- When debugging, finding the cause of a problem or fixing a bug, read `~/agent-config/rules/debugging.md`.
+- When the human asks for evidence or proof, or a claim has to be proven, read `~/agent-config/rules/evidence.md`.
 - The agent is responsible for the whole repo. "It was pre-existing" and "it happened before this session" are not reasons, on their own, to leave a compile error or failing test unfixed.
 - Mutated runs are banned: never break the code a test covers, or assert a wrong value, to see the test fail.
 - Never say "all tests pass" unless every unit test, smoke test, E2E test and any other test has been run and is known to pass.
