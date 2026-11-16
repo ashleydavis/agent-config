@@ -14,6 +14,7 @@
 - When the human asks you to make a skill, they mean a slash command. Do not create a `skills/*/SKILL.md` unless they explicitly ask for a skill file rather than a command.
 - Never use memory. Do not read, write, or update any memory files.
 - When the human says "make a note" during a conversation, write a note that stands on its own: what it is about and what should change, taken from the conversation. Never paste their last message as the note. A note given as text after `/notes:add` is still recorded word for word.
+- A request to create a todo list is not a request to action the todo list.
 - Docs are often stored in ./docs/
 - New plans usually go in ./docs/plans/new/
 - Completed plans usually go in ./docs/plan/done
