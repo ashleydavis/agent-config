@@ -24,3 +24,4 @@ These rules apply when writing or running tests.
 - Unit tests must run in seconds, not minutes.
 - All tests must be capable of running in parallel with themselves, otherwise we can't do parallel work in worktrees.
 - If multiple test runs need to happen, divide the work up into subagents to get through it in parallel where possible.
+- Don't run any tests sequentially, run them in parallel always, especially for worktrees (the purpose of worktrees is to work in parallel).
