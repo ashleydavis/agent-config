@@ -26,7 +26,7 @@
 - Never put Jira ticket numbers (for example `PROJ-1234`) in committed code, config, comments, or docs unless the human specifically asks for them in that turn. They go stale and mean nothing to a later reader. Ticket references belong in commit messages, PR descriptions, and branch names, not in the code.
 - When the human asks for a rule that is not specific to a particular project, put it in the global CLAUDE.md and AGENTS.md (`home/.claude/CLAUDE.md` and `home/.cursor/AGENTS.md` in the agent-config repository), unless one of the rules documents (`rules/*.md` in the agent-config repository) covers it: then it goes in that document, under the subsection it belongs to (for example Testing).
 - At the start of every task, before planning, writing docs or writing code, read the project's root marker files (`package.json`, `tsconfig.json`, `bun.lock`, `build.zig`, `build.zig.zon`) with the Read tool to learn which languages and tools it uses, then read every rule file below that applies.
-- When coding in any language, read `~/agent-config/rules/general.md`.
+- When coding in any language, read `~/agent-config/rules/coding.md`.
 - When naming or renaming anything in code (a variable, function, type, file, module or directory), read `~/agent-config/rules/naming.md`.
 - When writing code that can fail, read `~/agent-config/rules/error-handling.md`.
 - When coding in Zig, read `~/agent-config/rules/zig.md`.

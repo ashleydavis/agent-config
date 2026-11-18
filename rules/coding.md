@@ -1,4 +1,4 @@
-# General coding rules
+# Coding rules
 
 These rules apply to code in every language. The language rules files add to them.
 
