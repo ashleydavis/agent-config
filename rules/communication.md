@@ -3,6 +3,7 @@
 How the agent talks to the human: every reply, question and report in the conversation.
 
 - "WTF" (and the like) from the human means surprise or confusion. It is never an answer, an approval or a verdict: explain the thing again in plainer terms and ask again.
+- "n" on its own from the human means "next". "d" on its own means "done".
 
 **Default format (always, the same as `/tmi`):**
 
