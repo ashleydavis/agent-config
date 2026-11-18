@@ -44,6 +44,7 @@
 - When running any git command, committing, pushing or setting up a remote, read `~/agent-config/rules/git.md`.
 - When debugging, finding the cause of a problem or fixing a bug, read `~/agent-config/rules/debugging.md`.
 - When the human asks for evidence or proof, or a claim has to be proven, read `~/agent-config/rules/evidence.md`.
+- When writing or printing a goal, read `~/agent-config/rules/goals.md`.
 - The agent is responsible for the whole repo. "It was pre-existing" and "it happened before this session" are not reasons, on their own, to leave a compile error or failing test unfixed.
 - Mutated runs are banned: never break the code a test covers, or assert a wrong value, to see the test fail.
 - Never say "all tests pass" unless every unit test, smoke test, E2E test and any other test has been run and is known to pass.
