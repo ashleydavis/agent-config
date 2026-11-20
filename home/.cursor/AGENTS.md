@@ -50,6 +50,7 @@
 - The agent is responsible for the whole repo. "It was pre-existing" and "it happened before this session" are not reasons, on their own, to leave a compile error or failing test unfixed.
 - Mutated runs are banned: never break the code a test covers, or assert a wrong value, to see the test fail.
 - Never say "all tests pass" unless every unit test, smoke test, E2E test and any other test has been run and is known to pass.
+- Never say "that's expected" about something you did not tell the human about, or told them only inside a wall of text they did not read, so they did not expect it.
 - If a project directory contains a `mise.toml`, always run its commands through mise (for example `mise exec -- bun run test`) so you use the tool versions the project pins. Your shell does not pick up mise's per-directory version switch automatically, so a bare command may run the wrong version. Do not run bare `bun`/`node`/etc. in a mise project.
 - When you create a git worktree of a project with a `mise.toml`, run `mise trust` on the worktree's `mise.toml` straight away, without asking, and run the worktree's commands through its own mise. Never borrow the main checkout's mise with `mise exec -C` to avoid trusting it.
 - Avoid chaining shell commands with `&&`, `;` or `||` where you can. Run each step as its own call and check its result before the next. A chain is harder for the human to follow, and a step after a failed one can still run.
