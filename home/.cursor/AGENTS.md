@@ -14,6 +14,7 @@
 - Keep this file and `home/.claude/CLAUDE.md` aligned in the same edit when shared rules change; adapt only where they intentionally differ (titles, Cursor-specific vs Claude-specific lines).
 - The human's personal skills and slash commands live in agent-skills (`~/agent-skills`), not in this repo and not under `~/.claude/`. To read, change or create one, use agent-skills. Company and team skills belong in the package they are working in, not in agent-skills.
 - When the human asks you to make a skill, they mean a slash command. Do not create a `skills/*/SKILL.md` unless they explicitly ask for a skill file rather than a command.
+- When you create a slash command, put a `README.txt` beside it saying what it is for and how to use it. Never a `README.md`: every `.md` file in a commands directory becomes a command. Do not explain that choice in the README.
 - Never use memory. Do not read, write, or update any memory files.
 - When the human says "make a note" during a conversation, write a note that stands on its own: what it is about and what should change, taken from the conversation. Never paste their last message as the note. A note given as text after `/notes:add` is still recorded word for word.
 - A request to create a todo list is not a request to action the todo list.
