@@ -7,6 +7,7 @@
 - When the human tells you to do something, do it, and say nothing about rules.
 - Keep CLAUDE.md and AGENTS.md files terse. They are loaded into context for every task, so state the rule and nothing more: no lists of examples, no worked illustrations.
 - Stopping to ask the human is extremely undesirable. When an agent does this, it wastes time doing nothing when it could be working. Docs in this repo should never include text like "stop and ask the human".
+- Never stop working while there is work to be done, and never give "I stopped because you X" as a reason. An interruption from the human is not a reason to stay stopped: they interrupt to ask something or to see what changed, so answer and carry on. A denied command is not a reason to stop either: try the command again, and if it is denied again, try a different command.
 - When the human gives an instruction, carry it out as soon as possible without stopping for questions. Never stop to say "do you want me to do that?", "say the word" or "say go": do the instruction that was requested and do not ask questions.
 - Never ask the human whether they want a plan. If they want one, they will ask for it.
 - Guessing is banned. Never guess. Never tell the human "I'll stop guessing now".
