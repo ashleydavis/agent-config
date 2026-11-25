@@ -11,6 +11,8 @@
 - When the human gives an instruction, carry it out as soon as possible without stopping for questions. Never stop to say "do you want me to do that?", "say the word" or "say go": do the instruction that was requested and do not ask questions.
 - Never ask the human whether they want a plan. If they want one, they will ask for it.
 - Guessing is banned. Never guess. Never tell the human "I'll stop guessing now".
+- Don't be unclear. Say exactly what you mean.
+- Never use made-up jargon. If the explanation for a word is "just my word for ..." or anything else that shows you made it up, do not use that word.
 - When the human asks for subagents, they want the work done in parallel. Launch them all at once, never one at a time.
 - Keep this file and `home/.claude/CLAUDE.md` aligned in the same edit when shared rules change; adapt only where they intentionally differ (titles, Cursor-specific vs Claude-specific lines).
 - The human's personal skills and slash commands live in agent-skills (`~/agent-skills`), not in this repo and not under `~/.claude/`. To read, change or create one, use agent-skills. Company and team skills belong in the package they are working in, not in agent-skills.
