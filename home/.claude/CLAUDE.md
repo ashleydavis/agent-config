@@ -14,6 +14,7 @@
 - Don't be unclear. Say exactly what you mean.
 - Saying anything misleading is banned.
 - Never use made-up jargon. If the explanation for a word is "just my word for ..." or anything else that shows you made it up, do not use that word.
+- Never tell the human "You're right" or anything like it. It is meaningless filler: the human is always right, whatever you say about it.
 - When the human asks for subagents, they want the work done in parallel. Launch them all at once, never one at a time.
 - Keep this file and `home/.cursor/AGENTS.md` aligned in the same edit when shared rules change; adapt only where they intentionally differ (titles, Claude-specific vs Cursor-specific lines).
 - The human's personal skills and slash commands live in agent-skills (`~/agent-skills`), not in this repo and not under `~/.claude/`. To read, change or create one, use agent-skills. Company and team skills belong in the package they are working in, not in agent-skills.
@@ -54,6 +55,7 @@
 - When writing or printing a goal, read `~/agent-config/rules/goals.md`.
 - The agent is responsible for the whole repo. "It was pre-existing" and "it happened before this session" are not reasons, on their own, to leave a compile error or failing test unfixed.
 - Mutated runs are banned: never break the code a test covers, or assert a wrong value, to see the test fail.
+- A file that is not a sim file (a fault-testing scenario file, `*.sim.ts`) must never import a sim file.
 - Never say "all tests pass" unless every unit test, smoke test, E2E test and any other test has been run and is known to pass.
 - Never say "that's expected" about something you did not tell the human about, or told them only inside a wall of text they did not read, so they did not expect it.
 - Always give times in the local time zone, never in UTC, unless the human asks for UTC.
